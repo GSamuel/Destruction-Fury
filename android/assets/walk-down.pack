@@ -1,0 +1,26 @@
+
+walk-down.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+walk_down
+  rotate: false
+  xy: 1, 505
+  size: 382, 511
+  orig: 512, 512
+  offset: 65, 0
+  index: 2
+walk_down
+  rotate: false
+  xy: 1, 1
+  size: 359, 502
+  orig: 512, 512
+  offset: 81, 0
+  index: 1
+walk_down
+  rotate: false
+  xy: 385, 514
+  size: 359, 502
+  orig: 512, 512
+  offset: 72, 0
+  index: 3
