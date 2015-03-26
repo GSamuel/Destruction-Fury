@@ -7,41 +7,18 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.utils.Disposable;
+import com.dekler.destructionfury.level.Level;
 import com.dekler.destructionfury.map.Tile;
 import com.dekler.destructionfury.map.TiledMap;
 
-public class MapRenderer implements Disposable
+public class MapRenderer
 {
-	private TiledMap map;
-	
-	//View Stuff
-	private OrthographicCamera camera;
-	private SpriteBatch batch;
-	private Stage stage;
-	
-	private ShapeRenderer shapeRenderer;
-	
-	public MapRenderer(TiledMap map)
-	{
-		this.map = map;
-		
-		stage = new Stage();
-		
-		batch = new SpriteBatch();
-		shapeRenderer = new ShapeRenderer();
-
-		camera = new OrthographicCamera();
-		camera.setToOrtho(true, 960, 640);
-
-		stage.getViewport().setCamera(camera);
-	}
-	
-	public void render()
+	public static void render(Level level, SpriteBatch batch, OrthographicCamera camera, ShapeRenderer shapeRenderer)
 	{
 		Gdx.gl.glClearColor(0,0,0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		
+		TiledMap map = level.getMap();
 		
 		//update camera position
 		
@@ -72,14 +49,5 @@ public class MapRenderer implements Disposable
 				
 			}
 		shapeRenderer.end();
-				
-				
-			
-	}
-
-	@Override
-	public void dispose()
-	{
-		batch.dispose();
 	}
 }

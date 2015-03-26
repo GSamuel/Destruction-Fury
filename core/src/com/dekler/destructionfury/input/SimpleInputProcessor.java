@@ -8,20 +8,20 @@ import com.badlogic.gdx.input.GestureDetector.GestureListener;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.dekler.destructionfury.gameobject.GameObject;
+import com.dekler.destructionfury.level.Level;
 
 public class SimpleInputProcessor implements InputProcessor, GestureListener
 {
 
 	private Stage stage;
-	private GameObject player;
+	private Level level;
 	private OrthographicCamera camera;
 
 	private boolean w, a, s, d, q, e;
 
-	public SimpleInputProcessor(Stage stage, GameObject player)
+	public SimpleInputProcessor(Stage stage, Level level)
 	{
 		this.stage = stage;
-		this.player = player;
 		this.camera = (OrthographicCamera) stage.getCamera();
 	}
 
@@ -163,14 +163,14 @@ public class SimpleInputProcessor implements InputProcessor, GestureListener
 			if (Gdx.input.isKeyPressed(Input.Keys.S))
 				dy += 1f;
 			
-			player.setVelX(dx);
-			player.setVelY(dy);
+			level.getPlayer().setVelX(dx);
+			level.getPlayer().setVelY(dy);
 			
 		}
 		else
 		{
-			player.setVelX(0);
-			player.setVelY(0);
+			level.getPlayer().setVelX(0);
+			level.getPlayer().setVelY(0);
 		}
 	}
 

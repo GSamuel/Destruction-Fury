@@ -9,12 +9,15 @@ public abstract class GameObject
 	protected Vector2 pos;
 	protected Vector2 vel;
 	
+	protected boolean movable;
+	
 	protected int health;
 
 	public GameObject()
 	{
 		this.size = new Vector2();
 		this.pos = new Vector2();
+		this.vel = new Vector2();
 	}
 
 	public float getX()

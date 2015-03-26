@@ -1,10 +1,12 @@
 package com.dekler.destructionfury;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.dekler.destructionfury.assetManager.AssetManager;
 import com.dekler.destructionfury.input.SimpleInputProcessor;
-import com.dekler.destructionfury.map.RandomTiledMap;
+import com.dekler.destructionfury.level.Level;
 import com.dekler.destructionfury.map.TiledMap;
+import com.dekler.destructionfury.renderer.LevelRenderer;
 import com.dekler.destructionfury.renderer.MapRenderer;
 
 public class DestructionFury extends Game
@@ -13,8 +15,11 @@ public class DestructionFury extends Game
 	private AssetManager assetManager;
 	
 	//model
-	private TiledMap map;
-	private MapRenderer mapRenderer;
+	private Stage stage;
+	private Level level;
+	
+	//view
+	private LevelRenderer levelRenderer;
 	
 	//Input
 	private SimpleInputProcessor iProcessor;
@@ -22,20 +27,26 @@ public class DestructionFury extends Game
 	@Override
 	public void create()
 	{
+		//assets
 		assetManager = new AssetManager();
-		map = new RandomTiledMap(10, 10);
-		mapRenderer = new MapRenderer(map);
+		//model
+		level = new Level();
+		//view
+		stage = new Stage();
+		levelRenderer = new LevelRenderer(stage, level);
+		//input
+		iProcessor = new SimpleInputProcessor(stage, level);
 	}
 
 	@Override
 	public void render()
 	{
-		mapRenderer.render();
+		levelRenderer.render();
 	}
 	
 	@Override
 	public void dispose()
 	{
-		mapRenderer.dispose();
+		levelRenderer.dispose();
 	}
 }
