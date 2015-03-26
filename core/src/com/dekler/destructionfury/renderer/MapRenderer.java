@@ -1,7 +1,6 @@
 package com.dekler.destructionfury.renderer;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -19,8 +18,6 @@ public class MapRenderer
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
 		TiledMap map = level.getMap();
-		
-		//update camera position
 		
 		batch.setProjectionMatrix(camera.combined);
 		

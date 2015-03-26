@@ -16,6 +16,8 @@ public class AssetLoader implements Disposable
 	private ArrayList<TextureAtlas> atlasses;
 	private HashMap<String, AtlasRegion> tiles;
 	private HashMap<String, Animation> animations;
+	
+	private float frameTime = 0.2f;
 
 	public AssetLoader()
 	{
@@ -38,7 +40,7 @@ public class AssetLoader implements Disposable
 
 		
 		//walk down
-		textureAtlas = new TextureAtlas(Gdx.files.internal("walk-down.pack"));
+		textureAtlas = new TextureAtlas(Gdx.files.internal("player.pack"));
 		atlasses.add(textureAtlas);
 
 		TextureRegion[] walkDownFrames = new TextureRegion[4];
@@ -48,7 +50,36 @@ public class AssetLoader implements Disposable
 		walkDownFrames[2] = textureAtlas.findRegion("walk_down", 2);
 		walkDownFrames[3] = textureAtlas.findRegion("walk_down", 3);
 
-		animations.put("player_down", new Animation(0.25f, walkDownFrames));
+		animations.put("player_down", new Animation(frameTime, walkDownFrames));
+		
+		
+		TextureRegion[] walkUpFrames = new TextureRegion[4];
+
+		walkUpFrames[0] = textureAtlas.findRegion("walk_up", 2);
+		walkUpFrames[1] = textureAtlas.findRegion("walk_up", 1);
+		walkUpFrames[2] = textureAtlas.findRegion("walk_up", 2);
+		walkUpFrames[3] = textureAtlas.findRegion("walk_up", 3);
+
+		animations.put("player_up", new Animation(frameTime, walkUpFrames));
+		
+		
+		TextureRegion[] walkLeftFrames = new TextureRegion[4];
+
+		walkLeftFrames[0] = textureAtlas.findRegion("walk_left", 2);
+		walkLeftFrames[1] = textureAtlas.findRegion("walk_left", 1);
+		walkLeftFrames[2] = textureAtlas.findRegion("walk_left", 2);
+		walkLeftFrames[3] = textureAtlas.findRegion("walk_left", 3);
+
+		animations.put("player_left", new Animation(frameTime, walkLeftFrames));
+		
+		
+		TextureRegion[] walkRightFrames = new TextureRegion[4];
+		walkRightFrames[0] = textureAtlas.findRegion("walk_right", 2);
+		walkRightFrames[1] = textureAtlas.findRegion("walk_right", 1);
+		walkRightFrames[2] = textureAtlas.findRegion("walk_right", 2);
+		walkRightFrames[3] = textureAtlas.findRegion("walk_right", 3);
+
+		animations.put("player_right", new Animation(frameTime, walkRightFrames));
 	}
 
 	public TextureRegion getRegion(String textureName)

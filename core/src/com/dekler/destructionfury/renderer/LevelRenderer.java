@@ -10,7 +10,7 @@ import com.dekler.destructionfury.level.Level;
 
 public class LevelRenderer implements Disposable
 {
-	public static final int TILE_SIZE = 64;
+	public static final int TILE_SIZE = 128;
 	
 	private Level level;
 
@@ -30,7 +30,7 @@ public class LevelRenderer implements Disposable
 		batch = new SpriteBatch();
 
 		camera = new OrthographicCamera();
-		camera.setToOrtho(true, 960, 640);
+		camera.setToOrtho(false, 960, 640);
 
 		stage.getViewport().setCamera(camera);
 	}
@@ -41,6 +41,7 @@ public class LevelRenderer implements Disposable
 		camera.position.set(p.getX() * TILE_SIZE, p.getY()*TILE_SIZE, 0);
 		camera.update();
 		MapRenderer.render(level, batch, camera, assetManager.getTexturePack(), TILE_SIZE);
+		PlayerRenderer.render(level, batch, camera, assetManager, TILE_SIZE);
 	}
 
 	@Override

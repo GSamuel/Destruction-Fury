@@ -7,10 +7,13 @@ public abstract class Entity extends GameObject
 {
 	protected Vector2 vel;
 	protected float speed = 2;
+	protected float time = 0f;	
+	private Direction direction;
 	
 	public Entity()
 	{
 		this.vel = new Vector2();
+		direction = Direction.DOWN;
 	}
 	
 	public float getVelX()
@@ -36,11 +39,13 @@ public abstract class Entity extends GameObject
 	public void moveLeft()
 	{
 		vel.x = -speed;
+		direction = Direction.LEFT;
 	}
 
 	public void moveRight()
 	{
 		vel.x = speed;
+		direction = Direction.RIGHT;
 	}
 
 	public void stopMoveX()
@@ -50,12 +55,14 @@ public abstract class Entity extends GameObject
 
 	public void moveUp()
 	{
-		vel.y = -speed;
+		vel.y = speed;
+		direction = Direction.UP;
 	}
 
 	public void moveDown()
 	{
-		vel.y = speed;
+		vel.y = -speed;
+		direction = Direction.DOWN;
 	}
 
 	public void stopMoveY()
@@ -63,8 +70,21 @@ public abstract class Entity extends GameObject
 		vel.y = 0;
 	}
 	
+	public float getTime()
+	{
+		if(vel.x == 0f && vel.y == 0f)
+			return 0f;
+		return time;
+	}
+	
+	public Direction getDirection()
+	{
+		return direction;
+	}
+	
 	public void update()
 	{
 		pos.add(vel.x*Gdx.graphics.getDeltaTime(), vel.y*Gdx.graphics.getDeltaTime());
+		time += Gdx.graphics.getDeltaTime();
 	}
 }
