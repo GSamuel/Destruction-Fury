@@ -2,7 +2,6 @@ package com.dekler.destructionfury.level;
 
 import java.util.ArrayList;
 
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.dekler.destructionfury.gameobject.GameObject;
 import com.dekler.destructionfury.gameobject.SimpleGameObject;
 import com.dekler.destructionfury.map.RandomTiledMap;
@@ -17,9 +16,8 @@ public class Level
 	public Level()
 	{
 		player = new SimpleGameObject();
-		map = new RandomTiledMap(10, 10);
+		map = new RandomTiledMap(15, 10);
 		objects = new ArrayList<GameObject>();
-
 	}
 
 	public GameObject getPlayer()
@@ -35,5 +33,12 @@ public class Level
 	public TiledMap getMap()
 	{
 		return map;
+	}
+
+	public void update()
+	{
+		player.update();
+		for(GameObject o: objects)
+			o.update();
 	}
 }

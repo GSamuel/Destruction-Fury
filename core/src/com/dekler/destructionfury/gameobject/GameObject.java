@@ -9,6 +9,8 @@ public abstract class GameObject
 	protected Vector2 pos;
 	protected Vector2 vel;
 	
+	protected float speed = 2;;
+	
 	protected boolean movable;
 	
 	protected int health;
@@ -73,5 +75,35 @@ public abstract class GameObject
 	public void update()
 	{
 		pos.add(vel.x*Gdx.graphics.getDeltaTime(), vel.y*Gdx.graphics.getDeltaTime());
+	}
+
+	public void moveLeft()
+	{
+		vel.x = -speed;
+	}
+
+	public void moveRight()
+	{
+		vel.x = speed;
+	}
+
+	public void stopMoveX()
+	{
+		vel.x = 0;
+	}
+
+	public void moveUp()
+	{
+		vel.y = -speed;
+	}
+
+	public void moveDown()
+	{
+		vel.y = speed;
+	}
+
+	public void stopMoveY()
+	{
+		vel.y = 0;
 	}
 }

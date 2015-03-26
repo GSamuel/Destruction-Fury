@@ -13,7 +13,7 @@ import com.dekler.destructionfury.map.TiledMap;
 
 public class MapRenderer
 {
-	public static void render(Level level, SpriteBatch batch, OrthographicCamera camera, ShapeRenderer shapeRenderer)
+	public static void render(Level level, SpriteBatch batch, OrthographicCamera camera, ShapeRenderer shapeRenderer, int tileSize)
 	{
 		Gdx.gl.glClearColor(0,0,0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -38,12 +38,12 @@ public class MapRenderer
 				if(t == Tile.WALL)
 				{
 					shapeRenderer.setColor(Color.GRAY);
-					shapeRenderer.rect(i*50,j*50,50,50);
+					shapeRenderer.rect(i*tileSize,j*tileSize,tileSize ,tileSize);
 				}
 				else
 				{
 				    shapeRenderer.setColor(Color.LIGHT_GRAY);
-					shapeRenderer.rect(i*50,j*50,50,50);
+					shapeRenderer.rect(i*tileSize,j*tileSize,tileSize ,tileSize);
 				}
 					
 				

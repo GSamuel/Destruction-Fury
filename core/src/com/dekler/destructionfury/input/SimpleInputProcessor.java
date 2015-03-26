@@ -3,26 +3,20 @@ package com.dekler.destructionfury.input;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.input.GestureDetector.GestureListener;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.dekler.destructionfury.gameobject.GameObject;
 import com.dekler.destructionfury.level.Level;
 
 public class SimpleInputProcessor implements InputProcessor, GestureListener
 {
 
-	private Stage stage;
 	private Level level;
-	private OrthographicCamera camera;
 
-	private boolean w, a, s, d, q, e;
+	private boolean w, a, s, d;
 
-	public SimpleInputProcessor(Stage stage, Level level)
+	public SimpleInputProcessor( Level level)
 	{
-		this.stage = stage;
-		this.camera = (OrthographicCamera) stage.getCamera();
+		this.level= level;
 	}
 
 	@Override
@@ -84,8 +78,6 @@ public class SimpleInputProcessor implements InputProcessor, GestureListener
 	@Override
 	public boolean keyDown(int keycode)
 	{
-		q = Gdx.input.isKeyPressed(Input.Keys.Q);
-		e = Gdx.input.isKeyPressed(Input.Keys.E);
 		w = Gdx.input.isKeyPressed(Input.Keys.W);
 		a = Gdx.input.isKeyPressed(Input.Keys.A);
 		s = Gdx.input.isKeyPressed(Input.Keys.S);
@@ -97,8 +89,6 @@ public class SimpleInputProcessor implements InputProcessor, GestureListener
 	@Override
 	public boolean keyUp(int keycode)
 	{
-		q = Gdx.input.isKeyPressed(Input.Keys.Q);
-		e = Gdx.input.isKeyPressed(Input.Keys.E);
 		w = Gdx.input.isKeyPressed(Input.Keys.W);
 		a = Gdx.input.isKeyPressed(Input.Keys.A);
 		s = Gdx.input.isKeyPressed(Input.Keys.S);
@@ -163,14 +153,25 @@ public class SimpleInputProcessor implements InputProcessor, GestureListener
 			if (Gdx.input.isKeyPressed(Input.Keys.S))
 				dy += 1f;
 			
-			level.getPlayer().setVelX(dx);
-			level.getPlayer().setVelY(dy);
+			if(dx <0)
+				level.getPlayer().moveLeft();
+			else if(dx>0)
+				level.getPlayer().moveRight();
+			else
+				level.getPlayer().stopMoveX();
+			
+			if(dy <0)
+				level.getPlayer().moveUp();
+			else if(dy>0)
+				level.getPlayer().moveDown();
+			else
+				level.getPlayer().stopMoveY();
 			
 		}
 		else
 		{
-			level.getPlayer().setVelX(0);
-			level.getPlayer().setVelY(0);
+			level.getPlayer().stopMoveX();
+			level.getPlayer().stopMoveY();
 		}
 	}
 
