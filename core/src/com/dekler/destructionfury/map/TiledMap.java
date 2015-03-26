@@ -3,13 +3,13 @@ package com.dekler.destructionfury.map;
 public class TiledMap
 {
 	private int width, height;
-	private Tile[][] map;
+	private TileEnum[][] map;
 
 	public TiledMap(int width, int height)
 	{
 		this.width = width;
 		this.height = height;
-		map = new Tile[width][height];
+		map = new TileEnum[width][height];
 		init();
 	}
 	
@@ -17,15 +17,15 @@ public class TiledMap
 	{
 		for(int i = 0; i < width; i++)
 			for(int j = 0; j < height; j++)
-				map[i][j] = Tile.WALL;
+				map[i][j] = TileEnum.WALL;
 	}
 
-	public void setTile(int x, int y, Tile t)
+	public void setTile(int x, int y, TileEnum t)
 	{
 		map[x][y] = t;
 	}
 
-	public Tile getTile(int x, int y)
+	public TileEnum getTile(int x, int y)
 	{
 		return map[x][y];
 	}

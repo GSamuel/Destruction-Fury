@@ -21,8 +21,7 @@ public class LevelRenderer implements Disposable
 	private Stage stage;
 	
 	private TexturePack texturePack;
-
-	private ShapeRenderer shapeRenderer;
+	private 
 
 	public LevelRenderer(Stage stage, Level level, TexturePack texturePack)
 	{
@@ -31,7 +30,6 @@ public class LevelRenderer implements Disposable
 		this.texturePack = texturePack;
 
 		batch = new SpriteBatch();
-		shapeRenderer = new ShapeRenderer();
 
 		camera = new OrthographicCamera();
 		camera.setToOrtho(true, 960, 640);
@@ -52,6 +50,5 @@ public class LevelRenderer implements Disposable
 	{
 		stage.dispose();
 		batch.dispose();
-		shapeRenderer.dispose();
 	}
 }

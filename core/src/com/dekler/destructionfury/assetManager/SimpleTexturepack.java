@@ -3,13 +3,13 @@ package com.dekler.destructionfury.assetManager;
 import java.util.HashMap;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.dekler.destructionfury.map.Tile;
+import com.dekler.destructionfury.map.TileEnum;
 
 public class SimpleTexturepack implements TexturePack
 {
 	private HashMap<String, Sprite> sprites;
 	
-	public SimpleTexturepack(AssetManager assetManager)
+	public SimpleTexturepack(AssetLoader assetManager)
 	{
 		sprites = new HashMap<String, Sprite>();
 		sprites.put("floor", new Sprite(assetManager.getRegion("sand")));
@@ -23,7 +23,7 @@ public class SimpleTexturepack implements TexturePack
 	}
 
 	@Override
-	public Sprite getSprite(Tile t)
+	public Sprite getSprite(TileEnum t)
 	{
 		return sprites.get(t.toString().toLowerCase());
 	}

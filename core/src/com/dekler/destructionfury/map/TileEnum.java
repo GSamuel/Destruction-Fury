@@ -1,6 +1,6 @@
 package com.dekler.destructionfury.map;
 
-public enum Tile
+public enum TileEnum
 {
 	WALL, FLOOR
 }

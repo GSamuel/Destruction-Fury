@@ -11,14 +11,14 @@ public class RandomTiledMap extends TiledMap
 
 		Random rand = new Random(System.currentTimeMillis());
 
-		Tile t;
+		TileEnum t;
 		for (int i = 0; i < getWidth(); i++)
 			for (int j = 0; j < getHeight(); j++)
 			{
 				if (rand.nextBoolean())
-					setTile(i, j, Tile.WALL);
+					setTile(i, j, TileEnum.WALL);
 				else
-					setTile(i, j, Tile.FLOOR);
+					setTile(i, j, TileEnum.FLOOR);
 			}
 	}
 }

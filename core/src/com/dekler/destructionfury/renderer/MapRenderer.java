@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.dekler.destructionfury.assetManager.TexturePack;
 import com.dekler.destructionfury.level.Level;
-import com.dekler.destructionfury.map.Tile;
+import com.dekler.destructionfury.map.TileEnum;
 import com.dekler.destructionfury.map.TiledMap;
 
 public class MapRenderer
@@ -24,18 +24,18 @@ public class MapRenderer
 		
 		batch.setProjectionMatrix(camera.combined);
 		
-		Sprite wall = texturePack.getSprite(Tile.WALL);
+		Sprite wall = texturePack.getSprite(TileEnum.WALL);
 		wall.setSize(tileSize, tileSize);
-		Sprite floor = texturePack.getSprite(Tile.FLOOR);
+		Sprite floor = texturePack.getSprite(TileEnum.FLOOR);
 		floor.setSize(tileSize, tileSize);
 		
-	    Tile t;
+	    TileEnum t;
 	    batch.begin();
 		for(int i = 0; i <map.getWidth(); i++)
 			for(int j =0; j < map.getHeight(); j++)
 			{
 				t = map.getTile(i, j);
-				if(t == Tile.WALL)
+				if(t == TileEnum.WALL)
 				{
 					wall.setPosition(i*tileSize, j*tileSize);
 					wall.draw(batch);
