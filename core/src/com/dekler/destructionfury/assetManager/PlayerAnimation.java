@@ -13,9 +13,9 @@ public class PlayerAnimation implements AnimationPack
 	{
 		animations = new HashMap<AnimationEnum, Animation>();
 		animations.put(AnimationEnum.WALK_DOWN,assetLoader.getAnimation("player_down"));
-		animations.put(AnimationEnum.WALK_UP,assetLoader.getAnimation("player_up"));
-		animations.put(AnimationEnum.WALK_LEFT,assetLoader.getAnimation("player_left"));
-		animations.put(AnimationEnum.WALK_RIGHT,assetLoader.getAnimation("player_right"));
+		//animations.put(AnimationEnum.WALK_UP,assetLoader.getAnimation("player_up"));
+		//animations.put(AnimationEnum.WALK_LEFT,assetLoader.getAnimation("player_left"));
+		//animations.put(AnimationEnum.WALK_RIGHT,assetLoader.getAnimation("player_right"));
 	}
 
 	@Override

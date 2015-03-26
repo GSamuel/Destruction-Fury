@@ -9,17 +9,11 @@ public class SimpleTexturepack implements TexturePack
 {
 	private HashMap<String, Sprite> sprites;
 	
-	public SimpleTexturepack(AssetLoader assetManager)
+	public SimpleTexturepack(AssetLoader assetLoader)
 	{
 		sprites = new HashMap<String, Sprite>();
-		sprites.put("floor", new Sprite(assetManager.getRegion("sand")));
-		sprites.put("wall", new Sprite(assetManager.getRegion("stone")));
-	}
-	
-	@Override
-	public Sprite getSprite(String name)
-	{
-		return sprites.get(name);
+		sprites.put("floor", new Sprite(assetLoader.getRegion("sand")));
+		sprites.put("wall", new Sprite(assetLoader.getRegion("stone")));
 	}
 
 	@Override

@@ -20,10 +20,13 @@ public class AssetLoader implements Disposable
 	public AssetLoader()
 	{
 		atlasses = new ArrayList<TextureAtlas>();//Dispose list
-		
 		tiles = new HashMap<String, TextureAtlas.AtlasRegion>();
 		animations = new HashMap<String, Animation>();
+	}
 
+
+	public void loadAssets()
+	{
 		textureAtlas = new TextureAtlas(Gdx.files.internal("tiles.pack"));
 		atlasses.add(textureAtlas);
 

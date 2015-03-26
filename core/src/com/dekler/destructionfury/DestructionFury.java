@@ -6,6 +6,7 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.dekler.destructionfury.assetManager.AssetLoader;
+import com.dekler.destructionfury.assetManager.AssetManager;
 import com.dekler.destructionfury.assetManager.SimpleTexturepack;
 import com.dekler.destructionfury.assetManager.TexturePack;
 import com.dekler.destructionfury.input.SimpleInputProcessor;
@@ -15,8 +16,7 @@ import com.dekler.destructionfury.renderer.LevelRenderer;
 public class DestructionFury extends Game
 {
 	//assets
-	private AssetLoader assetManager;
-	private TexturePack texturePack;
+	private AssetManager assetManager;
 	
 	//model
 	private Stage stage;
@@ -32,14 +32,13 @@ public class DestructionFury extends Game
 	public void create()
 	{
 		//assets
-		assetManager = new AssetLoader();
-		texturePack = new SimpleTexturepack(assetManager);
+		assetManager = new AssetManager();
 		
 		//model
 		level = new Level();
 		//view
 		stage = new Stage();
-		levelRenderer = new LevelRenderer(stage, level, texturePack);
+		levelRenderer = new LevelRenderer(stage, level, assetManager);
 		
 		//input
 		iProcessor = new SimpleInputProcessor(level);

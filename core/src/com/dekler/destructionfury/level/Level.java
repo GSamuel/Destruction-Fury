@@ -2,25 +2,26 @@ package com.dekler.destructionfury.level;
 
 import java.util.ArrayList;
 
+import com.dekler.destructionfury.gameobject.Entity;
 import com.dekler.destructionfury.gameobject.GameObject;
-import com.dekler.destructionfury.gameobject.SimpleGameObject;
+import com.dekler.destructionfury.gameobject.Player;
 import com.dekler.destructionfury.map.RandomTiledMap;
 import com.dekler.destructionfury.map.TiledMap;
 
 public class Level
 {
-	private GameObject player;
+	private Entity player;
 	private ArrayList<GameObject> objects;
 	private TiledMap map;
 
 	public Level()
 	{
-		player = new SimpleGameObject();
+		player = new Player();
 		map = new RandomTiledMap(15, 10);
 		objects = new ArrayList<GameObject>();
 	}
 
-	public GameObject getPlayer()
+	public Entity getPlayer()
 	{
 		return player;
 	}
