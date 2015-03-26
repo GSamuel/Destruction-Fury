@@ -3,6 +3,7 @@ package com.dekler.destructionfury.assetManager;
 import java.util.HashMap;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.dekler.destructionfury.map.Tile;
 
 public class SimpleTexturepack implements TexturePack
 {
@@ -19,6 +20,12 @@ public class SimpleTexturepack implements TexturePack
 	public Sprite getSprite(String name)
 	{
 		return sprites.get(name);
+	}
+
+	@Override
+	public Sprite getSprite(Tile t)
+	{
+		return sprites.get(t.toString().toLowerCase());
 	}
 
 }

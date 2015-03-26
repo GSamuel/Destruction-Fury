@@ -4,16 +4,16 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.dekler.destructionfury.assetManager.TexturePack;
 import com.dekler.destructionfury.level.Level;
 import com.dekler.destructionfury.map.Tile;
 import com.dekler.destructionfury.map.TiledMap;
 
 public class MapRenderer
 {
-	public static void render(Level level, SpriteBatch batch, OrthographicCamera camera, ShapeRenderer shapeRenderer, int tileSize)
+	public static void render(Level level, SpriteBatch batch, OrthographicCamera camera, TexturePack texturePack, int tileSize)
 	{
 		Gdx.gl.glClearColor(0,0,0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -23,31 +23,29 @@ public class MapRenderer
 		//update camera position
 		
 		batch.setProjectionMatrix(camera.combined);
-		shapeRenderer.setProjectionMatrix(camera.combined);
 		
+		Sprite wall = texturePack.getSprite(Tile.WALL);
+		wall.setSize(tileSize, tileSize);
+		Sprite floor = texturePack.getSprite(Tile.FLOOR);
+		floor.setSize(tileSize, tileSize);
 		
-
-	    shapeRenderer.setColor(Color.LIGHT_GRAY);
-	    shapeRenderer.begin(ShapeType.Filled);
-	    
 	    Tile t;
+	    batch.begin();
 		for(int i = 0; i <map.getWidth(); i++)
 			for(int j =0; j < map.getHeight(); j++)
 			{
 				t = map.getTile(i, j);
 				if(t == Tile.WALL)
 				{
-					shapeRenderer.setColor(Color.GRAY);
-					shapeRenderer.rect(i*tileSize,j*tileSize,tileSize ,tileSize);
+					wall.setPosition(i*tileSize, j*tileSize);
+					wall.draw(batch);
 				}
 				else
 				{
-				    shapeRenderer.setColor(Color.LIGHT_GRAY);
-					shapeRenderer.rect(i*tileSize,j*tileSize,tileSize ,tileSize);
+					floor.setPosition(i*tileSize, j*tileSize);
+					floor.draw(batch);
 				}
-					
-				
 			}
-		shapeRenderer.end();
+		batch.end();
 	}
 }

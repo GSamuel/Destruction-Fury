@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Disposable;
+import com.dekler.destructionfury.assetManager.TexturePack;
 import com.dekler.destructionfury.gameobject.GameObject;
 import com.dekler.destructionfury.level.Level;
 
@@ -18,13 +19,16 @@ public class LevelRenderer implements Disposable
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
 	private Stage stage;
+	
+	private TexturePack texturePack;
 
 	private ShapeRenderer shapeRenderer;
 
-	public LevelRenderer(Stage stage, Level level)
+	public LevelRenderer(Stage stage, Level level, TexturePack texturePack)
 	{
 		this.stage = stage;
 		this.level = level;
+		this.texturePack = texturePack;
 
 		batch = new SpriteBatch();
 		shapeRenderer = new ShapeRenderer();
@@ -40,7 +44,7 @@ public class LevelRenderer implements Disposable
 		GameObject p = level.getPlayer();
 		camera.position.set(p.getX() * TILE_SIZE, p.getY()*TILE_SIZE, 0);
 		camera.update();
-		MapRenderer.render(level, batch, camera, shapeRenderer, TILE_SIZE);
+		MapRenderer.render(level, batch, camera, texturePack, TILE_SIZE);
 	}
 
 	@Override

@@ -39,7 +39,7 @@ public class DestructionFury extends Game
 		level = new Level();
 		//view
 		stage = new Stage();
-		levelRenderer = new LevelRenderer(stage, level);
+		levelRenderer = new LevelRenderer(stage, level, texturePack);
 		
 		//input
 		iProcessor = new SimpleInputProcessor(level);
