@@ -19,7 +19,7 @@ public class PlayerRenderer
 		Entity player = level.getPlayer();
 
 		batch.setProjectionMatrix(camera.combined);
-		AnimationPack aniPack = assetManager.getAnimationPack("player");
+		AnimationPack aniPack = assetManager.getAnimationPack("robot");
 		Animation ani;
 		switch (player.getDirection())
 		{

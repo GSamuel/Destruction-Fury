@@ -80,6 +80,20 @@ public class AssetLoader implements Disposable
 		walkRightFrames[3] = textureAtlas.findRegion("walk_right", 3);
 
 		animations.put("player_right", new Animation(frameTime, walkRightFrames));
+		
+
+		TextureRegion[] rideDown = new TextureRegion[1];
+		rideDown[0] = textureAtlas.findRegion("ride_down",1);
+		TextureRegion[] rideUp = new TextureRegion[1];
+		rideUp[0] = textureAtlas.findRegion("ride_up",1);
+		TextureRegion[] rideLeft = new TextureRegion[1];
+		rideLeft[0] = textureAtlas.findRegion("ride_left",1);
+		TextureRegion[] rideRight = new TextureRegion[1];
+		rideRight[0] = textureAtlas.findRegion("ride_right",1);
+		animations.put("ride_down", new Animation(frameTime,rideDown));
+		animations.put("ride_up", new Animation(frameTime,rideUp));
+		animations.put("ride_left", new Animation(frameTime,rideLeft));
+		animations.put("ride_right", new Animation(frameTime,rideRight));
 	}
 
 	public TextureRegion getRegion(String textureName)

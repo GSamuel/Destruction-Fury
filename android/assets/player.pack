@@ -3,86 +3,114 @@ player.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
+ride_left
+  rotate: false
+  xy: 1, 1577
+  size: 449, 447
+  orig: 512, 512
+  offset: 28, 24
+  index: 1
+ride_right
+  rotate: false
+  xy: 1, 1128
+  size: 449, 447
+  orig: 512, 512
+  offset: 35, 24
+  index: 1
 walk_down
   rotate: false
-  xy: 1, 505
+  xy: 452, 1513
   size: 382, 511
   orig: 512, 512
   offset: 65, 0
   index: 2
+ride_up
+  rotate: false
+  xy: 1, 627
+  size: 376, 499
+  orig: 512, 512
+  offset: 68, 13
+  index: 1
+ride_down
+  rotate: false
+  xy: 836, 1536
+  size: 376, 488
+  orig: 512, 512
+  offset: 68, 24
+  index: 1
 walk_down
   rotate: false
-  xy: 1, 1
+  xy: 1, 123
   size: 359, 502
   orig: 512, 512
   offset: 81, 0
   index: 1
 walk_down
   rotate: false
-  xy: 362, 1
+  xy: 1214, 1522
   size: 359, 502
   orig: 512, 512
   offset: 72, 0
   index: 3
 walk_up
   rotate: false
-  xy: 385, 516
-  size: 344, 500
-  orig: 512, 512
-  offset: 84, 0
-  index: 1
-walk_up
-  rotate: false
-  xy: 723, 2
+  xy: 1575, 1512
   size: 344, 512
   orig: 512, 512
   offset: 84, 0
   index: 2
 walk_up
   rotate: false
-  xy: 731, 516
+  xy: 452, 1011
+  size: 344, 500
+  orig: 512, 512
+  offset: 84, 0
+  index: 1
+walk_up
+  rotate: false
+  xy: 379, 509
   size: 344, 500
   orig: 512, 512
   offset: 84, 0
   index: 3
 walk_left
   rotate: false
-  xy: 1069, 7
-  size: 312, 507
-  orig: 512, 512
-  offset: 116, 0
-  index: 2
-walk_left
-  rotate: false
-  xy: 1077, 516
+  xy: 362, 7
   size: 312, 500
   orig: 512, 512
   offset: 116, 0
   index: 1
-walk_right
+walk_left
   rotate: false
-  xy: 1383, 7
+  xy: 725, 502
   size: 312, 507
   orig: 512, 512
-  offset: 84, 0
+  offset: 116, 0
   index: 2
 walk_right
   rotate: false
-  xy: 1391, 516
+  xy: 798, 1011
   size: 312, 500
   orig: 512, 512
   offset: 84, 0
   index: 1
 walk_left
   rotate: false
-  xy: 1697, 15
+  xy: 676, 1
   size: 312, 499
   orig: 512, 512
   offset: 116, 1
   index: 3
 walk_right
   rotate: false
-  xy: 1705, 517
+  xy: 1112, 1013
+  size: 312, 507
+  orig: 512, 512
+  offset: 84, 0
+  index: 2
+walk_right
+  rotate: false
+  xy: 1426, 1011
   size: 312, 499
   orig: 512, 512
   offset: 84, 1
