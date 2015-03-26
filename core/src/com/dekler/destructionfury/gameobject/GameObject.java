@@ -11,8 +11,18 @@ public abstract class GameObject
 
 	public GameObject()
 	{
-		this.size = new Vector2();
+		this.size = new Vector2(1f,1f);
 		this.pos = new Vector2();
+	}
+	
+	public float getWidth()
+	{
+		return size.x;
+	}
+	
+	public float getHeight()
+	{
+		return size.y;
 	}
 
 	public float getX()

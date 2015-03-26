@@ -2,6 +2,7 @@ package com.dekler.destructionfury.level;
 
 import java.util.ArrayList;
 
+import com.dekler.destructionfury.collision.Collision;
 import com.dekler.destructionfury.gameobject.Entity;
 import com.dekler.destructionfury.gameobject.GameObject;
 import com.dekler.destructionfury.gameobject.Player;
@@ -38,8 +39,11 @@ public class Level
 
 	public void update()
 	{
+		System.out.println(player.getX()+":"+player.getY());
 		player.update();
 		for(GameObject o: objects)
 			o.update();
+		
+		Collision.collision(player, map);
 	}
 }
