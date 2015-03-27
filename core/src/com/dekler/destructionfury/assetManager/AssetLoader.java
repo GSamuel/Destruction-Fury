@@ -42,6 +42,9 @@ public class AssetLoader implements Disposable
 		//walk down
 		textureAtlas = new TextureAtlas(Gdx.files.internal("player.pack"));
 		atlasses.add(textureAtlas);
+		
+
+		tiles.put("floor", textureAtlas.findRegion("tile_floor", 1));
 
 		TextureRegion[] walkDownFrames = new TextureRegion[4];
 
