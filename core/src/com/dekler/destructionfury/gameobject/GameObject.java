@@ -11,7 +11,7 @@ public abstract class GameObject
 
 	public GameObject()
 	{
-		this.size = new Vector2(1f,1f);
+		this.size = new Vector2(0.9f,0.9f);
 		this.pos = new Vector2();
 	}
 	

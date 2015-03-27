@@ -39,7 +39,6 @@ public class Level
 
 	public void update()
 	{
-		System.out.println(player.getX()+":"+player.getY());
 		player.update();
 		for(GameObject o: objects)
 			o.update();

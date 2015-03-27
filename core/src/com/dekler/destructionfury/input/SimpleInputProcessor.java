@@ -160,9 +160,9 @@ public class SimpleInputProcessor implements InputProcessor, GestureListener
 			else
 				level.getPlayer().stopMoveX();
 			
-			if(dy <0)
+			if(dy <0 && dx ==0)
 				level.getPlayer().moveUp();
-			else if(dy>0)
+			else if(dy>0 && dx ==0)
 				level.getPlayer().moveDown();
 			else
 				level.getPlayer().stopMoveY();
