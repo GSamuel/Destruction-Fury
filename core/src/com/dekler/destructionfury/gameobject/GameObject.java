@@ -5,8 +5,9 @@ import com.dekler.destructionfury.map.TileEnum;
 
 public abstract class GameObject
 {
-	protected Vector2 size; 
+	protected Vector2 size;
 	protected Vector2 pos;
+	protected Vector2 force;
 	
 	protected int health;
 
@@ -14,6 +15,7 @@ public abstract class GameObject
 	{
 		this.size = new Vector2(0.9f,0.9f);
 		this.pos = new Vector2();
+		this.force = new Vector2();
 	}
 	
 	public void setSize(float width, float height)
@@ -62,6 +64,23 @@ public abstract class GameObject
 		pos.add(x, y);
 	}
 	
+	public void setForceX(float forceX)
+	{
+		this.force.x = forceX;
+	}
+	
+	public void setForceY(float forceY)
+	{
+		this.force.y = forceY;
+	}
+	
+	public void addForce(float forceX, float forceY)
+	{
+		force.x += forceX;
+		force.y += forceY;
+	}
+	
 	public abstract void update();
 	public abstract void onTileCollision(TileEnum t);
+	public abstract void onGameObjectCollision(GameObject o);
 }

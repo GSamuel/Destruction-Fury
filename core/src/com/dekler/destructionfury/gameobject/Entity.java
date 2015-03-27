@@ -8,7 +8,7 @@ public abstract class Entity extends GameObject
 	protected Vector2 vel;
 	protected float speed = 2;
 	protected float time = 0f;	
-	private Direction direction;
+	protected Direction direction;
 	
 	public Entity()
 	{
@@ -88,6 +88,15 @@ public abstract class Entity extends GameObject
 	
 	public void update()
 	{
+		float forceX = force.x * Gdx.graphics.getDeltaTime()*3;
+		float forceY = force.y * Gdx.graphics.getDeltaTime()*3;
+		pos.add(forceX, forceY);
+		force.x -= forceX;
+		force.y -= forceY;
+		if(force.x < 0.5f && force.x >-2.5f)
+			force.x =0;
+		if(force.y < 0.5f && force.y >-2.5f)
+			force.y =0;
 		pos.add(vel.x*Gdx.graphics.getDeltaTime(), vel.y*Gdx.graphics.getDeltaTime());
 		time += Gdx.graphics.getDeltaTime();
 	}

@@ -1,7 +1,10 @@
 package com.dekler.destructionfury.collision;
 
+import java.util.ArrayList;
+
 import javafx.geometry.Rectangle2D;
 
+import com.dekler.destructionfury.gameobject.Entity;
 import com.dekler.destructionfury.gameobject.GameObject;
 import com.dekler.destructionfury.map.TileEnum;
 import com.dekler.destructionfury.map.TiledMap;
@@ -52,8 +55,7 @@ public class Collision
 								{
 									o.changePosition(0f, minDistY - distY);
 									o.onTileCollision(TileEnum.WALL);
-								}
-								else
+								} else
 								{
 									o.changePosition(0f, -(minDistY + distY));
 									o.onTileCollision(TileEnum.WALL);
@@ -65,6 +67,26 @@ public class Collision
 					}
 				}
 			}
+	}
+	
+	public static void collisions(ArrayList<Entity> objects)
+	{
+		for(int i =0; i < objects.size(); i++)
+			for(int j = i+1; j < objects.size(); j++)
+				collision(objects.get(i), objects.get(j));
+	}
 
+	public static void collision(GameObject a, GameObject b)
+	{
+		Rectangle2D recA = new Rectangle2D(a.getX(), a.getY(), a.getWidth(),
+				a.getHeight());
+		Rectangle2D recB = new Rectangle2D(b.getX(), b.getY(), b.getWidth(),
+				b.getHeight());
+
+		if (recA.intersects(recB))
+		{
+			a.onGameObjectCollision(b);
+			b.onGameObjectCollision(a);
+		}
 	}
 }

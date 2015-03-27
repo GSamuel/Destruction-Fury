@@ -21,9 +21,9 @@ public class Level
 	{
 		player = new Player();
 		player.setPosition(1f, 1f);
-		
-		map = new SimpleTiledMap(22,22);
-		
+
+		map = new SimpleTiledMap(22, 22);
+
 		objects = new ArrayList<GameObject>();
 		entities = new ArrayList<Entity>();
 
@@ -32,15 +32,15 @@ public class Level
 		Entity robot = new Robot();
 		robot.setPosition(1f, 1f);
 		entities.add(robot);
-		
+
 		robot = new Robot();
 		robot.setPosition(3f, 5f);
 		entities.add(robot);
-		
+
 		robot = new Robot();
 		robot.setPosition(2f, 6f);
 		entities.add(robot);
-		
+
 		robot = new Robot();
 		robot.setPosition(2f, 3f);
 		entities.add(robot);
@@ -60,7 +60,7 @@ public class Level
 	{
 		return map;
 	}
-	
+
 	public ArrayList<Entity> getEntities()
 	{
 		return entities;
@@ -68,16 +68,19 @@ public class Level
 
 	public void update()
 	{
-		for(Entity e: entities)
+		for (Entity e : entities)
 			e.update();
-		
-		for(GameObject o: objects)
-			o.update();
-		
 
-		for(Entity e: entities)
+		for (GameObject o : objects)
+			o.update();
+
+		for (Entity e : entities)
+		{
 			Collision.collision(e, map);
-		for(GameObject o: objects)
+			Collision.collision(player, e);
+		}
+		for (GameObject o : objects)
 			Collision.collision(o, map);
+
 	}
 }

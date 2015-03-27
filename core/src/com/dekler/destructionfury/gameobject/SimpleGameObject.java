@@ -16,4 +16,10 @@ public class SimpleGameObject extends GameObject
 	{
 	}
 
+	@Override
+	public void onGameObjectCollision(GameObject o)
+	{
+		
+	}
+
 }
