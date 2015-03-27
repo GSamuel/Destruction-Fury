@@ -30,25 +30,34 @@ public class Collision
 							float distX = o.getX() + o.getWidth() * 0.5f
 									- (newX + 0.5f);
 							float minDistX = o.getWidth() * 0.5f + 0.5f;
-							
 
 							float distY = o.getY() + o.getHeight() * 0.5f
 									- (newY + 0.5f);
 							float minDistY = o.getHeight() * 0.5f + 0.5f;
-							
-							if(Math.abs(distX) >= Math.abs(distY))
+
+							if (Math.abs(distX) >= Math.abs(distY))
 							{
-							if (distX >= 0)
-								o.changePosition(minDistX - distX, 0f);
-							else
-								o.changePosition(-(minDistX + distX), 0f);
-							}
-							else
+								if (distX >= 0)
+								{
+									o.changePosition(minDistX - distX, 0f);
+									o.onTileCollision(TileEnum.WALL);
+								} else
+								{
+									o.changePosition(-(minDistX + distX), 0f);
+									o.onTileCollision(TileEnum.WALL);
+								}
+							} else
 							{
 								if (distY >= 0)
+								{
 									o.changePosition(0f, minDistY - distY);
+									o.onTileCollision(TileEnum.WALL);
+								}
 								else
+								{
 									o.changePosition(0f, -(minDistY + distY));
+									o.onTileCollision(TileEnum.WALL);
+								}
 							}
 
 						}

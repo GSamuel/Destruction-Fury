@@ -17,7 +17,7 @@ public class TiledMap
 	{
 		for(int i = 0; i < width; i++)
 			for(int j = 0; j < height; j++)
-				map[i][j] = TileEnum.WALL;
+				map[i][j] = TileEnum.FLOOR;
 	}
 
 	public void setTile(int x, int y, TileEnum t)

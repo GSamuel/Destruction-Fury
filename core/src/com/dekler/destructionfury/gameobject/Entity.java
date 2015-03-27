@@ -40,12 +40,14 @@ public abstract class Entity extends GameObject
 	{
 		vel.x = -speed;
 		direction = Direction.LEFT;
+		stopMoveY();
 	}
 
 	public void moveRight()
 	{
 		vel.x = speed;
 		direction = Direction.RIGHT;
+		stopMoveY();
 	}
 
 	public void stopMoveX()
@@ -57,12 +59,14 @@ public abstract class Entity extends GameObject
 	{
 		vel.y = speed;
 		direction = Direction.UP;
+		stopMoveX();
 	}
 
 	public void moveDown()
 	{
 		vel.y = -speed;
 		direction = Direction.DOWN;
+		stopMoveX();
 	}
 
 	public void stopMoveY()

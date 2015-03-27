@@ -1,6 +1,7 @@
 package com.dekler.destructionfury.gameobject;
 
 import com.badlogic.gdx.math.Vector2;
+import com.dekler.destructionfury.map.TileEnum;
 
 public abstract class GameObject
 {
@@ -13,6 +14,12 @@ public abstract class GameObject
 	{
 		this.size = new Vector2(0.9f,0.9f);
 		this.pos = new Vector2();
+	}
+	
+	public void setSize(float width, float height)
+	{
+		size.x = width;
+		size.y = height;
 	}
 	
 	public float getWidth()
@@ -55,8 +62,6 @@ public abstract class GameObject
 		pos.add(x, y);
 	}
 	
-	public void update()
-	{
-		
-	}
+	public abstract void update();
+	public abstract void onTileCollision(TileEnum t);
 }
