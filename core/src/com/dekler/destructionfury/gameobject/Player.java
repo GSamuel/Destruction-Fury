@@ -22,7 +22,7 @@ public class Player extends Entity
 	@Override
 	public void onGameObjectCollision(GameObject o)
 	{
-		if (o != this)
+		if (o instanceof Robot)
 		{
 			Vector2 diff = new Vector2(getX() - o.getX(), getY() - o.getY());
 			diff.setLength(2.6f);

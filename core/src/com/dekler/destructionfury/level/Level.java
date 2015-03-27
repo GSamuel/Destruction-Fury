@@ -9,6 +9,7 @@ import com.dekler.destructionfury.gameobject.Entity;
 import com.dekler.destructionfury.gameobject.GameObject;
 import com.dekler.destructionfury.gameobject.Player;
 import com.dekler.destructionfury.gameobject.Robot;
+import com.dekler.destructionfury.gameobject.WarpPad;
 import com.dekler.destructionfury.map.SimpleTiledMap;
 import com.dekler.destructionfury.map.TiledMap;
 
@@ -32,6 +33,10 @@ public class Level
 		effects = new ArrayList<Explosion>();
 
 		entities.add(player);
+		
+		GameObject o = new WarpPad(this);
+		o.setPosition(4f, 4f);
+		objects.add(o);
 
 		Entity robot = new Robot(this);
 		robot.setPosition(1f, 1f);
@@ -63,6 +68,11 @@ public class Level
 	public TiledMap getMap()
 	{
 		return map;
+	}
+	
+	public ArrayList<GameObject> getGameObjects()
+	{
+		return objects;
 	}
 
 	public ArrayList<Entity> getEntities()
@@ -99,7 +109,7 @@ public class Level
 			Collision.collision(player, e);
 		}
 		for (GameObject o : objects)
-			Collision.collision(o, map);
+			Collision.collision(player, o);
 
 	}
 }

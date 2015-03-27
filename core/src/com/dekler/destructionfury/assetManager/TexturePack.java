@@ -6,4 +6,5 @@ import com.dekler.destructionfury.map.TileEnum;
 public interface TexturePack
 {
 	public abstract Sprite getSprite(TileEnum t);
+	public abstract Sprite getSprite(String spriteName);
 }
