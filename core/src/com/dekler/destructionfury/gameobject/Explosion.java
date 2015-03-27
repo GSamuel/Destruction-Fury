@@ -10,11 +10,11 @@ public class Explosion
 	private String aniName;
 	private float time;
 	
-	public Explosion(float x, float y, String aniName)
+	public Explosion(float x, float y)
 	{
 		pos = new Vector2(x,y);
 		size = new Vector2(1f,1f);
-		this.aniName =aniName;
+		this.aniName = "explosion";
 	}
 	
 	public float getWidth()

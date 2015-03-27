@@ -10,15 +10,15 @@ public class Robot extends Entity
 		super(level);
 		this.setSize(0.9f, 0.9f);
 		this.moveDown();
+		health = 1;
 	}
 
 	@Override
 	public void update()
 	{
 		super.update();
-		/*
-		if(Math.random()*100 <1)
-			onTileCollision(TileEnum.WALL);*/
+		if(health <= 0)
+		level.addEffect(new Explosion(getX(), getY()));
 	}
 	
 	@Override
@@ -43,5 +43,17 @@ public class Robot extends Entity
 	public void onGameObjectCollision(GameObject o)
 	{
 		
+	}
+
+	@Override
+	public void attack()
+	{
+		
+	}
+
+	@Override
+	public void damage(int damage)
+	{
+		health -= damage;
 	}
 }

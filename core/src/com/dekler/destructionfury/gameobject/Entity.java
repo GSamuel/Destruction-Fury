@@ -102,4 +102,6 @@ public abstract class Entity extends GameObject
 		pos.add(vel.x*Gdx.graphics.getDeltaTime(), vel.y*Gdx.graphics.getDeltaTime());
 		time += Gdx.graphics.getDeltaTime();
 	}
+
+	public abstract void attack();
 }

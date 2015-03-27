@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.dekler.destructionfury.assetManager.AssetManager;
 import com.dekler.destructionfury.gameobject.GameObject;
+import com.dekler.destructionfury.gameobject.Knife;
 import com.dekler.destructionfury.gameobject.WarpPad;
 import com.dekler.destructionfury.level.Level;
 
@@ -34,6 +35,13 @@ public class GameObjectRenderer
 				
 				sprite.setPosition(pad.getX()*tileSize, pad.getY()*tileSize);
 
+				sprite.draw(batch);
+			}
+			else if(o instanceof Knife)
+			{
+				sprite = assetManager.getTexturePack().getSprite("knife");
+				sprite.setPosition(o.getX()*tileSize, o.getY()*tileSize);
+				sprite.setScale(0.35f);
 				sprite.draw(batch);
 			}
 			

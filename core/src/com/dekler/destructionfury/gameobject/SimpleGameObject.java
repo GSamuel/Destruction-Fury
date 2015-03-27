@@ -28,4 +28,10 @@ public class SimpleGameObject extends GameObject
 		
 	}
 
+	@Override
+	public void damage(int damage)
+	{
+		health -= damage;
+	}
+
 }

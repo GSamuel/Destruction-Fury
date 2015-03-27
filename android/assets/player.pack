@@ -178,3 +178,10 @@ warp_pad
   orig: 367, 174
   offset: 0, 0
   index: 2
+knife
+  rotate: false
+  xy: 3167, 1062
+  size: 117, 375
+  orig: 117, 375
+  offset: 0, 0
+  index: -1

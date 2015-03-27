@@ -2,10 +2,9 @@ package com.dekler.destructionfury.level;
 
 import java.util.ArrayList;
 
-import com.dekler.destructionfury.assetManager.AssetManager;
 import com.dekler.destructionfury.collision.Collision;
-import com.dekler.destructionfury.gameobject.Explosion;
 import com.dekler.destructionfury.gameobject.Entity;
+import com.dekler.destructionfury.gameobject.Explosion;
 import com.dekler.destructionfury.gameobject.GameObject;
 import com.dekler.destructionfury.gameobject.Player;
 import com.dekler.destructionfury.gameobject.Robot;
@@ -92,6 +91,16 @@ public class Level
 
 	public void update()
 	{
+		
+		for(int i=0; i < entities.size(); i++)
+			if(entities.get(i).getRemove())
+				entities.remove(i--);
+		
+		for(int i=0; i < objects.size(); i++)
+			if(objects.get(i).getRemove())
+				objects.remove(i--);
+		
+		
 		for (Entity e : entities)
 			e.update();
 

@@ -7,10 +7,13 @@ import com.dekler.destructionfury.map.TileEnum;
 public class Player extends Entity
 {
 
+	private int attackTime;
+
 	public Player(Level level)
 	{
 		super(level);
 		this.setSize(0.9f, 0.9f);
+		this.speed = 5f;
 	}
 
 	@Override
@@ -28,8 +31,33 @@ public class Player extends Entity
 			diff.setLength(2.6f);
 			setForceX(diff.x);
 			setForceY(diff.y);
-			
-			level.addEffect(new Explosion(pos.x, pos.y, "explosion"));
+
+			level.addEffect(new Explosion(pos.x, pos.y));
 		}
+	}
+	
+	@Override
+	public void update()
+	{
+		super.update();
+		attackTime --;
+	}
+
+	@Override
+	public void attack()
+	{
+		if (attackTime <= 0)
+		{
+			Knife knife = new Knife(level);
+			knife.setPosition(getX(), getY());
+			level.addObject(knife);
+			attackTime = 30;
+		}
+	}
+
+	@Override
+	public void damage(int damage)
+	{
+		health -= damage;
 	}
 }
