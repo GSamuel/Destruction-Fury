@@ -2,6 +2,7 @@ package com.dekler.destructionfury.gameobject;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
+import com.dekler.destructionfury.level.Level;
 
 public abstract class Entity extends GameObject
 {
@@ -10,8 +11,9 @@ public abstract class Entity extends GameObject
 	protected float time = 0f;	
 	protected Direction direction;
 	
-	public Entity()
+	public Entity(Level level)
 	{
+		super(level);
 		this.vel = new Vector2();
 		direction = Direction.DOWN;
 	}

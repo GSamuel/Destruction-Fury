@@ -2,7 +2,9 @@ package com.dekler.destructionfury.level;
 
 import java.util.ArrayList;
 
+import com.dekler.destructionfury.assetManager.AssetManager;
 import com.dekler.destructionfury.collision.Collision;
+import com.dekler.destructionfury.gameobject.Explosion;
 import com.dekler.destructionfury.gameobject.Entity;
 import com.dekler.destructionfury.gameobject.GameObject;
 import com.dekler.destructionfury.gameobject.Player;
@@ -16,32 +18,34 @@ public class Level
 	private ArrayList<Entity> entities;
 	private ArrayList<GameObject> objects;
 	private TiledMap map;
+	private ArrayList<Explosion> effects;
 
 	public Level()
 	{
-		player = new Player();
+		player = new Player(this);
 		player.setPosition(1f, 1f);
 
 		map = new SimpleTiledMap(22, 22);
 
 		objects = new ArrayList<GameObject>();
 		entities = new ArrayList<Entity>();
+		effects = new ArrayList<Explosion>();
 
 		entities.add(player);
 
-		Entity robot = new Robot();
+		Entity robot = new Robot(this);
 		robot.setPosition(1f, 1f);
 		entities.add(robot);
 
-		robot = new Robot();
+		robot = new Robot(this);
 		robot.setPosition(3f, 5f);
 		entities.add(robot);
 
-		robot = new Robot();
+		robot = new Robot(this);
 		robot.setPosition(2f, 6f);
 		entities.add(robot);
 
-		robot = new Robot();
+		robot = new Robot(this);
 		robot.setPosition(2f, 3f);
 		entities.add(robot);
 	}
@@ -65,6 +69,16 @@ public class Level
 	{
 		return entities;
 	}
+	
+	public ArrayList<Explosion> getEffects()
+	{
+		return effects;
+	}
+	
+	public void addEffect(Explosion e)
+	{
+		effects.add(e);
+	}
 
 	public void update()
 	{
@@ -73,6 +87,11 @@ public class Level
 
 		for (GameObject o : objects)
 			o.update();
+		
+		for(Explosion ef: effects)
+		{
+			ef.update();			
+		}
 
 		for (Entity e : entities)
 		{

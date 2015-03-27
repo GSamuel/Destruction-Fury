@@ -94,6 +94,17 @@ public class AssetLoader implements Disposable
 		animations.put("ride_up", new Animation(frameTime,rideUp));
 		animations.put("ride_left", new Animation(frameTime,rideLeft));
 		animations.put("ride_right", new Animation(frameTime,rideRight));
+		
+		loadExplosionAnimation(textureAtlas);
+	}
+	
+	private void loadExplosionAnimation(TextureAtlas textureAtlas)
+	{
+		TextureRegion[] explosion = new TextureRegion[6];
+		for(int i=0; i <6; i++)
+			explosion[i] = textureAtlas.findRegion("explosion", i+1);
+		
+		animations.put("explosion", new Animation(frameTime, explosion));
 	}
 
 	public TextureRegion getRegion(String textureName)

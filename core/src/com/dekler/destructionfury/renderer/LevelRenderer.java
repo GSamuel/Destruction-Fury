@@ -65,6 +65,8 @@ public class LevelRenderer implements Disposable
 		MapRenderer.render(level, batch, camera, assetManager.getTexturePack(),
 				TILE_SIZE);
 		EntityRenderer.render(level, batch, camera, assetManager, TILE_SIZE);
+		
+		EffectRenderer.render(level, batch, camera, assetManager, TILE_SIZE);
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 package com.dekler.destructionfury.gameobject;
 
 import com.badlogic.gdx.math.Vector2;
+import com.dekler.destructionfury.level.Level;
 import com.dekler.destructionfury.map.TileEnum;
 
 public abstract class GameObject
@@ -8,11 +9,13 @@ public abstract class GameObject
 	protected Vector2 size;
 	protected Vector2 pos;
 	protected Vector2 force;
+	protected Level level;
 	
 	protected int health;
 
-	public GameObject()
+	public GameObject(Level level)
 	{
+		this.level = level;
 		this.size = new Vector2(0.9f,0.9f);
 		this.pos = new Vector2();
 		this.force = new Vector2();
@@ -76,8 +79,7 @@ public abstract class GameObject
 	
 	public void addForce(float forceX, float forceY)
 	{
-		force.x += forceX;
-		force.y += forceY;
+		force.x += forceX;		force.y += forceY;
 	}
 	
 	public abstract void update();
