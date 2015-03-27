@@ -14,8 +14,9 @@ public class Robot extends Entity
 	public void update()
 	{
 		super.update();
+		/*
 		if(Math.random()*100 <1)
-			onTileCollision(TileEnum.WALL);
+			onTileCollision(TileEnum.WALL);*/
 	}
 	
 	@Override
@@ -34,5 +35,11 @@ public class Robot extends Entity
 				this.moveDown();
 		}
 			
+	}
+
+	@Override
+	public void onGameObjectCollision(GameObject o)
+	{
+		
 	}
 }
