@@ -17,38 +17,41 @@ public class Robot extends Entity
 	public void update()
 	{
 		super.update();
-		if(health <= 0)
-		level.addEffect(new Explosion(getX(), getY()));
+		if (health <= 0)
+		{
+			level.addEffect(new Explosion(getX(), getY()));
+			remove();
+		}
 	}
-	
+
 	@Override
 	public void onTileCollision(TileEnum t)
 	{
-		if(t == TileEnum.WALL)
+		if (t == TileEnum.WALL)
 		{
-			int num = (int) (Math.random()*4);
-			if(num ==0)
+			int num = (int) (Math.random() * 4);
+			if (num == 0)
 				this.moveLeft();
-			else if(num ==1)
+			else if (num == 1)
 				this.moveRight();
-			else if(num == 2)
+			else if (num == 2)
 				this.moveUp();
 			else if (num == 3)
 				this.moveDown();
 		}
-			
+
 	}
 
 	@Override
 	public void onGameObjectCollision(GameObject o)
 	{
-		
+
 	}
 
 	@Override
 	public void attack()
 	{
-		
+
 	}
 
 	@Override

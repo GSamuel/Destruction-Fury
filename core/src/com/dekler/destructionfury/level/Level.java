@@ -17,6 +17,7 @@ public class Level
 	private Entity player;
 	private ArrayList<Entity> entities;
 	private ArrayList<GameObject> objects;
+	private ArrayList<GameObject> hurtables;
 	private TiledMap map;
 	private ArrayList<Explosion> effects;
 
@@ -30,6 +31,7 @@ public class Level
 		objects = new ArrayList<GameObject>();
 		entities = new ArrayList<Entity>();
 		effects = new ArrayList<Explosion>();
+		hurtables = new ArrayList<GameObject>();
 
 		entities.add(player);
 		
@@ -63,6 +65,11 @@ public class Level
 	{
 		objects.add(o);
 	}
+	
+	public void addHurtable(GameObject o)
+	{
+		hurtables.add(o);
+	}
 
 	public TiledMap getMap()
 	{
@@ -84,6 +91,11 @@ public class Level
 		return effects;
 	}
 	
+	public ArrayList<GameObject> getHurtables()
+	{
+		return hurtables;
+	}
+	
 	public void addEffect(Explosion e)
 	{
 		effects.add(e);
@@ -95,10 +107,14 @@ public class Level
 		for(int i=0; i < entities.size(); i++)
 			if(entities.get(i).getRemove())
 				entities.remove(i--);
-		
+
 		for(int i=0; i < objects.size(); i++)
 			if(objects.get(i).getRemove())
 				objects.remove(i--);
+		
+		for(int i=0; i < hurtables.size(); i++)
+			if(hurtables.get(i).getRemove())
+				hurtables.remove(i--);
 		
 		
 		for (Entity e : entities)
@@ -108,9 +124,14 @@ public class Level
 			o.update();
 		
 		for(Explosion ef: effects)
-		{
-			ef.update();			
-		}
+			ef.update();
+		
+		for(GameObject h : hurtables)
+			h.update();
+		
+		for(Entity e: entities)
+			for(GameObject h: hurtables)
+				Collision.collision(e, h);
 
 		for (Entity e : entities)
 		{

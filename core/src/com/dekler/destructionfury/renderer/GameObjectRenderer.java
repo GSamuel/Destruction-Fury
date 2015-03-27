@@ -16,7 +16,9 @@ public class GameObjectRenderer
 	public static void render(Level level, SpriteBatch batch,
 			OrthographicCamera camera, AssetManager assetManager, int tileSize)
 	{
-		ArrayList<GameObject> objects = level.getGameObjects();
+		ArrayList<GameObject> objects = new ArrayList<GameObject>();
+		objects.addAll(level.getGameObjects());
+		objects.addAll(level.getHurtables());
 
 		batch.setProjectionMatrix(camera.combined);
 
