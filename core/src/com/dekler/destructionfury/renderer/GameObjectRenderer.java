@@ -41,9 +41,11 @@ public class GameObjectRenderer
 			}
 			else if(o instanceof Knife)
 			{
+				Knife k  =(Knife) o;
 				sprite = assetManager.getTexturePack().getSprite("knife");
-				sprite.setPosition(o.getX()*tileSize, o.getY()*tileSize);
-				sprite.setScale(0.35f);
+				sprite.setPosition(o.getX()*tileSize, o.getY()*tileSize-tileSize);
+				sprite.setRotation(k.getRotation());
+				sprite.setScale(0.28f);
 				sprite.draw(batch);
 			}
 			

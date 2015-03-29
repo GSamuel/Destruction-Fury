@@ -8,7 +8,6 @@ public class Player extends Entity
 {
 
 	private int attackTime;
-	private int explosionTime;
 
 	public Player(Level level)
 	{
@@ -32,13 +31,6 @@ public class Player extends Entity
 			diff.setLength(2.6f);
 			setForceX(diff.x);
 			setForceY(diff.y);
-
-			/*
-			if (explosionTime <= 0)
-			{
-				level.addEffect(new Explosion(pos.x, pos.y));
-				explosionTime = 30;
-			}*/
 		}
 	}
 
@@ -47,7 +39,6 @@ public class Player extends Entity
 	{
 		super.update();
 		attackTime--;
-		explosionTime--;
 	}
 
 	@Override
@@ -56,7 +47,6 @@ public class Player extends Entity
 		if (attackTime <= 0)
 		{
 			Knife knife = new Knife(level);
-			knife.setPosition(getX(), getY());
 			level.addHurtable(knife);
 			attackTime = 30;
 		}

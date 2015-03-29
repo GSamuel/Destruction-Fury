@@ -68,6 +68,8 @@ public class LevelRenderer implements Disposable
 		EntityRenderer.render(level, batch, camera, assetManager, TILE_SIZE);
 		
 		EffectRenderer.render(level, batch, camera, assetManager, TILE_SIZE);
+		
+		HitBoxRenderer.render(level, batch, camera, assetManager, TILE_SIZE);
 	}
 
 	@Override
