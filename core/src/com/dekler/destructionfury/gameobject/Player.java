@@ -31,6 +31,7 @@ public class Player extends Entity
 			diff.setLength(2.6f);
 			setForceX(diff.x);
 			setForceY(diff.y);
+			health --;
 		}
 	}
 
@@ -39,6 +40,12 @@ public class Player extends Entity
 	{
 		super.update();
 		attackTime--;
+
+		if (health <= 0)
+		{
+			level.addEffect(new Explosion(getX(), getY()));
+			remove();
+		}
 	}
 
 	@Override

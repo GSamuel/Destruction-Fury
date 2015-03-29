@@ -11,7 +11,6 @@ public class RandomTiledMap extends TiledMap
 
 		Random rand = new Random(System.currentTimeMillis());
 
-		TileEnum t;
 		for (int i = 0; i < getWidth(); i++)
 			for (int j = 0; j < getHeight(); j++)
 			{

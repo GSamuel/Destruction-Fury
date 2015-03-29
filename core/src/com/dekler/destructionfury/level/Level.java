@@ -38,22 +38,15 @@ public class Level
 		GameObject o = new WarpPad(this);
 		o.setPosition(4f, 4f);
 		objects.add(o);
-
-		Entity robot = new Robot(this);
-		robot.setPosition(1f, 1f);
-		entities.add(robot);
-
-		robot = new Robot(this);
-		robot.setPosition(3f, 5f);
-		entities.add(robot);
-
-		robot = new Robot(this);
-		robot.setPosition(2f, 6f);
-		entities.add(robot);
-
-		robot = new Robot(this);
-		robot.setPosition(2f, 3f);
-		entities.add(robot);
+		
+		Entity robot;
+		
+		for(int i = 0; i < 20; i++)
+		{
+			robot = new Robot(this);
+			robot.setPosition((float)Math.random()*map.getWidth(), (float)Math.random()*map.getHeight());
+			entities.add(robot);
+		}
 	}
 
 	public Entity getPlayer()
