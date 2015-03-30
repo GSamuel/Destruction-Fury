@@ -10,8 +10,8 @@ public class DesktopLauncher {
 
 		config.title = "Destruction Fury";
 		config.useGL30 = false;
-		config.width = 960;
-		config.height = 640;
+		config.width = 1280;
+		config.height = 720;
 		
 		new LwjglApplication(new DestructionFury(), config);
 	}

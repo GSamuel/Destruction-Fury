@@ -7,7 +7,7 @@ import com.dekler.destructionfury.level.Level;
 public abstract class Entity extends GameObject
 {
 	protected Vector2 vel;
-	protected float speed = 2;
+	protected float speed = 1.3f;
 	protected float time = 0f;	
 	protected Direction direction;
 	protected int damageTimer;
