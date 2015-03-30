@@ -13,7 +13,7 @@ public class Player extends Entity
 	{
 		super(level);
 		this.setSize(0.9f, 0.9f);
-		this.speed = 5f;
+		this.speed = 3f;
 	}
 
 	@Override

@@ -28,6 +28,10 @@ public class DestructionFury extends Game
 	@Override
 	public void create()
 	{
+		// set resolution to default and set full-screen to true
+		Gdx.graphics.setDisplayMode(Gdx.graphics.getDesktopDisplayMode().width, Gdx.graphics.getDesktopDisplayMode().height, true);
+		Gdx.graphics.setVSync(true);
+		
 		//assets
 		assetManager = new AssetManager();
 		
@@ -44,6 +48,13 @@ public class DestructionFury extends Game
 		im.addProcessor(iProcessor);
 		Gdx.input.setInputProcessor(im);
 	}
+	
+    @Override
+    public void resize(int width, int height) {
+    	stage.getViewport().update(width, height);
+    	stage.getCamera().update();
+    }
+
 
 	@Override
 	public void render()
