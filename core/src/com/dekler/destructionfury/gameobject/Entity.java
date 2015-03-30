@@ -10,6 +10,7 @@ public abstract class Entity extends GameObject
 	protected float speed = 2;
 	protected float time = 0f;	
 	protected Direction direction;
+	protected int damageTimer;
 	
 	public Entity(Level level)
 	{
@@ -97,6 +98,8 @@ public abstract class Entity extends GameObject
 			return;
 		}
 		
+		damageTimer--;
+		
 		float forceX = force.x * Gdx.graphics.getDeltaTime()*3;
 		float forceY = force.y * Gdx.graphics.getDeltaTime()*3;
 		pos.add(forceX, forceY);
@@ -108,6 +111,22 @@ public abstract class Entity extends GameObject
 			force.y =0;
 		pos.add(vel.x*Gdx.graphics.getDeltaTime(), vel.y*Gdx.graphics.getDeltaTime());
 		time += Gdx.graphics.getDeltaTime();
+	}
+	
+	public int getDamageTimer()
+	{
+		return damageTimer;
+	}
+	
+	@Override
+	public void damage(int damage)
+	{
+		if(damageTimer <= 0)
+		{
+			health -= damage;
+			damageTimer = 50;
+		}
+		
 	}
 
 	public abstract void attack();

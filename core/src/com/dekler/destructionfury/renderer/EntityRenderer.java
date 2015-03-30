@@ -2,6 +2,7 @@ package com.dekler.destructionfury.renderer;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -57,6 +58,9 @@ public class EntityRenderer
 
 			TextureRegion region = ani.getKeyFrame(e.getTime(), true);
 			Sprite sprite = new Sprite(region);
+			int hurtTime = e.getDamageTimer();
+			if(hurtTime>0)
+				sprite.setColor(Color.RED);
 			sprite.setScale(1.0f * tileSize / 512);
 			sprite.setPosition(e.getX() * tileSize + tileSize * 0.5f, e.getY()
 					* tileSize);

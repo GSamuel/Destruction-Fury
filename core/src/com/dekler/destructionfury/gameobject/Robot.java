@@ -1,5 +1,6 @@
 package com.dekler.destructionfury.gameobject;
 
+import com.badlogic.gdx.math.Vector2;
 import com.dekler.destructionfury.level.Level;
 import com.dekler.destructionfury.map.TileEnum;
 
@@ -10,7 +11,7 @@ public class Robot extends Entity
 		super(level);
 		this.setSize(0.9f, 0.9f);
 		this.moveDown();
-		health = 1;
+		health = 2;
 	}
 
 	@Override
@@ -40,7 +41,13 @@ public class Robot extends Entity
 	@Override
 	public void onGameObjectCollision(GameObject o)
 	{
-
+		if (o instanceof Knife)
+		{
+			Vector2 diff = new Vector2(getX() - o.getX(), getY() - o.getY());
+			diff.setLength(2f);
+			setForceX(diff.x);
+			setForceY(diff.y);
+		}
 	}
 
 	@Override
@@ -49,9 +56,5 @@ public class Robot extends Entity
 
 	}
 
-	@Override
-	public void damage(int damage)
-	{
-		health -= damage;
-	}
+	
 }

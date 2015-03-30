@@ -14,6 +14,7 @@ public class Player extends Entity
 		super(level);
 		this.setSize(0.9f, 0.9f);
 		this.speed = 5f;
+		this.health = 4;
 	}
 
 	@Override
@@ -25,13 +26,14 @@ public class Player extends Entity
 	@Override
 	public void onGameObjectCollision(GameObject o)
 	{
-		if (o instanceof Robot)
+		if (o instanceof Robot && damageTimer <= 0)
 		{
 			Vector2 diff = new Vector2(getX() - o.getX(), getY() - o.getY());
 			diff.setLength(2.6f);
 			setForceX(diff.x);
 			setForceY(diff.y);
 			health --;
+			damageTimer = 50;
 		}
 	}
 
@@ -51,11 +53,5 @@ public class Player extends Entity
 			level.addHurtable(knife);
 			attackTime = 30;
 		}
-	}
-
-	@Override
-	public void damage(int damage)
-	{
-		health -= damage;
 	}
 }
