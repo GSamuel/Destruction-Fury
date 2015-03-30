@@ -18,6 +18,11 @@ public class SimpleInputProcessor implements InputProcessor, GestureListener
 	{
 		this.level= level;
 	}
+	
+	public void setLevel(Level level)
+	{
+		this.level = level;
+	}
 
 	@Override
 	public boolean touchDown(float x, float y, int pointer, int button)
@@ -83,6 +88,9 @@ public class SimpleInputProcessor implements InputProcessor, GestureListener
 		s = Gdx.input.isKeyPressed(Input.Keys.S);
 		d = Gdx.input.isKeyPressed(Input.Keys.D);
 		space = Gdx.input.isKeyPressed(Input.Keys.SPACE);
+		
+		if(Gdx.input.isKeyJustPressed(Input.Keys.R))
+			level.reset();
 
 		return true;
 	}

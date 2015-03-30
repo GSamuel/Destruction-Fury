@@ -43,6 +43,7 @@ public class DestructionFury extends Game
 		
 		//input
 		iProcessor = new SimpleInputProcessor(level);
+		
 		InputMultiplexer im = new InputMultiplexer();
 		im.addProcessor(new GestureDetector(iProcessor));
 		im.addProcessor(iProcessor);

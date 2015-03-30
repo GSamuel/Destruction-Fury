@@ -24,15 +24,19 @@ public class Level
 
 	public Level()
 	{
-		player = new Player(this);
-		player.setPosition(1f, 1f);
-
-		map = new SimpleTiledMap(22, 22);
-
 		objects = new ArrayList<GameObject>();
 		entities = new ArrayList<Entity>();
 		effects = new ArrayList<Explosion>();
 		hurtables = new ArrayList<GameObject>();
+		init();
+	}
+	
+	private void init()
+	{
+		
+		map = new SimpleTiledMap(22, 22);
+		player = new Player(this);
+		player.setPosition(1f, 1f);
 
 		entities.add(player);
 
@@ -53,6 +57,16 @@ public class Level
 					(float) Math.random() * map.getHeight());
 			entities.add(robot);
 		}
+	}
+	
+	public void reset()
+	{
+		objects.clear();
+		entities.clear();
+		effects.clear();
+		hurtables.clear();
+		
+		init();
 	}
 
 	public Entity getPlayer()
