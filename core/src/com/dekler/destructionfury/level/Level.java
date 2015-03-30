@@ -147,7 +147,11 @@ public class Level
 				Collision.collision(e, h);
 			
 			for(GameObject o: objects)
+			{
 				Collision.collision(e, o);
+				if(o instanceof Crate)
+					Collision.collisionV2(e, o);
+			}
 		}
 
 		for (Entity e : entities)

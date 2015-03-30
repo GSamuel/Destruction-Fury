@@ -6,10 +6,12 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.dekler.destructionfury.assetManager.AssetManager;
+import com.dekler.destructionfury.gameobject.Crate;
 import com.dekler.destructionfury.gameobject.GameObject;
 import com.dekler.destructionfury.gameobject.Knife;
 import com.dekler.destructionfury.gameobject.WarpPad;
 import com.dekler.destructionfury.level.Level;
+import com.dekler.destructionfury.map.TileEnum;
 
 public class GameObjectRenderer
 {
@@ -46,6 +48,13 @@ public class GameObjectRenderer
 				sprite.setPosition(o.getX()*tileSize, o.getY()*tileSize-tileSize);
 				sprite.setRotation(k.getRotation());
 				sprite.setScale(0.28f);
+				sprite.draw(batch);
+			}
+			else if (o instanceof Crate)
+			{
+				sprite = assetManager.getTexturePack().getSprite("crate");
+				sprite.setSize(tileSize, tileSize);
+				sprite.setPosition(o.getX()*tileSize, o.getY()*tileSize);
 				sprite.draw(batch);
 			}
 			

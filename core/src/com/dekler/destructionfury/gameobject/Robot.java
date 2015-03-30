@@ -48,6 +48,8 @@ public class Robot extends Entity
 			setForceX(diff.x);
 			setForceY(diff.y);
 		}
+		if(o instanceof Crate)
+			onTileCollision(TileEnum.WALL);
 	}
 
 	@Override

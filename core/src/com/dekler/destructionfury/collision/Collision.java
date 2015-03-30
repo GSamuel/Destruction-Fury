@@ -6,6 +6,7 @@ import javafx.geometry.Rectangle2D;
 
 import com.dekler.destructionfury.gameobject.Entity;
 import com.dekler.destructionfury.gameobject.GameObject;
+import com.dekler.destructionfury.gameobject.Robot;
 import com.dekler.destructionfury.map.TileEnum;
 import com.dekler.destructionfury.map.TiledMap;
 
@@ -107,6 +108,8 @@ public class Collision
 				else
 					a.changePosition(0f, -(minDistY + distY));
 			}
+			if(a instanceof Robot)
+				a.onGameObjectCollision(b);
 		}
 	}
 
