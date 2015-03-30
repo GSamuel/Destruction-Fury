@@ -35,6 +35,7 @@ public class Level
 	{
 		
 		map = new SimpleTiledMap(22, 22);
+		
 		player = new Player(this);
 		player.setPosition(1f, 1f);
 
