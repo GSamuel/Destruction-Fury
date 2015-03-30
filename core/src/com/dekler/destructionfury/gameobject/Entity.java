@@ -90,6 +90,13 @@ public abstract class Entity extends GameObject
 	
 	public void update()
 	{
+		if (health <= 0)
+		{
+			level.addEffect(new Explosion(getX(), getY()));
+			remove();
+			return;
+		}
+		
 		float forceX = force.x * Gdx.graphics.getDeltaTime()*3;
 		float forceY = force.y * Gdx.graphics.getDeltaTime()*3;
 		pos.add(forceX, forceY);

@@ -17,11 +17,6 @@ public class Robot extends Entity
 	public void update()
 	{
 		super.update();
-		if (health <= 0)
-		{
-			level.addEffect(new Explosion(getX(), getY()));
-			remove();
-		}
 	}
 
 	@Override
