@@ -32,8 +32,6 @@ public class Level
 		map = new SimpleTiledMap(22, 22);
 	}
 	
-	
-	
 	public void reset()
 	{
 		objects.clear();
@@ -62,6 +60,7 @@ public class Level
 	public void setWarPad(WarpPad warpPad)
 	{
 		this.warpPad = warpPad;
+		objects.add(warpPad);
 	}
 
 	public void addObject(GameObject o)
@@ -169,8 +168,6 @@ public class Level
 		}
 
 	}
-
-
 
 	public void setMap(TiledMap map)
 	{

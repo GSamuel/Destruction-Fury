@@ -11,6 +11,7 @@ import com.dekler.destructionfury.gameobject.Crate;
 import com.dekler.destructionfury.gameobject.GameObject;
 import com.dekler.destructionfury.gameobject.Player;
 import com.dekler.destructionfury.gameobject.Robot;
+import com.dekler.destructionfury.gameobject.WarpPad;
 import com.dekler.destructionfury.map.TileEnum;
 import com.dekler.destructionfury.map.TiledMap;
 
@@ -62,6 +63,10 @@ public class LevelLoaderExporter
 			{
 				pic.setColor(propManager.getColorProperty("crate-color"));
 				pic.drawPixel(o.getIntX(), map.getHeight()- o.getIntY()-1);
+			} else if(o instanceof WarpPad)
+			{
+				pic.setColor(propManager.getColorProperty("warppad-color"));
+				pic.drawPixel(o.getIntX(), map.getHeight()- o.getIntY()-1);
 			}
 		}
 
@@ -98,6 +103,11 @@ public class LevelLoaderExporter
 					crate.setPosition(i, j);
 					level.addObject(crate);
 					map.setTile(i, j, TileEnum.CRATE_FLOOR);
+				}else if(pixel == Color.rgba8888(propManager.getColorProperty("warppad-color")))
+				{
+					WarpPad warpPad = new WarpPad(level);
+					warpPad.setPosition(i, j);
+					level.addObject(warpPad);
 				}else if(pixel == Color.rgba8888(propManager.getColorProperty("wall-color")))
 					map.setTile(i,j	, TileEnum.WALL);
 				else if(pixel == Color.rgba8888(propManager.getColorProperty("cratefloor-color")))
