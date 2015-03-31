@@ -8,6 +8,7 @@ import com.dekler.destructionfury.gameobject.Entity;
 import com.dekler.destructionfury.gameobject.Explosion;
 import com.dekler.destructionfury.gameobject.GameObject;
 import com.dekler.destructionfury.gameobject.Player;
+import com.dekler.destructionfury.gameobject.WarpPad;
 import com.dekler.destructionfury.map.SimpleTiledMap;
 import com.dekler.destructionfury.map.TileEnum;
 import com.dekler.destructionfury.map.TiledMap;
@@ -15,6 +16,7 @@ import com.dekler.destructionfury.map.TiledMap;
 public class Level
 {
 	protected Entity player;
+	protected WarpPad warpPad;
 	protected TiledMap map;
 	protected ArrayList<Entity> entities;
 	protected ArrayList<GameObject> objects;
@@ -50,6 +52,16 @@ public class Level
 		player = new Player(this);
 		player.setPosition(x, y);
 		entities.add(player);
+	}
+	
+	public WarpPad getWarpPad()
+	{
+		return warpPad;
+	}
+	
+	public void setWarPad(WarpPad warpPad)
+	{
+		this.warpPad = warpPad;
 	}
 
 	public void addObject(GameObject o)

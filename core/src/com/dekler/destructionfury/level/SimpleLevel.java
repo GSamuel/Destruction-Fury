@@ -31,10 +31,9 @@ public class SimpleLevel extends Level
 		objects.add(crate);
 		map.setTile(2, 1, TileEnum.CRATE_FLOOR);
 
-		crate = new Crate(this);
-		crate.setPosition(3f, 1f);
-		objects.add(crate);
 		map.setTile(3, 1, TileEnum.CRATE_FLOOR);
+		
+		map.setTile(4, 1, TileEnum.CRATE_TARGET);
 
 		for (int i = 0; i < 20; i++)
 		{

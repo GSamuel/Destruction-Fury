@@ -12,41 +12,46 @@ import com.dekler.destructionfury.map.TiledMap;
 
 public class MapRenderer
 {
-	public static void render(Level level, SpriteBatch batch, OrthographicCamera camera, TexturePack texturePack, int tileSize)
+	public static void render(Level level, SpriteBatch batch,
+			OrthographicCamera camera, TexturePack texturePack, int tileSize)
 	{
-		Gdx.gl.glClearColor(0,0,0, 1);
+		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		
+
 		TiledMap map = level.getMap();
-		
+
 		batch.setProjectionMatrix(camera.combined);
-		
+
 		Sprite wall = texturePack.getSprite(TileEnum.WALL);
 		wall.setSize(tileSize, tileSize);
 		Sprite floor = texturePack.getSprite(TileEnum.FLOOR);
 		floor.setSize(tileSize, tileSize);
 		Sprite crateFloor = texturePack.getSprite(TileEnum.CRATE_FLOOR);
 		crateFloor.setSize(tileSize, tileSize);
-		
-	    TileEnum t;
-	    batch.begin();
-		for(int i = 0; i <map.getWidth(); i++)
-			for(int j =0; j < map.getHeight(); j++)
+		Sprite crateTarget = texturePack.getSprite(TileEnum.CRATE_TARGET);
+		crateTarget.setSize(tileSize, tileSize);
+
+		TileEnum t;
+		batch.begin();
+		for (int i = 0; i < map.getWidth(); i++)
+			for (int j = 0; j < map.getHeight(); j++)
 			{
 				t = map.getTile(i, j);
-				if(t == TileEnum.WALL)
+				if (t == TileEnum.WALL)
 				{
-					wall.setPosition(i*tileSize, j*tileSize);
+					wall.setPosition(i * tileSize, j * tileSize);
 					wall.draw(batch);
-				}
-				else if (t == TileEnum.CRATE_FLOOR)
+				} else if (t == TileEnum.CRATE_FLOOR)
 				{
-					crateFloor.setPosition(i*tileSize, j*tileSize);
+					crateFloor.setPosition(i * tileSize, j * tileSize);
 					crateFloor.draw(batch);
-				}
-				else
+				} else if (t == TileEnum.CRATE_TARGET)
 				{
-					floor.setPosition(i*tileSize, j*tileSize);
+					crateTarget.setPosition(i * tileSize, j * tileSize);
+					crateTarget.draw(batch);
+				} else
+				{
+					floor.setPosition(i * tileSize, j * tileSize);
 					floor.draw(batch);
 				}
 			}
