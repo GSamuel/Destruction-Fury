@@ -8,19 +8,17 @@ import com.dekler.destructionfury.gameobject.Entity;
 import com.dekler.destructionfury.gameobject.Explosion;
 import com.dekler.destructionfury.gameobject.GameObject;
 import com.dekler.destructionfury.gameobject.Player;
-import com.dekler.destructionfury.gameobject.Robot;
-import com.dekler.destructionfury.gameobject.WarpPad;
 import com.dekler.destructionfury.map.SimpleTiledMap;
 import com.dekler.destructionfury.map.TiledMap;
 
 public class Level
 {
-	private Entity player;
-	private TiledMap map;
-	private ArrayList<Entity> entities;
-	private ArrayList<GameObject> objects;
-	private ArrayList<GameObject> hurtables;
-	private ArrayList<Explosion> effects;
+	protected Entity player;
+	protected TiledMap map;
+	protected ArrayList<Entity> entities;
+	protected ArrayList<GameObject> objects;
+	protected ArrayList<GameObject> hurtables;
+	protected ArrayList<Explosion> effects;
 
 	public Level()
 	{
@@ -28,37 +26,10 @@ public class Level
 		entities = new ArrayList<Entity>();
 		effects = new ArrayList<Explosion>();
 		hurtables = new ArrayList<GameObject>();
-		init();
+		map = new SimpleTiledMap(22, 22);
 	}
 	
-	private void init()
-	{
-		
-		map = new SimpleTiledMap(22, 22);
-		
-		player = new Player(this);
-		player.setPosition(1f, 1f);
-
-		entities.add(player);
-
-		GameObject o = new WarpPad(this);
-		o.setPosition(4f, 4f);
-		objects.add(o);
-
-		Entity robot;
-		
-		Crate crate = new Crate(this);
-		crate.setPosition(2f, 1f);
-		objects.add(crate);
-
-		for (int i = 0; i < 20; i++)
-		{
-			robot = new Robot(this);
-			robot.setPosition((float) Math.random() * map.getWidth(),
-					(float) Math.random() * map.getHeight());
-			entities.add(robot);
-		}
-	}
+	
 	
 	public void reset()
 	{
@@ -66,13 +37,18 @@ public class Level
 		entities.clear();
 		effects.clear();
 		hurtables.clear();
-		
-		init();
 	}
 
 	public Entity getPlayer()
 	{
 		return player;
+	}
+	
+	public void addPlayer(int x, int y)
+	{
+		player = new Player(this);
+		player.setPosition(x, y);
+		entities.add(player);
 	}
 
 	public void addObject(GameObject o)
@@ -83,6 +59,11 @@ public class Level
 	public void addHurtable(GameObject o)
 	{
 		hurtables.add(o);
+	}
+	
+	public void addEntity(Entity e)
+	{
+		entities.add(e);
 	}
 
 	public TiledMap getMap()
@@ -168,5 +149,12 @@ public class Level
 				Collision.collisionV2(player, o);
 		}
 
+	}
+
+
+
+	public void setMap(TiledMap map)
+	{
+		this.map = map;
 	}
 }

@@ -11,7 +11,6 @@ import com.dekler.destructionfury.gameobject.GameObject;
 import com.dekler.destructionfury.gameobject.Knife;
 import com.dekler.destructionfury.gameobject.WarpPad;
 import com.dekler.destructionfury.level.Level;
-import com.dekler.destructionfury.map.TileEnum;
 
 public class GameObjectRenderer
 {
