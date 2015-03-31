@@ -149,6 +149,9 @@ public class Level
 			if(o instanceof Crate)
 			{
 				Collision.collision(o, map, TileEnum.FLOOR);
+				for(GameObject o2: objects)
+					if(o2 instanceof Crate && o != o2)
+						Collision.collisionV2(o, o2);
 				Collision.collisionV2(player, o);
 			}
 		}

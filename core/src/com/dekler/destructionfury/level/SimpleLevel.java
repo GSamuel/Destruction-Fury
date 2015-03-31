@@ -29,6 +29,10 @@ public class SimpleLevel extends Level
 		crate.setPosition(2f, 1f);
 		objects.add(crate);
 
+		crate = new Crate(this);
+		crate.setPosition(3f, 1f);
+		objects.add(crate);
+
 		for (int i = 0; i < 20; i++)
 		{
 			robot = new Robot(this);
