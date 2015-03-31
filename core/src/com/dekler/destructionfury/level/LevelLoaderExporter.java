@@ -27,16 +27,16 @@ public class LevelLoaderExporter
 				if (map.getTile(i, j) == TileEnum.WALL)
 				{
 					pic.setColor(propManager.getColorProperty("wall-color"));
-					pic.drawPixel(i, j);
+					pic.drawPixel(i, map.getHeight()-j-1);
 				}else if(map.getTile(i, j) == TileEnum.CRATE_FLOOR)
 				{
 					pic.setColor(propManager.getColorProperty("cratefloor-color"));
-					pic.drawPixel(i, j);
+					pic.drawPixel(i, map.getHeight()-j-1);
 				}
 				else
 				{
 					pic.setColor(Color.WHITE);
-					pic.drawPixel(i, j);
+					pic.drawPixel(i, map.getHeight()-j-1);
 				}
 			}
 
@@ -49,19 +49,22 @@ public class LevelLoaderExporter
 			if (o instanceof Player)
 			{
 				pic.setColor(propManager.getColorProperty("player-color"));
-				pic.drawPixel(o.getIntX(), o.getIntY());
+				pic.drawPixel(o.getIntX(),map.getHeight()- o.getIntY()-1);
 			} else if (o instanceof Robot)
 			{
 				pic.setColor(propManager.getColorProperty("robot-color"));
-				pic.drawPixel(o.getIntX(), o.getIntY());
+				pic.drawPixel(o.getIntX(), map.getHeight()- o.getIntY()-1);
 			} else if (o instanceof Crate)
 			{
 				pic.setColor(propManager.getColorProperty("crate-color"));
-				pic.drawPixel(o.getIntX(), o.getIntY());
+				pic.drawPixel(o.getIntX(), map.getHeight()- o.getIntY()-1);
 			}
 		}
 
 		FileHandle file = new FileHandle(fileName);
+		
+		
+		
 		PixmapIO.writePNG(file, pic);
 	}
 
@@ -77,7 +80,7 @@ public class LevelLoaderExporter
 		for(int i = 0; i < pic.getWidth(); i++)
 			for(int j =0; j< pic.getHeight(); j++)
 			{
-				int pixel = pic.getPixel(i, j);
+				int pixel = pic.getPixel(i, pic.getHeight()-j-1);
 				if(pixel == Color.rgba8888(propManager.getColorProperty("player-color")))
 					level.addPlayer(i, j);
 				else if(pixel == Color.rgba8888(propManager.getColorProperty("robot-color")))
