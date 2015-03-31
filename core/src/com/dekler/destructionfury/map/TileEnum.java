@@ -2,5 +2,5 @@ package com.dekler.destructionfury.map;
 
 public enum TileEnum
 {
-	WALL, FLOOR
+	WALL, FLOOR, CRATE_FLOOR
 }

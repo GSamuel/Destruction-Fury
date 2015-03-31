@@ -25,6 +25,8 @@ public class MapRenderer
 		wall.setSize(tileSize, tileSize);
 		Sprite floor = texturePack.getSprite(TileEnum.FLOOR);
 		floor.setSize(tileSize, tileSize);
+		Sprite crateFloor = texturePack.getSprite(TileEnum.CRATE_FLOOR);
+		crateFloor.setSize(tileSize, tileSize);
 		
 	    TileEnum t;
 	    batch.begin();
@@ -36,6 +38,11 @@ public class MapRenderer
 				{
 					wall.setPosition(i*tileSize, j*tileSize);
 					wall.draw(batch);
+				}
+				else if (t == TileEnum.CRATE_FLOOR)
+				{
+					crateFloor.setPosition(i*tileSize, j*tileSize);
+					crateFloor.draw(batch);
 				}
 				else
 				{

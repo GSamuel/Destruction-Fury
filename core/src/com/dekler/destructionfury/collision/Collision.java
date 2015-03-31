@@ -12,7 +12,7 @@ import com.dekler.destructionfury.map.TiledMap;
 
 public class Collision
 {
-	public static void collision(GameObject o, TiledMap map)
+	public static void collision(GameObject o, TiledMap map, TileEnum tile)
 	{
 		for (int i = -1; i < 2; i++)
 			for (int j = -1; j < 2; j++)
@@ -23,7 +23,7 @@ public class Collision
 				if (newX >= 0 && newY >= 0 && newX < map.getWidth()
 						&& newY < map.getHeight())
 				{
-					if (map.getTile(newX, newY) == TileEnum.WALL)
+					if (map.getTile(newX, newY) == tile)
 					{
 						Rectangle2D recA = new Rectangle2D(o.getX(), o.getY(),
 								o.getWidth(), o.getHeight());

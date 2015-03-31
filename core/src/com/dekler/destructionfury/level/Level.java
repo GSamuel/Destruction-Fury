@@ -9,6 +9,7 @@ import com.dekler.destructionfury.gameobject.Explosion;
 import com.dekler.destructionfury.gameobject.GameObject;
 import com.dekler.destructionfury.gameobject.Player;
 import com.dekler.destructionfury.map.SimpleTiledMap;
+import com.dekler.destructionfury.map.TileEnum;
 import com.dekler.destructionfury.map.TiledMap;
 
 public class Level
@@ -138,15 +139,18 @@ public class Level
 
 		for (Entity e : entities)
 		{
-			Collision.collision(e, map);
+			Collision.collision(e, map, TileEnum.WALL);
 			Collision.collision(player, e);
 		}
 		for (GameObject o : objects)
 		{
 			Collision.collision(player, o);
-			Collision.collision(o, map);
+			Collision.collision(o, map, TileEnum.WALL);
 			if(o instanceof Crate)
+			{
+				Collision.collision(o, map, TileEnum.FLOOR);
 				Collision.collisionV2(player, o);
+			}
 		}
 
 	}
