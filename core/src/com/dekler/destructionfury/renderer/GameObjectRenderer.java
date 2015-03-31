@@ -52,7 +52,7 @@ public class GameObjectRenderer
 			else if (o instanceof Crate)
 			{
 				sprite = assetManager.getTexturePack().getSprite("crate");
-				sprite.setSize(tileSize, tileSize);
+				sprite.setSize(o.getHeight()*tileSize, o.getHeight()*tileSize);
 				sprite.setPosition(o.getX()*tileSize, o.getY()*tileSize);
 				sprite.draw(batch);
 			}
