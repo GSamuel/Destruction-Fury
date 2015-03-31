@@ -7,6 +7,7 @@ import com.dekler.destructionfury.gameobject.Player;
 import com.dekler.destructionfury.gameobject.Robot;
 import com.dekler.destructionfury.gameobject.WarpPad;
 import com.dekler.destructionfury.map.SimpleTiledMap;
+import com.dekler.destructionfury.map.TileEnum;
 
 public class SimpleLevel extends Level
 {
@@ -28,10 +29,12 @@ public class SimpleLevel extends Level
 		Crate crate = new Crate(this);
 		crate.setPosition(2f, 1f);
 		objects.add(crate);
+		map.setTile(2, 1, TileEnum.CRATE_FLOOR);
 
 		crate = new Crate(this);
 		crate.setPosition(3f, 1f);
 		objects.add(crate);
+		map.setTile(3, 1, TileEnum.CRATE_FLOOR);
 
 		for (int i = 0; i < 20; i++)
 		{
