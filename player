@@ -1,7 +1,7 @@
 name=player
 filename=
-input=input-dekler
-output=output-dekler
+input=gfx
+output=android\assets
 
 alias=true
 alphaThreshold=0

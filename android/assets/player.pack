@@ -5,183 +5,204 @@ filter: Nearest,Nearest
 repeat: none
 explosion
   rotate: false
-  xy: 1, 1422
+  xy: 1, 1484
   size: 614, 528
   orig: 1024, 1024
   offset: 161, 221
   index: 2
 explosion
   rotate: false
-  xy: 1, 768
+  xy: 1, 830
   size: 418, 652
   orig: 1024, 1024
   offset: 288, 280
   index: 5
 explosion
   rotate: false
-  xy: 617, 1448
+  xy: 617, 1510
   size: 528, 502
   orig: 1024, 1024
   offset: 212, 234
   index: 1
 tile_floor
   rotate: false
-  xy: 1147, 1438
+  xy: 1147, 1500
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: 1
 explosion
   rotate: false
-  xy: 1, 177
+  xy: 1, 239
   size: 423, 589
   orig: 1024, 1024
   offset: 288, 262
   index: 4
+boss_walk_down
+  rotate: false
+  xy: 1661, 1514
+  size: 438, 498
+  orig: 512, 512
+  offset: 37, 2
+  index: 1
+boss_walk_down
+  rotate: false
+  xy: 2101, 1514
+  size: 438, 498
+  orig: 512, 512
+  offset: 37, 2
+  index: 3
+boss_walk_down
+  rotate: false
+  xy: 2541, 1522
+  size: 438, 490
+  orig: 512, 512
+  offset: 37, 10
+  index: 2
 explosion
   rotate: false
-  xy: 1661, 1463
+  xy: 2981, 1525
   size: 429, 487
   orig: 1024, 1024
   offset: 288, 262
   index: 3
 ride_left
   rotate: false
-  xy: 2092, 1503
+  xy: 3412, 1565
   size: 449, 447
   orig: 512, 512
   offset: 28, 24
   index: 1
+walk_up
+  rotate: false
+  xy: 421, 970
+  size: 344, 512
+  orig: 512, 512
+  offset: 84, 0
+  index: 2
+ride_up
+  rotate: false
+  xy: 767, 1009
+  size: 376, 499
+  orig: 512, 512
+  offset: 68, 13
+  index: 1
 ride_right
   rotate: false
-  xy: 2543, 1503
+  xy: 1145, 1051
   size: 449, 447
   orig: 512, 512
   offset: 35, 24
   index: 1
 walk_down
   rotate: false
-  xy: 2994, 1439
+  xy: 426, 457
   size: 382, 511
   orig: 512, 512
   offset: 65, 0
   index: 2
-ride_up
-  rotate: false
-  xy: 3378, 1451
-  size: 376, 499
-  orig: 512, 512
-  offset: 68, 13
-  index: 1
-walk_left
-  rotate: false
-  xy: 3756, 1450
-  size: 312, 500
-  orig: 512, 512
-  offset: 116, 0
-  index: 1
-walk_up
-  rotate: false
-  xy: 421, 908
-  size: 344, 512
-  orig: 512, 512
-  offset: 84, 0
-  index: 2
-ride_down
-  rotate: false
-  xy: 767, 958
-  size: 376, 488
-  orig: 512, 512
-  offset: 68, 24
-  index: 1
 walk_down
   rotate: false
-  xy: 1145, 934
+  xy: 810, 505
   size: 359, 502
   orig: 512, 512
   offset: 81, 0
   index: 1
+ride_down
+  rotate: false
+  xy: 1171, 561
+  size: 376, 488
+  orig: 512, 512
+  offset: 68, 24
+  index: 1
+explosion
+  rotate: false
+  xy: 426, 37
+  size: 403, 418
+  orig: 1024, 1024
+  offset: 296, 302
+  index: 6
 walk_down
   rotate: false
-  xy: 426, 404
+  xy: 831, 1
   size: 359, 502
   orig: 512, 512
   offset: 72, 0
   index: 3
 walk_up
   rotate: false
-  xy: 787, 456
+  xy: 1192, 59
   size: 344, 500
   orig: 512, 512
   offset: 84, 0
   index: 1
+warp_pad
+  rotate: false
+  xy: 1, 63
+  size: 367, 174
+  orig: 367, 174
+  offset: 0, 0
+  index: 1
+walk_left
+  rotate: false
+  xy: 1549, 549
+  size: 312, 500
+  orig: 512, 512
+  offset: 116, 0
+  index: 1
 walk_up
   rotate: false
-  xy: 1133, 432
+  xy: 1538, 47
   size: 344, 500
   orig: 512, 512
   offset: 84, 0
   index: 3
+knife
+  rotate: false
+  xy: 3863, 1637
+  size: 117, 375
+  orig: 117, 375
+  offset: 0, 0
+  index: -1
+warp_pad
+  rotate: false
+  xy: 3412, 1389
+  size: 367, 174
+  orig: 367, 174
+  offset: 0, 0
+  index: 2
 walk_left
   rotate: false
-  xy: 1506, 929
+  xy: 1863, 1005
   size: 312, 507
   orig: 512, 512
   offset: 116, 0
   index: 2
+walk_right
+  rotate: false
+  xy: 2177, 1005
+  size: 312, 507
+  orig: 512, 512
+  offset: 84, 0
+  index: 2
+walk_right
+  rotate: false
+  xy: 2491, 1012
+  size: 312, 500
+  orig: 512, 512
+  offset: 84, 0
+  index: 1
 walk_left
   rotate: false
-  xy: 1479, 428
+  xy: 2805, 1021
   size: 312, 499
   orig: 512, 512
   offset: 116, 1
   index: 3
 walk_right
   rotate: false
-  xy: 1820, 954
-  size: 312, 507
-  orig: 512, 512
-  offset: 84, 0
-  index: 2
-explosion
-  rotate: false
-  xy: 2134, 1083
-  size: 403, 418
-  orig: 1024, 1024
-  offset: 296, 302
-  index: 6
-walk_right
-  rotate: false
-  xy: 2539, 1001
-  size: 312, 500
-  orig: 512, 512
-  offset: 84, 0
-  index: 1
-walk_right
-  rotate: false
-  xy: 2853, 938
+  xy: 3119, 888
   size: 312, 499
   orig: 512, 512
   offset: 84, 1
   index: 3
-warp_pad
-  rotate: false
-  xy: 1, 1
-  size: 367, 174
-  orig: 367, 174
-  offset: 0, 0
-  index: 1
-warp_pad
-  rotate: false
-  xy: 426, 228
-  size: 367, 174
-  orig: 367, 174
-  offset: 0, 0
-  index: 2
-knife
-  rotate: false
-  xy: 3167, 1062
-  size: 117, 375
-  orig: 117, 375
-  offset: 0, 0
-  index: -1
