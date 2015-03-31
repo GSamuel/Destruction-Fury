@@ -48,7 +48,8 @@ public class DestructionFury extends Game
 		// model
 		if (propManager.getIntegerProperty("load-level") != 0)
 		{
-			level = LevelLoaderExporter.loadLevel(propManager);
+			level = new Level();
+			LevelLoaderExporter.loadLevel(level,propManager);
 		} else
 		{
 			level = new SimpleLevel();
@@ -60,7 +61,7 @@ public class DestructionFury extends Game
 		levelRenderer = new LevelRenderer(stage, level, assetManager);
 
 		// input
-		iProcessor = new SimpleInputProcessor(level);
+		iProcessor = new SimpleInputProcessor(level, propManager);
 
 		InputMultiplexer im = new InputMultiplexer();
 		im.addProcessor(new GestureDetector(iProcessor));

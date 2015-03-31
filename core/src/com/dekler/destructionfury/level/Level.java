@@ -38,6 +38,10 @@ public class Level
 		entities.clear();
 		effects.clear();
 		hurtables.clear();
+		
+		player = null;
+		warpPad = null;
+		map = null;
 	}
 
 	public Entity getPlayer()

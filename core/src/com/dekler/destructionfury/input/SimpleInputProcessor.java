@@ -6,17 +6,21 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.input.GestureDetector.GestureListener;
 import com.badlogic.gdx.math.Vector2;
 import com.dekler.destructionfury.level.Level;
+import com.dekler.destructionfury.level.LevelLoaderExporter;
+import com.dekler.destructionfury.level.PropertyManager;
 
 public class SimpleInputProcessor implements InputProcessor, GestureListener
 {
 
 	private Level level;
+	private PropertyManager propManager;
 
 	private boolean w, a, s, d, space;
 
-	public SimpleInputProcessor( Level level)
+	public SimpleInputProcessor(Level level, PropertyManager propManager)
 	{
 		this.level= level;
+		this.propManager = propManager;
 	}
 	
 	public void setLevel(Level level)
@@ -89,9 +93,12 @@ public class SimpleInputProcessor implements InputProcessor, GestureListener
 		d = Gdx.input.isKeyPressed(Input.Keys.D);
 		space = Gdx.input.isKeyPressed(Input.Keys.SPACE);
 		
+		
 		if(Gdx.input.isKeyJustPressed(Input.Keys.R))
-			level.reset();
-
+		{
+			if(propManager.getIntegerProperty("load-level")>0)
+				LevelLoaderExporter.loadLevel(level, propManager);
+		}
 		return true;
 	}
 

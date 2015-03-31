@@ -72,14 +72,13 @@ public class LevelLoaderExporter
 
 		FileHandle file = new FileHandle(fileName);
 		
-		
-		
 		PixmapIO.writePNG(file, pic);
 	}
 
-	public static Level loadLevel(PropertyManager propManager)
+	public static void loadLevel(Level level, PropertyManager propManager)
 	{
-		Level level = new Level();
+		level.reset();
+		
 		FileHandle file = new FileHandle(propManager.getProperty("level-name"));
 		
 		Pixmap pic = new Pixmap(file);
@@ -107,7 +106,7 @@ public class LevelLoaderExporter
 				{
 					WarpPad warpPad = new WarpPad(level);
 					warpPad.setPosition(i, j);
-					level.addObject(warpPad);
+					level.setWarPad(warpPad);
 				}else if(pixel == Color.rgba8888(propManager.getColorProperty("wall-color")))
 					map.setTile(i,j	, TileEnum.WALL);
 				else if(pixel == Color.rgba8888(propManager.getColorProperty("cratefloor-color")))
@@ -118,7 +117,5 @@ public class LevelLoaderExporter
 			}
 		
 		level.setMap(map);
-
-		return level;
 	}
 }
