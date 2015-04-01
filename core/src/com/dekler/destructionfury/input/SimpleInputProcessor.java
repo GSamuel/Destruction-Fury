@@ -99,6 +99,20 @@ public class SimpleInputProcessor implements InputProcessor, GestureListener
 			if(propManager.getIntegerProperty("load-level")>0)
 				LevelLoaderExporter.loadLevel(level, propManager);
 		}
+		
+		if(Gdx.input.isKeyJustPressed(Input.Keys.N))
+			if(level.getLevelProperties() != null)
+			{
+				PropertyManager levelProp = level.getLevelProperties();
+				String s = levelProp.getProperty("next-level");
+				if (!s.isEmpty())
+				{
+					System.out.println(":"+s+":");
+					levelProp.putProperty("level-name", s);
+					LevelLoaderExporter.loadLevel(level, propManager);
+				}
+				
+			}
 		return true;
 	}
 

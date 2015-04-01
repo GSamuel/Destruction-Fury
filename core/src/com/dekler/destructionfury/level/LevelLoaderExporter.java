@@ -78,13 +78,19 @@ public class LevelLoaderExporter
 	public static void loadLevel(Level level, PropertyManager propManager)
 	{
 		level.reset();
+		String fileName;
+		if(level.getLevelProperties() == null)
+			fileName = propManager.getProperty("level-name");
+		else
+			fileName = level.getLevelProperties().getProperty("level-name");
 		
-		String fileName = propManager.getProperty("level-name");
 		PropertyManager levelProperties = new PropertyManager(fileName.split("\\x2E")[0]+".properties");
 		levelProperties.putProperty("next-level", "");
 		
 		levelProperties.readPropertyFile();
 		levelProperties.writePropertyFile();
+		
+		levelProperties.putProperty("level-name", fileName);
 		
 		level.setLevelProperties(levelProperties);
 		
@@ -122,7 +128,6 @@ public class LevelLoaderExporter
 					map.setTile(i,j	, TileEnum.CRATE_FLOOR);
 				else if(pixel == Color.rgba8888(propManager.getColorProperty("cratetarget-color")))
 						map.setTile(i,j	, TileEnum.CRATE_TARGET);
-					
 			}
 		
 		level.setMap(map);
