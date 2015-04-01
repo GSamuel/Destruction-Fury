@@ -79,7 +79,16 @@ public class LevelLoaderExporter
 	{
 		level.reset();
 		
-		FileHandle file = new FileHandle(propManager.getProperty("level-name"));
+		String fileName = propManager.getProperty("level-name");
+		PropertyManager levelProperties = new PropertyManager(fileName.split("\\x2E")[0]+".properties");
+		levelProperties.putProperty("next-level", "");
+		
+		levelProperties.readPropertyFile();
+		levelProperties.writePropertyFile();
+		
+		level.setLevelProperties(levelProperties);
+		
+		FileHandle file = new FileHandle(fileName);
 		
 		Pixmap pic = new Pixmap(file);
 		

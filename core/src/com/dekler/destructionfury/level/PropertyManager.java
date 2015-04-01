@@ -20,6 +20,12 @@ public class PropertyManager
 		this.properties = properties;
 	}
 	
+	public PropertyManager(String fileName)
+	{
+		this.fileName = fileName;
+		this.properties = new Properties();
+	}
+	
 	public String getProperty(String key)
 	{
 		return properties.getProperty(key);

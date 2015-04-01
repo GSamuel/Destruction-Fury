@@ -22,6 +22,7 @@ public class Level
 	protected ArrayList<GameObject> objects;
 	protected ArrayList<GameObject> hurtables;
 	protected ArrayList<Explosion> effects;
+	protected PropertyManager levelProperties;
 
 	public Level()
 	{
@@ -42,6 +43,16 @@ public class Level
 		player = null;
 		warpPad = null;
 		map = null;
+	}
+	
+	public PropertyManager getLevelProperties()
+	{
+		return levelProperties;
+	}
+	
+	public void setLevelProperties(PropertyManager levelProperties)
+	{
+		this.levelProperties = levelProperties;
 	}
 
 	public Entity getPlayer()
