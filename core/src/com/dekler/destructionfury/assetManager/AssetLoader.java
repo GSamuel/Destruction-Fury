@@ -48,6 +48,7 @@ public class AssetLoader implements Disposable
 		tiles.put("warp1", textureAtlas.findRegion("warp_pad", 1));
 		tiles.put("warp2", textureAtlas.findRegion("warp_pad", 2));
 		tiles.put("knife", textureAtlas.findRegion("knife"));
+		tiles.put("skateboard", textureAtlas.findRegion("belangrijk"));
 
 		TextureRegion[] walkDownFrames = new TextureRegion[4];
 
