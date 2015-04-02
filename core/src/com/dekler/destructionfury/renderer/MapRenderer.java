@@ -22,8 +22,7 @@ public class MapRenderer
 
 		batch.setProjectionMatrix(camera.combined);
 
-		//Sprite wall = texturePack.getSprite(TileEnum.WALL);
-		Sprite wall = texturePack.getSprite("skateboard");
+		Sprite wall = texturePack.getSprite(TileEnum.WALL);
 		wall.setSize(tileSize, tileSize);
 		
 		
