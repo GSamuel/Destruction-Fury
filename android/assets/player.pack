@@ -276,3 +276,10 @@ warp_pad
   orig: 367, 174
   offset: 0, 0
   index: 2
+bomb
+  rotate: false
+  xy: 3356, 221
+  size: 212, 184
+  orig: 256, 256
+  offset: 30, 36
+  index: -1
