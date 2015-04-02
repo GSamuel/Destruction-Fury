@@ -16,13 +16,7 @@ public class Player extends Entity
 		this.health = 4;
 		this.speed = 3f;
 	}
-
-	@Override
-	public void onTileCollision(TileEnum t)
-	{
-
-	}
-
+	
 	@Override
 	public void onGameObjectCollision(GameObject o)
 	{
@@ -53,5 +47,11 @@ public class Player extends Entity
 			level.addHurtable(knife);
 			attackTime = 30;
 		}
+	}
+
+	@Override
+	public void onTileCollision(TileEnum t, float x, float y)
+	{
+		
 	}
 }

@@ -18,11 +18,6 @@ public class SimpleGameObject extends GameObject
 	}
 
 	@Override
-	public void onTileCollision(TileEnum t)
-	{
-	}
-
-	@Override
 	public void onGameObjectCollision(GameObject o)
 	{
 		
@@ -32,6 +27,13 @@ public class SimpleGameObject extends GameObject
 	public void damage(int damage)
 	{
 		health -= damage;
+	}
+
+	@Override
+	public void onTileCollision(TileEnum t, float x, float y)
+	{
+		// TODO Auto-generated method stub
+		
 	}
 
 }

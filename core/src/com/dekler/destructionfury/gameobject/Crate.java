@@ -17,13 +17,6 @@ public class Crate extends GameObject
 	{
 
 	}
-
-	@Override
-	public void onTileCollision(TileEnum t)
-	{
-
-	}
-
 	@Override
 	public void onGameObjectCollision(GameObject o)
 	{
@@ -37,6 +30,13 @@ public class Crate extends GameObject
 	public void damage(int damage)
 	{
 
+	}
+
+	@Override
+	public void onTileCollision(TileEnum t, float x, float y)
+	{
+		// TODO Auto-generated method stub
+		
 	}
 
 }

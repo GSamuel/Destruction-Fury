@@ -5,7 +5,6 @@ import com.dekler.destructionfury.map.TileEnum;
 
 public class WarpPad extends GameObject
 {
-
 	private boolean active;
 
 	public WarpPad(Level level)
@@ -13,6 +12,11 @@ public class WarpPad extends GameObject
 		super(level);
 		setSize(2.5f, 1.2f);
 		active = false;
+	}
+	
+	public void setActive(boolean active)
+	{
+		this.active = active;
 	}
 	
 	public boolean isActive()
@@ -23,24 +27,23 @@ public class WarpPad extends GameObject
 	@Override
 	public void update()
 	{
-		active = false;
-	}
-
-	@Override
-	public void onTileCollision(TileEnum t)
-	{
-		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void onGameObjectCollision(GameObject o)
 	{
-		active = true;
 	}
 
 	@Override
 	public void damage(int damage)
 	{
 		health -= damage;		
+	}
+
+	@Override
+	public void onTileCollision(TileEnum t, float x, float y)
+	{
+		// TODO Auto-generated method stub
+		
 	}
 }

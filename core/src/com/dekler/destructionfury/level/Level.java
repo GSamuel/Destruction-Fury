@@ -1,6 +1,8 @@
 package com.dekler.destructionfury.level;
 
+import java.awt.Point;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.dekler.destructionfury.collision.Collision;
 import com.dekler.destructionfury.gameobject.Crate;
@@ -23,6 +25,8 @@ public class Level
 	protected ArrayList<GameObject> hurtables;
 	protected ArrayList<Explosion> effects;
 	protected PropertyManager levelProperties;
+	protected ArrayList<Point> crateTargets;
+	protected HashMap<Point, Boolean> targets;
 
 	public Level()
 	{
@@ -31,6 +35,8 @@ public class Level
 		effects = new ArrayList<Explosion>();
 		hurtables = new ArrayList<GameObject>();
 		map = new SimpleTiledMap(22, 22);
+		crateTargets = new ArrayList<Point>();
+		targets = new HashMap<Point, Boolean>();
 	}
 	
 	public void reset()
@@ -39,6 +45,8 @@ public class Level
 		entities.clear();
 		effects.clear();
 		hurtables.clear();
+		crateTargets.clear();
+		targets.clear();
 		
 		player = null;
 		warpPad = null;
@@ -125,6 +133,7 @@ public class Level
 
 	public void update()
 	{
+		resetTargets();
 
 		for (int i = 0; i < entities.size(); i++)
 			if (entities.get(i).getRemove())
@@ -179,13 +188,43 @@ public class Level
 					if(o2 instanceof Crate && o != o2)
 						Collision.collisionV2(o, o2);
 				Collision.collisionV2(player, o);
+				targets.put(new Point((int)(o.getX()+o.getWidth()*0.5f), (int)(o.getY()+o.getHeight()*0.5f)), true);
 			}
 		}
+		
+		warpPad.setActive(puzzleDone());
 
 	}
 
 	public void setMap(TiledMap map)
 	{
 		this.map = map;
+		calculateCrateTargets();
+	}
+	
+	private void calculateCrateTargets()
+	{
+		crateTargets.clear();
+		for(int i =0; i < map.getWidth(); i++)
+			for(int j =0; j < map.getHeight(); j++)
+				if(map.getTile(i, j)==TileEnum.CRATE_TARGET)
+					crateTargets.add(new Point(i,j));
+		
+		resetTargets();
+	}
+	
+	private void resetTargets()
+	{
+		targets.clear();
+		for(Point p : crateTargets)
+			targets.put(p, false);
+	}
+	
+	public boolean puzzleDone()
+	{
+		for(Boolean b: targets.values())
+			if(!b)
+				return b;
+		return true;
 	}
 }

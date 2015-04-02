@@ -21,7 +21,27 @@ public class Robot extends Entity
 	}
 
 	@Override
-	public void onTileCollision(TileEnum t)
+	public void onGameObjectCollision(GameObject o)
+	{
+		if (o instanceof Knife)
+		{
+			Vector2 diff = new Vector2(getX() - o.getX(), getY() - o.getY());
+			diff.setLength(2f);
+			setForceX(diff.x);
+			setForceY(diff.y);
+		}
+		if (o instanceof Crate)
+			onTileCollision(TileEnum.WALL, o.getX(), o.getY());
+	}
+
+	@Override
+	public void attack()
+	{
+
+	}
+
+	@Override
+	public void onTileCollision(TileEnum t, float x, float y)
 	{
 		if (t == TileEnum.WALL)
 		{
@@ -38,25 +58,4 @@ public class Robot extends Entity
 
 	}
 
-	@Override
-	public void onGameObjectCollision(GameObject o)
-	{
-		if (o instanceof Knife)
-		{
-			Vector2 diff = new Vector2(getX() - o.getX(), getY() - o.getY());
-			diff.setLength(2f);
-			setForceX(diff.x);
-			setForceY(diff.y);
-		}
-		if(o instanceof Crate)
-			onTileCollision(TileEnum.WALL);
-	}
-
-	@Override
-	public void attack()
-	{
-
-	}
-
-	
 }

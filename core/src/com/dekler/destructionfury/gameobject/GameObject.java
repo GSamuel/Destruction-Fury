@@ -95,7 +95,7 @@ public abstract class GameObject
 	}
 	
 	public abstract void update();
-	public abstract void onTileCollision(TileEnum t);
+	public abstract void onTileCollision(TileEnum t, float x, float y);
 	public abstract void onGameObjectCollision(GameObject o);
 	public abstract void damage(int damage);
 }

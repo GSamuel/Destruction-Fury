@@ -113,6 +113,7 @@ public class SimpleInputProcessor implements InputProcessor, GestureListener
 				}
 				
 			}
+		
 		return true;
 	}
 

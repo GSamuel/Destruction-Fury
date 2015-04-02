@@ -44,22 +44,22 @@ public class Collision
 								if (distX >= 0)
 								{
 									o.changePosition(minDistX - distX, 0f);
-									o.onTileCollision(TileEnum.WALL);
+									o.onTileCollision(TileEnum.WALL, newX, newY);
 								} else
 								{
 									o.changePosition(-(minDistX + distX), 0f);
-									o.onTileCollision(TileEnum.WALL);
+									o.onTileCollision(TileEnum.WALL, newX, newY);
 								}
 							} else
 							{
 								if (distY >= 0)
 								{
 									o.changePosition(0f, minDistY - distY);
-									o.onTileCollision(TileEnum.WALL);
+									o.onTileCollision(TileEnum.WALL, newX, newY);
 								} else
 								{
 									o.changePosition(0f, -(minDistY + distY));
-									o.onTileCollision(TileEnum.WALL);
+									o.onTileCollision(TileEnum.WALL, newX, newY);
 								}
 							}
 
