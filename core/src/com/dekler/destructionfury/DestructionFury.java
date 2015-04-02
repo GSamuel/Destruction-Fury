@@ -97,6 +97,8 @@ public class DestructionFury extends Game
 	@Override
 	public void render()
 	{
+		if(level.reload())
+			LevelLoaderExporter.loadLevel(level, propManager);
 		iProcessor.update();
 		level.update();
 		levelRenderer.render();

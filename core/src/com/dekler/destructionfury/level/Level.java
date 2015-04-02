@@ -17,9 +17,10 @@ import com.dekler.destructionfury.map.TiledMap;
 
 public class Level
 {
+	private boolean reload;
 	protected Entity player;
-	protected WarpPad warpPad;
 	protected TiledMap map;
+	protected ArrayList<WarpPad> warpPads;
 	protected ArrayList<Entity> entities;
 	protected ArrayList<GameObject> objects;
 	protected ArrayList<GameObject> hurtables;
@@ -34,11 +35,13 @@ public class Level
 		entities = new ArrayList<Entity>();
 		effects = new ArrayList<Explosion>();
 		hurtables = new ArrayList<GameObject>();
+		warpPads = new ArrayList<WarpPad>();
 		map = new SimpleTiledMap(22, 22);
 		crateTargets = new ArrayList<Point>();
 		targets = new HashMap<Point, Boolean>();
+		reload = false;
 	}
-	
+
 	public void reset()
 	{
 		objects.clear();
@@ -47,17 +50,44 @@ public class Level
 		hurtables.clear();
 		crateTargets.clear();
 		targets.clear();
-		
+		warpPads.clear();
+
 		player = null;
-		warpPad = null;
 		map = null;
+
+		reload = false;
 	}
-	
+
+	public void nextLevel(WarpPad warpPad)
+	{
+		String nextLevel = "";
+		if (!levelProperties.getProperty(warpPad.getKey()).isEmpty())
+		{
+			nextLevel = levelProperties.getProperty(warpPad.getKey());
+			levelProperties.putProperty("level-name", nextLevel);
+			reload = true;
+		}
+		else if (getLevelProperties() != null)
+		{
+			nextLevel = levelProperties.getProperty("next-level");
+			if (!nextLevel.isEmpty())
+			{
+				levelProperties.putProperty("level-name", nextLevel);
+				reload = true;
+			}
+		}
+	}
+
+	public boolean reload()
+	{
+		return reload;
+	}
+
 	public PropertyManager getLevelProperties()
 	{
 		return levelProperties;
 	}
-	
+
 	public void setLevelProperties(PropertyManager levelProperties)
 	{
 		this.levelProperties = levelProperties;
@@ -67,23 +97,23 @@ public class Level
 	{
 		return player;
 	}
-	
+
 	public void addPlayer(int x, int y)
 	{
 		player = new Player(this);
 		player.setPosition(x, y);
 		entities.add(player);
 	}
-	
-	public WarpPad getWarpPad()
+
+	public ArrayList<WarpPad> getWarpPads()
 	{
-		return warpPad;
+		return warpPads;
 	}
-	
-	public void setWarPad(WarpPad warpPad)
+
+	public void addWarpPad(WarpPad pad)
 	{
-		this.warpPad = warpPad;
-		objects.add(warpPad);
+		warpPads.add(pad);
+		objects.add(pad);
 	}
 
 	public void addObject(GameObject o)
@@ -95,7 +125,7 @@ public class Level
 	{
 		hurtables.add(o);
 	}
-	
+
 	public void addEntity(Entity e)
 	{
 		entities.add(e);
@@ -163,11 +193,11 @@ public class Level
 		{
 			for (GameObject h : hurtables)
 				Collision.collision(e, h);
-			
-			for(GameObject o: objects)
+
+			for (GameObject o : objects)
 			{
 				Collision.collision(e, o);
-				if(o instanceof Crate)
+				if (o instanceof Crate)
 					Collision.collisionV2(e, o);
 			}
 		}
@@ -181,18 +211,19 @@ public class Level
 		{
 			Collision.collision(player, o);
 			Collision.collision(o, map, TileEnum.WALL);
-			if(o instanceof Crate)
+			if (o instanceof Crate)
 			{
 				Collision.collision(o, map, TileEnum.FLOOR);
-				for(GameObject o2: objects)
-					if(o2 instanceof Crate && o != o2)
+				for (GameObject o2 : objects)
+					if (o2 instanceof Crate && o != o2)
 						Collision.collisionV2(o, o2);
 				Collision.collisionV2(player, o);
-				targets.put(new Point((int)(o.getX()+o.getWidth()*0.5f), (int)(o.getY()+o.getHeight()*0.5f)), true);
+				targets.put(new Point((int) (o.getX() + o.getWidth() * 0.5f),
+						(int) (o.getY() + o.getHeight() * 0.5f)), true);
 			}
 		}
-		
-		warpPad.setActive(puzzleDone());
+		for (WarpPad warpPad : warpPads)
+			warpPad.setActive(puzzleDone());
 
 	}
 
@@ -201,29 +232,29 @@ public class Level
 		this.map = map;
 		calculateCrateTargets();
 	}
-	
+
 	private void calculateCrateTargets()
 	{
 		crateTargets.clear();
-		for(int i =0; i < map.getWidth(); i++)
-			for(int j =0; j < map.getHeight(); j++)
-				if(map.getTile(i, j)==TileEnum.CRATE_TARGET)
-					crateTargets.add(new Point(i,j));
-		
+		for (int i = 0; i < map.getWidth(); i++)
+			for (int j = 0; j < map.getHeight(); j++)
+				if (map.getTile(i, j) == TileEnum.CRATE_TARGET)
+					crateTargets.add(new Point(i, j));
+
 		resetTargets();
 	}
-	
+
 	private void resetTargets()
 	{
 		targets.clear();
-		for(Point p : crateTargets)
+		for (Point p : crateTargets)
 			targets.put(p, false);
 	}
-	
+
 	public boolean puzzleDone()
 	{
-		for(Boolean b: targets.values())
-			if(!b)
+		for (Boolean b : targets.values())
+			if (!b)
 				return b;
 		return true;
 	}

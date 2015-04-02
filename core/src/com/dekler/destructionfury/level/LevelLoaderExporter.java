@@ -87,11 +87,6 @@ public class LevelLoaderExporter
 		PropertyManager levelProperties = new PropertyManager(fileName.split("\\x2E")[0]+".properties");
 		levelProperties.putProperty("next-level", "");
 		
-		levelProperties.readPropertyFile();
-		levelProperties.writePropertyFile();
-		
-		levelProperties.putProperty("level-name", fileName);
-		
 		level.setLevelProperties(levelProperties);
 		
 		FileHandle file = new FileHandle(fileName);
@@ -121,7 +116,8 @@ public class LevelLoaderExporter
 				{
 					WarpPad warpPad = new WarpPad(level);
 					warpPad.setPosition(i, j);
-					level.setWarPad(warpPad);
+					level.addWarpPad(warpPad);
+					levelProperties.putProperty(warpPad.getKey(),"");
 				}else if(pixel == Color.rgba8888(propManager.getColorProperty("wall-color")))
 					map.setTile(i,j	, TileEnum.WALL);
 				else if(pixel == Color.rgba8888(propManager.getColorProperty("cratefloor-color")))
@@ -129,6 +125,12 @@ public class LevelLoaderExporter
 				else if(pixel == Color.rgba8888(propManager.getColorProperty("cratetarget-color")))
 						map.setTile(i,j	, TileEnum.CRATE_TARGET);
 			}
+
+		
+		levelProperties.readPropertyFile();
+		levelProperties.writePropertyFile();
+		
+		levelProperties.putProperty("level-name", fileName);
 		
 		level.setMap(map);
 	}

@@ -32,6 +32,12 @@ public class WarpPad extends GameObject
 	@Override
 	public void onGameObjectCollision(GameObject o)
 	{
+		if(o instanceof Player)
+		{
+			if(o.getX() > getX() && o.getX()< getX() +getWidth()-o.getWidth())
+				if(o.getY()> getY() && o.getY()< getY()+getHeight()-o.getHeight())
+					level.nextLevel(this);
+		}
 	}
 
 	@Override
@@ -43,7 +49,11 @@ public class WarpPad extends GameObject
 	@Override
 	public void onTileCollision(TileEnum t, float x, float y)
 	{
-		// TODO Auto-generated method stub
 		
+	}
+	
+	public String getKey()
+	{
+		return "warp-pad("+getIntX()+","+getIntY()+")";
 	}
 }
