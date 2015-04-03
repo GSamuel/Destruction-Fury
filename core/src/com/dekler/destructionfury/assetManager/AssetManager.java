@@ -22,6 +22,7 @@ public class AssetManager
 		texturePack = new SimpleTexturepack(assetLoader);
 		animationPacks.put("player", new PlayerAnimation(assetLoader));
 		animationPacks.put("robot", new RobotAnimation(assetLoader));
+		animationPacks.put("boss", new BossAnimation(assetLoader));
 		
 		animations.put("explosion", assetLoader.getAnimation("explosion"));
 	}

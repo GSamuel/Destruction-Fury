@@ -49,6 +49,13 @@ public class AssetLoader implements Disposable
 		tiles.put("warp2", textureAtlas.findRegion("warp_pad", 2));
 		tiles.put("knife", textureAtlas.findRegion("knife"));
 		tiles.put("skateboard", textureAtlas.findRegion("belangrijk"));
+		tiles.put("grenade", textureAtlas.findRegion("bomb"));
+		
+		
+		tiles.put("wooden_crate_front", textureAtlas.findRegion("crates/wooden_crate", 1));
+		tiles.put("wooden_crate_top", textureAtlas.findRegion("crates/wooden_crate", 2));
+		tiles.put("metal_crate_front", textureAtlas.findRegion("crates/metal_crate", 1));
+		tiles.put("metal_crate_top", textureAtlas.findRegion("crates/metal_crate", 2));
 
 		TextureRegion[] walkDownFrames = new TextureRegion[4];
 
@@ -102,7 +109,52 @@ public class AssetLoader implements Disposable
 		animations.put("ride_left", new Animation(frameTime,rideLeft));
 		animations.put("ride_right", new Animation(frameTime,rideRight));
 		
+		loadBossAnimations(textureAtlas);
 		loadExplosionAnimation(textureAtlas);
+	}
+	
+	private void loadBossAnimations(TextureAtlas textureAtlas)
+	{
+		TextureRegion[] walkDownFrames = new TextureRegion[4];
+
+		walkDownFrames[0] = textureAtlas.findRegion("boss_walk_down", 2);
+		walkDownFrames[1] = textureAtlas.findRegion("boss_walk_down", 1);
+		walkDownFrames[2] = textureAtlas.findRegion("boss_walk_down", 2);
+		walkDownFrames[3] = textureAtlas.findRegion("boss_walk_down", 3);
+
+		animations.put("boss_down", new Animation(frameTime, walkDownFrames));
+		
+		TextureRegion[] walkUpFrames = new TextureRegion[4];
+
+		walkUpFrames[0] = textureAtlas.findRegion("boss_walk_up", 2);
+		walkUpFrames[1] = textureAtlas.findRegion("boss_walk_up", 1);
+		walkUpFrames[2] = textureAtlas.findRegion("boss_walk_up", 2);
+		walkUpFrames[3] = textureAtlas.findRegion("boss_walk_up", 3);
+
+		animations.put("boss_up", new Animation(frameTime, walkUpFrames));
+		
+		
+		TextureRegion[] walkLeftFrames = new TextureRegion[4];
+		TextureRegion[] walkRightFrames = new TextureRegion[4];
+		
+		walkRightFrames[0] = textureAtlas.findRegion("boss_walk_right", 2);
+		walkRightFrames[1] = textureAtlas.findRegion("boss_walk_right", 1);
+		walkRightFrames[2] = textureAtlas.findRegion("boss_walk_right", 2);
+		walkRightFrames[3] = textureAtlas.findRegion("boss_walk_right", 3);
+		
+		walkLeftFrames[0] = textureAtlas.findRegion("boss_walk_left", 2);
+		walkLeftFrames[1] = textureAtlas.findRegion("boss_walk_left", 1);
+		walkLeftFrames[2] = textureAtlas.findRegion("boss_walk_left", 2);
+		walkLeftFrames[3] = textureAtlas.findRegion("boss_walk_left", 3);
+		
+		for(int i =0; i < walkLeftFrames.length; i++)
+		{
+			walkLeftFrames[i] = new TextureRegion(walkRightFrames[i]);
+			walkLeftFrames[i].flip(true, false);
+		}
+
+		animations.put("boss_right", new Animation(frameTime, walkRightFrames));
+		animations.put("boss_left", new Animation(frameTime, walkLeftFrames));
 	}
 	
 	private void loadExplosionAnimation(TextureAtlas textureAtlas)

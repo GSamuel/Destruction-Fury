@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.dekler.destructionfury.assetManager.AnimationPack;
 import com.dekler.destructionfury.assetManager.AssetManager;
+import com.dekler.destructionfury.gameobject.Boss;
 import com.dekler.destructionfury.gameobject.Entity;
 import com.dekler.destructionfury.gameobject.Player;
 import com.dekler.destructionfury.gameobject.Robot;
@@ -33,6 +34,8 @@ public class EntityRenderer
 				aniPack = assetManager.getAnimationPack("player");
 			if(e instanceof Robot)
 				aniPack = assetManager.getAnimationPack("robot");
+			if(e instanceof Boss)
+				aniPack = assetManager.getAnimationPack("boss");
 			if(aniPack == null)
 				aniPack = assetManager.getAnimationPack("player");
 			
