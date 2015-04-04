@@ -325,6 +325,20 @@ bull_stuck_right
   orig: 256, 256
   offset: 34, 1
   index: 1
+bomb_UI
+  rotate: false
+  xy: 1, 17
+  size: 122, 36
+  orig: 126, 40
+  offset: 4, 2
+  index: -1
+health
+  rotate: false
+  xy: 4043, 2947
+  size: 42, 40
+  orig: 42, 40
+  offset: 0, 0
+  index: -1
 
 destructionFury2.png
 format: RGBA8888
