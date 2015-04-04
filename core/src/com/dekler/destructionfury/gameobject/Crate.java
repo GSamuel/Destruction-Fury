@@ -1,22 +1,28 @@
 package com.dekler.destructionfury.gameobject;
 
+import javafx.geometry.Rectangle2D;
+
 import com.dekler.destructionfury.collision.Collision;
 import com.dekler.destructionfury.level.Level;
 import com.dekler.destructionfury.map.TileEnum;
 
 public class Crate extends GameObject
 {
-
 	public Crate(Level level)
 	{
 		super(level);
 	}
 
+	public Rectangle2D getTargetHitBox()
+	{
+		return new Rectangle2D(getX()+getWidth()*0.25f, getY()+getHeight()*0.25f, getWidth()*0.5f, getHeight()*0.5f);
+	}
+	
 	@Override
 	public void update()
 	{
-
 	}
+	
 	@Override
 	public void onGameObjectCollision(GameObject o)
 	{

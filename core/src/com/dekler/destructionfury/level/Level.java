@@ -4,6 +4,8 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javafx.geometry.Rectangle2D;
+
 import com.dekler.destructionfury.collision.Collision;
 import com.dekler.destructionfury.gameobject.Boss;
 import com.dekler.destructionfury.gameobject.Crate;
@@ -214,13 +216,17 @@ public class Level
 			Collision.collision(o, map, TileEnum.WALL);
 			if (o instanceof Crate)
 			{
+				Crate crate = (Crate) o;
 				Collision.collision(o, map, TileEnum.FLOOR);
 				for (GameObject o2 : objects)
 					if (o2 instanceof Crate && o != o2)
 						Collision.collisionV2(o, o2);
+				
 				Collision.collisionV2(player, o);
-				targets.put(new Point((int) (o.getX() + o.getWidth() * 0.5f),
+				if(new Rectangle2D(o.getIntX(), o.getIntY(), 1f,1f).contains(crate.getTargetHitBox()))
+				{targets.put(new Point((int) (o.getX() + o.getWidth() * 0.5f),
 						(int) (o.getY() + o.getHeight() * 0.5f)), true);
+				}
 			}
 		}
 		for (WarpPad warpPad : warpPads)
