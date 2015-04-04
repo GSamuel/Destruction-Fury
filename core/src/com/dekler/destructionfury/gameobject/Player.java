@@ -9,7 +9,6 @@ public class Player extends Entity
 
 	private int attackTime;
 	private int altAttackTime;
-	private int grenadeAmmo = 3;
 
 	public Player(Level level)
 	{
@@ -18,12 +17,6 @@ public class Player extends Entity
 		this.health = 4;
 		this.speed = 3f;
 	}
-	
-	public int getBombAmmo()
-	{
-		return grenadeAmmo;
-	}
-	
 	@Override
 	public void onGameObjectCollision(GameObject o)
 	{
@@ -59,7 +52,7 @@ public class Player extends Entity
 	
 	public void altAttack()
 	{
-		if (grenadeAmmo>0 && altAttackTime <= 0)
+		if (altAttackTime <= 0)
 		{
 			Vector2 dir = direction.getDirectionVector();
 			Grenade grenade = new Grenade(level);
@@ -67,8 +60,6 @@ public class Player extends Entity
 			grenade.setVelX(dir.x*5);
 			grenade.setVelY(dir.y*5);
 			level.addObject(grenade);
-			altAttackTime = 30;
-			grenadeAmmo --;
 		}
 	}
 
