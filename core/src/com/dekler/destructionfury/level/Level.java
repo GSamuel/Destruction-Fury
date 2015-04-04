@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.dekler.destructionfury.collision.Collision;
+import com.dekler.destructionfury.gameobject.Boss;
 import com.dekler.destructionfury.gameobject.Crate;
 import com.dekler.destructionfury.gameobject.Entity;
 import com.dekler.destructionfury.gameobject.Explosion;
@@ -223,7 +224,7 @@ public class Level
 			}
 		}
 		for (WarpPad warpPad : warpPads)
-			warpPad.setActive(puzzleDone());
+			warpPad.setActive(puzzleDone()&&noBossesLeft());
 
 	}
 
@@ -249,6 +250,16 @@ public class Level
 		targets.clear();
 		for (Point p : crateTargets)
 			targets.put(p, false);
+	}
+	
+	public boolean noBossesLeft()
+	{
+		for(Entity e : entities)
+			if(e instanceof Boss)
+				return false;
+		
+		return true;
+				
 	}
 
 	public boolean puzzleDone()

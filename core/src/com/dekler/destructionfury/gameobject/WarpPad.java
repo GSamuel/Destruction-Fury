@@ -32,7 +32,7 @@ public class WarpPad extends GameObject
 	@Override
 	public void onGameObjectCollision(GameObject o)
 	{
-		if(o instanceof Player)
+		if(o instanceof Player && active)
 		{
 			if(o.getX() > getX() && o.getX()< getX() +getWidth()-o.getWidth())
 				if(o.getY()> getY() && o.getY()< getY()+getHeight()-o.getHeight())
