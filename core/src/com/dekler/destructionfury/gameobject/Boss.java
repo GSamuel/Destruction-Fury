@@ -5,6 +5,8 @@ import com.dekler.destructionfury.map.TileEnum;
 
 public class Boss extends Entity
 {
+	private int nextAttackTimer;
+	private int mouthOpenTimer;
 
 	public Boss(Level level)
 	{
@@ -16,19 +18,26 @@ public class Boss extends Entity
 
 	public boolean mouthIsOpen()
 	{
-		return false;
+		return mouthOpenTimer > 0;
 	}
 
 	@Override
 	public void attack()
 	{
-		// TODO Auto-generated method stub
-
+		nextAttackTimer = 300;
+		mouthOpenTimer = 60;
 	}
-	
+
 	public void update()
 	{
-		super.update();
+		if (mouthOpenTimer < 0)
+			super.update();
+		
+		mouthOpenTimer--;
+		nextAttackTimer--;
+		
+		if (nextAttackTimer < 0)
+			attack();
 	}
 
 	@Override
