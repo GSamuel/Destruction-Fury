@@ -2,7 +2,6 @@ package com.dekler.destructionfury.gameobject;
 
 import javafx.geometry.Rectangle2D;
 
-import com.dekler.destructionfury.collision.Collision;
 import com.dekler.destructionfury.level.Level;
 import com.dekler.destructionfury.map.TileEnum;
 
@@ -26,10 +25,6 @@ public class Crate extends GameObject
 	@Override
 	public void onGameObjectCollision(GameObject o)
 	{
-		if (o instanceof Player)
-		{
-			Collision.collisionV2(this, o);
-		}
 	}
 
 	@Override
@@ -41,7 +36,6 @@ public class Crate extends GameObject
 	@Override
 	public void onTileCollision(TileEnum t, float x, float y)
 	{
-		// TODO Auto-generated method stub
 		
 	}
 

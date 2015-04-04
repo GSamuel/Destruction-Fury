@@ -200,7 +200,7 @@ public class Level
 			for (GameObject o : objects)
 			{
 				Collision.collision(e, o);
-				if (o instanceof Crate)
+				if (o instanceof Crate && !(e instanceof Player))
 					Collision.collisionV2(e, o);
 			}
 		}
@@ -212,11 +212,11 @@ public class Level
 		}
 		for (GameObject o : objects)
 		{
-			Collision.collision(player, o);
 			Collision.collision(o, map, TileEnum.WALL);
 			if (o instanceof Crate)
 			{
 				Crate crate = (Crate) o;
+				Collision.collisionV2(crate,player);
 				Collision.collision(o, map, TileEnum.FLOOR);
 				for (GameObject o2 : objects)
 					if (o2 instanceof Crate && o != o2)
