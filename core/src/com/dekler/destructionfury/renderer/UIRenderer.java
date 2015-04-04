@@ -38,7 +38,7 @@ public class UIRenderer
 		sprite = assetManager.getTexturePack().getSprite("bomb_ui");
 		sprite.setPosition(newX, newY);
 		shapes.begin(ShapeType.Filled);
-		shapes.setColor(Color.GRAY);
+		shapes.setColor(Color.CYAN);
 		shapes.rect(newX+tileSize*0.05f, newY+tileSize*0.05f, tileSize*0.55f*perc, tileSize*0.15f);
 		shapes.end();
 		
