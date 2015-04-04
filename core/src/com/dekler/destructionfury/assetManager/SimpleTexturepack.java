@@ -24,6 +24,7 @@ public class SimpleTexturepack implements TexturePack
 		sprites.put("grenade", new Sprite(assetLoader.getRegion("grenade")));
 		sprites.put("health", new Sprite(assetLoader.getRegion("health")));
 		sprites.put("bomb_ui", new Sprite(assetLoader.getRegion("bomb_ui")));
+		sprites.put("spit", new Sprite(assetLoader.getRegion("spit")));
 	}
 	
 

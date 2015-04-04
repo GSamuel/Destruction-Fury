@@ -5,336 +5,357 @@ filter: Nearest,Nearest
 repeat: none
 explosion
   rotate: false
-  xy: 1, 3465
+  xy: 1, 3567
   size: 614, 528
   orig: 1024, 1024
   offset: 161, 221
   index: 2
 explosion
   rotate: false
-  xy: 1, 2811
+  xy: 1, 2913
   size: 418, 652
   orig: 1024, 1024
   offset: 288, 280
   index: 5
 explosion
   rotate: false
-  xy: 617, 3491
+  xy: 617, 3593
   size: 528, 502
   orig: 1024, 1024
   offset: 212, 234
   index: 1
 tile_floor
   rotate: false
-  xy: 1147, 3481
+  xy: 1147, 3583
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: 1
 tile_floor
   rotate: false
-  xy: 1661, 3481
+  xy: 1661, 3583
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: 2
 explosion
   rotate: false
-  xy: 1, 2220
+  xy: 1, 2322
   size: 423, 589
   orig: 1024, 1024
   offset: 288, 262
   index: 4
 boss_walk_right
   rotate: false
-  xy: 2175, 3493
+  xy: 2175, 3595
   size: 477, 500
   orig: 512, 512
   offset: 29, 9
   index: 1
 boss_walk_right
   rotate: false
-  xy: 2654, 3493
+  xy: 2654, 3595
   size: 477, 500
   orig: 512, 512
   offset: 29, 9
   index: 2
 boss_walk_right
   rotate: false
-  xy: 3133, 3493
+  xy: 3133, 3595
   size: 477, 500
   orig: 512, 512
   offset: 29, 9
   index: 3
 boss_open_right
   rotate: false
-  xy: 3612, 3493
+  xy: 3612, 3595
   size: 473, 500
   orig: 512, 512
   offset: 29, 9
   index: -1
 boss_walk_down
   rotate: false
-  xy: 1, 1720
+  xy: 1, 1822
   size: 438, 498
   orig: 512, 512
   offset: 37, 2
   index: 1
 boss_walk_down
   rotate: false
-  xy: 1, 1220
+  xy: 1, 1322
   size: 438, 498
   orig: 512, 512
   offset: 37, 2
   index: 3
 boss_open_up
   rotate: false
-  xy: 1, 723
+  xy: 1, 825
   size: 438, 495
   orig: 512, 512
   offset: 37, 10
   index: -1
 boss_open_down
   rotate: false
-  xy: 1, 231
+  xy: 1, 333
   size: 438, 490
   orig: 512, 512
   offset: 37, 10
   index: -1
 walk_up
   rotate: false
-  xy: 421, 2951
+  xy: 421, 3053
   size: 344, 512
   orig: 512, 512
   offset: 84, 0
   index: 2
 ride_up
   rotate: false
-  xy: 767, 2990
+  xy: 767, 3092
   size: 376, 499
   orig: 512, 512
   offset: 68, 13
   index: 1
 boss_walk_down
   rotate: false
-  xy: 1145, 2989
+  xy: 1145, 3091
   size: 438, 490
   orig: 512, 512
   offset: 37, 10
   index: 2
 explosion
   rotate: false
-  xy: 1585, 2992
+  xy: 1585, 3094
   size: 429, 487
   orig: 1024, 1024
   offset: 288, 262
   index: 3
 walk_down
   rotate: false
-  xy: 426, 2438
+  xy: 426, 2540
   size: 382, 511
   orig: 512, 512
   offset: 65, 0
   index: 2
 walk_left
   rotate: false
-  xy: 810, 2481
+  xy: 810, 2583
   size: 312, 507
   orig: 512, 512
   offset: 116, 0
   index: 2
 boss_walk_up
   rotate: false
-  xy: 1124, 2516
+  xy: 1124, 2618
   size: 442, 471
   orig: 512, 512
   offset: 36, 0
   index: 1
 ride_down
   rotate: false
-  xy: 2016, 2991
+  xy: 2016, 3093
   size: 376, 488
   orig: 512, 512
   offset: 68, 24
   index: 1
 boss_walk_up
   rotate: false
-  xy: 2394, 3020
+  xy: 2394, 3122
   size: 442, 471
   orig: 512, 512
   offset: 34, 0
   index: 3
 boss_walk_up
   rotate: false
-  xy: 2838, 3030
+  xy: 2838, 3132
   size: 438, 461
   orig: 512, 512
   offset: 37, 10
   index: 2
 ride_left
   rotate: false
-  xy: 3278, 3044
+  xy: 3278, 3146
   size: 449, 447
   orig: 512, 512
   offset: 28, 24
   index: 1
 walk_down
   rotate: false
-  xy: 3729, 2989
+  xy: 3729, 3091
   size: 359, 502
   orig: 512, 512
   offset: 81, 0
   index: 1
 walk_down
   rotate: false
-  xy: 441, 1934
+  xy: 441, 2036
   size: 359, 502
   orig: 512, 512
   offset: 72, 0
   index: 3
 walk_up
   rotate: false
-  xy: 441, 1432
+  xy: 441, 1534
   size: 344, 500
   orig: 512, 512
   offset: 84, 0
   index: 1
 walk_up
   rotate: false
-  xy: 441, 930
+  xy: 441, 1032
   size: 344, 500
   orig: 512, 512
   offset: 84, 0
   index: 3
 walk_right
   rotate: false
-  xy: 441, 421
+  xy: 441, 523
   size: 312, 507
   orig: 512, 512
   offset: 84, 0
   index: 2
 warp_pad
   rotate: false
-  xy: 1, 55
+  xy: 1, 157
   size: 367, 174
   orig: 367, 174
   offset: 0, 0
   index: 1
 walk_left
   rotate: false
-  xy: 755, 428
+  xy: 755, 530
   size: 312, 500
   orig: 512, 512
   offset: 116, 0
   index: 1
 ride_right
   rotate: false
-  xy: 3278, 2595
+  xy: 3278, 2697
   size: 449, 447
   orig: 512, 512
   offset: 35, 24
   index: 1
 walk_left
   rotate: false
-  xy: 3729, 2488
+  xy: 3729, 2590
   size: 312, 499
   orig: 512, 512
   offset: 116, 1
   index: 3
 walk_right
   rotate: false
-  xy: 787, 1432
+  xy: 787, 1534
   size: 312, 500
   orig: 512, 512
   offset: 84, 0
   index: 1
 walk_right
   rotate: false
-  xy: 787, 931
+  xy: 787, 1033
   size: 312, 499
   orig: 512, 512
   offset: 84, 1
   index: 3
 explosion
   rotate: false
-  xy: 441, 1
+  xy: 441, 103
   size: 403, 418
   orig: 1024, 1024
   offset: 296, 302
   index: 6
 knife
   rotate: false
-  xy: 846, 51
+  xy: 846, 153
   size: 117, 375
   orig: 117, 375
   offset: 0, 0
   index: -1
 warp_pad
   rotate: false
-  xy: 1124, 2340
+  xy: 1124, 2442
   size: 367, 174
   orig: 367, 174
   offset: 0, 0
   index: 2
+bull_walk_downt
+  rotate: false
+  xy: 965, 332
+  size: 165, 196
+  orig: 256, 256
+  offset: 46, 9
+  index: 1
+bomb
+  rotate: false
+  xy: 965, 146
+  size: 212, 184
+  orig: 256, 256
+  offset: 30, 36
+  index: -1
 bull_walk_right
   rotate: false
-  xy: 810, 2309
+  xy: 810, 2411
   size: 256, 170
   orig: 256, 256
   offset: 0, 6
   index: 1
 bull_walk_right
   rotate: false
-  xy: 802, 2133
+  xy: 802, 2235
   size: 255, 174
   orig: 256, 256
   offset: 1, 2
   index: 3
 bull_walk_right
   rotate: false
-  xy: 802, 1955
+  xy: 802, 2057
   size: 252, 176
   orig: 256, 256
   offset: 4, 6
   index: 2
-bomb
-  rotate: false
-  xy: 965, 242
-  size: 212, 184
-  orig: 256, 256
-  offset: 30, 36
-  index: -1
 bull_charge_right
   rotate: false
-  xy: 965, 78
+  xy: 2394, 2958
   size: 254, 162
   orig: 256, 256
   offset: 2, 23
   index: -1
 bull_stuck_right
   rotate: false
-  xy: 2394, 2856
-  size: 243, 162
-  orig: 256, 256
-  offset: 13, 1
-  index: 2
-bull_stuck_right
-  rotate: false
-  xy: 2639, 2856
+  xy: 2650, 2958
   size: 222, 162
   orig: 256, 256
   offset: 34, 1
   index: 1
+bull_stuck_right
+  rotate: false
+  xy: 2874, 2968
+  size: 243, 162
+  orig: 256, 256
+  offset: 13, 1
+  index: 2
+bull_walk_downt
+  rotate: false
+  xy: 1493, 2420
+  size: 165, 196
+  orig: 256, 256
+  offset: 45, 9
+  index: 3
+boss_projectile
+  rotate: false
+  xy: 1, 39
+  size: 117, 116
+  orig: 128, 128
+  offset: 6, 4
+  index: -1
 bomb_UI
   rotate: false
-  xy: 1, 17
+  xy: 1, 1
   size: 122, 36
   orig: 126, 40
   offset: 4, 2
   index: -1
 health
   rotate: false
-  xy: 4043, 2947
+  xy: 4043, 3049
   size: 42, 40
   orig: 42, 40
   offset: 0, 0

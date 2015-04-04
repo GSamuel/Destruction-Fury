@@ -1,7 +1,6 @@
 package com.dekler.destructionfury.gameobject;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.math.Vector2;
 import com.dekler.destructionfury.level.Level;
 import com.dekler.destructionfury.map.TileEnum;
 
@@ -13,7 +12,6 @@ public class Grenade extends Entity
 	public Grenade(Level level)
 	{
 		super(level);
-		vel = new Vector2();
 		setSize(0.7f, 0.7f);
 		flyingTime = 0.5f;
 		explosionTime = 1f;

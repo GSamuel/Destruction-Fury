@@ -10,6 +10,7 @@ import com.dekler.destructionfury.gameobject.Crate;
 import com.dekler.destructionfury.gameobject.GameObject;
 import com.dekler.destructionfury.gameobject.Grenade;
 import com.dekler.destructionfury.gameobject.Knife;
+import com.dekler.destructionfury.gameobject.Spit;
 import com.dekler.destructionfury.gameobject.WarpPad;
 import com.dekler.destructionfury.level.Level;
 
@@ -60,6 +61,13 @@ public class GameObjectRenderer
 			else if (o instanceof Grenade)
 			{
 				sprite = assetManager.getTexturePack().getSprite("grenade");
+				sprite.setSize(o.getWidth()*tileSize, o.getHeight()*tileSize);
+				sprite.setPosition(o.getX()*tileSize, o.getY()*tileSize);
+				sprite.draw(batch);
+			}
+			else if (o instanceof Spit)
+			{
+				sprite = assetManager.getTexturePack().getSprite("spit");
 				sprite.setSize(o.getWidth()*tileSize, o.getHeight()*tileSize);
 				sprite.setPosition(o.getX()*tileSize, o.getY()*tileSize);
 				sprite.draw(batch);

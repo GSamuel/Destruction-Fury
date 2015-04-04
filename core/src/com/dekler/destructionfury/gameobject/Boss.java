@@ -29,14 +29,14 @@ public class Boss extends Entity
 		mouthOpenTimer = 60;
 
 		Vector2 dir = direction.getDirectionVector();
-		Grenade grenade = new Grenade(level);
-		grenade.setPosition(getX() + getWidth() * 0.5f - grenade.getWidth()
+		Spit spit = new Spit(level);
+		spit.setPosition(getX() + getWidth() * 0.5f - spit.getWidth()
 				* 0.5f + dir.x,
-				getY() + getHeight() * 0.5f - grenade.getHeight() * 0.5f
+				getY() + getHeight() * 0.5f - spit.getHeight() * 0.5f
 						+ dir.y);
-		grenade.setVelX(dir.x * 5);
-		grenade.setVelY(dir.y * 5);
-		level.addObject(grenade);
+		spit.setVelX(dir.x * 5);
+		spit.setVelY(dir.y * 5);
+		level.addObject(spit);
 	}
 
 	public void update()
