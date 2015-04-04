@@ -115,6 +115,9 @@ public class SimpleInputProcessor implements InputProcessor, GestureListener
 				
 			}
 		
+		if(Gdx.input.isKeyJustPressed(Input.Keys.P))
+			level.setPause(!level.paused());
+		
 		return true;
 	}
 
@@ -175,6 +178,9 @@ public class SimpleInputProcessor implements InputProcessor, GestureListener
 
 	public void update()
 	{
+		if(level.paused())
+			return;
+		
 		if (w || a || s || d)
 		{
 			float dx = 0f, dy = 0f;

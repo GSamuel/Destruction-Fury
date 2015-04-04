@@ -20,7 +20,7 @@ import com.dekler.destructionfury.map.TiledMap;
 
 public class Level
 {
-	private boolean reload;
+	private boolean reload, paused;
 	protected Entity player;
 	protected TiledMap map;
 	protected ArrayList<WarpPad> warpPads;
@@ -43,6 +43,7 @@ public class Level
 		crateTargets = new ArrayList<Point>();
 		targets = new HashMap<Point, Boolean>();
 		reload = false;
+		paused = true;
 	}
 
 	public void reset()
@@ -59,6 +60,7 @@ public class Level
 		map = null;
 
 		reload = false;
+		paused = true;
 	}
 
 	public void nextLevel(WarpPad warpPad)
@@ -69,6 +71,7 @@ public class Level
 			nextLevel = levelProperties.getProperty(warpPad.getKey());
 			levelProperties.putProperty("level-name", nextLevel);
 			reload = true;
+			paused = true;
 		}
 		else if (getLevelProperties() != null)
 		{
@@ -77,10 +80,21 @@ public class Level
 			{
 				levelProperties.putProperty("level-name", nextLevel);
 				reload = true;
+				paused  =true;
 			}
 		}
 	}
+		
+	public boolean paused()
+	{
+		return paused;
+	}
 
+	public void setPause(boolean paused)
+	{
+		this.paused = paused;
+	}
+	
 	public boolean reload()
 	{
 		return reload;

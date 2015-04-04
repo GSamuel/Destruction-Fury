@@ -49,7 +49,7 @@ public class DestructionFury extends Game
 		if (propManager.getIntegerProperty("load-level") != 0)
 		{
 			level = new Level();
-			LevelLoaderExporter.loadLevel(level,propManager);
+			LevelLoaderExporter.loadLevel(level, propManager);
 		} else
 		{
 			level = new SimpleLevel();
@@ -100,10 +100,11 @@ public class DestructionFury extends Game
 	@Override
 	public void render()
 	{
-		if(level.reload())
+		if (level.reload())
 			LevelLoaderExporter.loadLevel(level, propManager);
 		iProcessor.update();
-		level.update();
+		if (!level.paused())
+			level.update();
 		levelRenderer.render();
 	}
 
