@@ -5,284 +5,326 @@ filter: Nearest,Nearest
 repeat: none
 explosion
   rotate: false
-  xy: 1, 1494
+  xy: 1, 3465
   size: 614, 528
   orig: 1024, 1024
   offset: 161, 221
   index: 2
 explosion
   rotate: false
-  xy: 1, 840
+  xy: 1, 2811
   size: 418, 652
   orig: 1024, 1024
   offset: 288, 280
   index: 5
 explosion
   rotate: false
-  xy: 617, 1520
+  xy: 617, 3491
   size: 528, 502
   orig: 1024, 1024
   offset: 212, 234
   index: 1
-belangrijk
-  rotate: false
-  xy: 1147, 1510
-  size: 512, 512
-  orig: 512, 512
-  offset: 0, 0
-  index: -1
 tile_floor
   rotate: false
-  xy: 1661, 1510
+  xy: 1147, 3481
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: 1
+tile_floor
+  rotate: false
+  xy: 1661, 3481
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 2
 explosion
   rotate: false
-  xy: 1, 249
+  xy: 1, 2220
   size: 423, 589
   orig: 1024, 1024
   offset: 288, 262
   index: 4
 boss_walk_right
   rotate: false
-  xy: 2175, 1522
+  xy: 2175, 3493
   size: 477, 500
   orig: 512, 512
   offset: 29, 9
   index: 1
 boss_walk_right
   rotate: false
-  xy: 2654, 1522
+  xy: 2654, 3493
   size: 477, 500
   orig: 512, 512
   offset: 29, 9
   index: 2
 boss_walk_right
   rotate: false
-  xy: 3133, 1522
+  xy: 3133, 3493
   size: 477, 500
   orig: 512, 512
   offset: 29, 9
   index: 3
 boss_open_right
   rotate: false
-  xy: 3612, 1522
+  xy: 3612, 3493
   size: 473, 500
   orig: 512, 512
   offset: 29, 9
   index: -1
+boss_walk_down
+  rotate: false
+  xy: 1, 1720
+  size: 438, 498
+  orig: 512, 512
+  offset: 37, 2
+  index: 1
+boss_walk_down
+  rotate: false
+  xy: 1, 1220
+  size: 438, 498
+  orig: 512, 512
+  offset: 37, 2
+  index: 3
+boss_open_up
+  rotate: false
+  xy: 1, 723
+  size: 438, 495
+  orig: 512, 512
+  offset: 37, 10
+  index: -1
+boss_open_down
+  rotate: false
+  xy: 1, 231
+  size: 438, 490
+  orig: 512, 512
+  offset: 37, 10
+  index: -1
 walk_up
   rotate: false
-  xy: 421, 980
+  xy: 421, 2951
   size: 344, 512
   orig: 512, 512
   offset: 84, 0
   index: 2
 ride_up
   rotate: false
-  xy: 767, 1019
+  xy: 767, 2990
   size: 376, 499
   orig: 512, 512
   offset: 68, 13
   index: 1
-boss_open_down
+boss_walk_down
   rotate: false
-  xy: 1145, 1018
+  xy: 1145, 2989
   size: 438, 490
   orig: 512, 512
   offset: 37, 10
-  index: -1
-boss_open_up
+  index: 2
+explosion
   rotate: false
-  xy: 1585, 1013
-  size: 438, 495
-  orig: 512, 512
-  offset: 37, 10
-  index: -1
+  xy: 1585, 2992
+  size: 429, 487
+  orig: 1024, 1024
+  offset: 288, 262
+  index: 3
 walk_down
   rotate: false
-  xy: 426, 467
+  xy: 426, 2438
   size: 382, 511
   orig: 512, 512
   offset: 65, 0
   index: 2
 walk_left
   rotate: false
-  xy: 810, 510
+  xy: 810, 2481
   size: 312, 507
   orig: 512, 512
   offset: 116, 0
   index: 2
-boss_walk_down
-  rotate: false
-  xy: 1124, 518
-  size: 438, 498
-  orig: 512, 512
-  offset: 37, 2
-  index: 1
-boss_walk_down
-  rotate: false
-  xy: 1564, 513
-  size: 438, 498
-  orig: 512, 512
-  offset: 37, 2
-  index: 3
-walk_down
-  rotate: false
-  xy: 2025, 1006
-  size: 359, 502
-  orig: 512, 512
-  offset: 81, 0
-  index: 1
-boss_walk_down
-  rotate: false
-  xy: 2386, 1030
-  size: 438, 490
-  orig: 512, 512
-  offset: 37, 10
-  index: 2
-explosion
-  rotate: false
-  xy: 2826, 1033
-  size: 429, 487
-  orig: 1024, 1024
-  offset: 288, 262
-  index: 3
 boss_walk_up
   rotate: false
-  xy: 3257, 1049
+  xy: 1124, 2516
   size: 442, 471
   orig: 512, 512
   offset: 36, 0
   index: 1
 ride_down
   rotate: false
-  xy: 3701, 1032
+  xy: 2016, 2991
   size: 376, 488
   orig: 512, 512
   offset: 68, 24
   index: 1
 boss_walk_up
   rotate: false
-  xy: 2004, 533
+  xy: 2394, 3020
   size: 442, 471
   orig: 512, 512
   offset: 34, 0
   index: 3
-walk_down
-  rotate: false
-  xy: 2448, 526
-  size: 359, 502
-  orig: 512, 512
-  offset: 72, 0
-  index: 3
 boss_walk_up
   rotate: false
-  xy: 426, 4
+  xy: 2838, 3030
   size: 438, 461
   orig: 512, 512
   offset: 37, 10
   index: 2
-walk_right
-  rotate: false
-  xy: 866, 1
-  size: 312, 507
-  orig: 512, 512
-  offset: 84, 0
-  index: 2
-walk_up
-  rotate: false
-  xy: 1180, 16
-  size: 344, 500
-  orig: 512, 512
-  offset: 84, 0
-  index: 1
 ride_left
   rotate: false
-  xy: 1526, 64
+  xy: 3278, 3044
   size: 449, 447
   orig: 512, 512
   offset: 28, 24
   index: 1
+walk_down
+  rotate: false
+  xy: 3729, 2989
+  size: 359, 502
+  orig: 512, 512
+  offset: 81, 0
+  index: 1
+walk_down
+  rotate: false
+  xy: 441, 1934
+  size: 359, 502
+  orig: 512, 512
+  offset: 72, 0
+  index: 3
+walk_up
+  rotate: false
+  xy: 441, 1432
+  size: 344, 500
+  orig: 512, 512
+  offset: 84, 0
+  index: 1
+walk_up
+  rotate: false
+  xy: 441, 930
+  size: 344, 500
+  orig: 512, 512
+  offset: 84, 0
+  index: 3
+walk_right
+  rotate: false
+  xy: 441, 421
+  size: 312, 507
+  orig: 512, 512
+  offset: 84, 0
+  index: 2
 warp_pad
   rotate: false
-  xy: 1, 73
+  xy: 1, 55
   size: 367, 174
   orig: 367, 174
   offset: 0, 0
   index: 1
 walk_left
   rotate: false
-  xy: 2809, 528
+  xy: 755, 428
   size: 312, 500
   orig: 512, 512
   offset: 116, 0
   index: 1
-walk_right
-  rotate: false
-  xy: 3123, 531
-  size: 312, 500
-  orig: 512, 512
-  offset: 84, 0
-  index: 1
 ride_right
   rotate: false
-  xy: 3437, 583
+  xy: 3278, 2595
   size: 449, 447
   orig: 512, 512
   offset: 35, 24
   index: 1
-knife
-  rotate: false
-  xy: 3888, 655
-  size: 117, 375
-  orig: 117, 375
-  offset: 0, 0
-  index: -1
 walk_left
   rotate: false
-  xy: 1977, 12
+  xy: 3729, 2488
   size: 312, 499
   orig: 512, 512
   offset: 116, 1
   index: 3
-walk_up
-  rotate: false
-  xy: 2291, 24
-  size: 344, 500
-  orig: 512, 512
-  offset: 84, 0
-  index: 3
 walk_right
   rotate: false
-  xy: 2637, 25
+  xy: 787, 1432
+  size: 312, 500
+  orig: 512, 512
+  offset: 84, 0
+  index: 1
+walk_right
+  rotate: false
+  xy: 787, 931
   size: 312, 499
   orig: 512, 512
   offset: 84, 1
   index: 3
 explosion
   rotate: false
-  xy: 2951, 108
+  xy: 441, 1
   size: 403, 418
   orig: 1024, 1024
   offset: 296, 302
   index: 6
+knife
+  rotate: false
+  xy: 846, 51
+  size: 117, 375
+  orig: 117, 375
+  offset: 0, 0
+  index: -1
 warp_pad
   rotate: false
-  xy: 3437, 407
+  xy: 1124, 2340
   size: 367, 174
   orig: 367, 174
   offset: 0, 0
   index: 2
+bull_walk_right
+  rotate: false
+  xy: 810, 2309
+  size: 256, 170
+  orig: 256, 256
+  offset: 0, 6
+  index: 1
+bull_walk_right
+  rotate: false
+  xy: 802, 2133
+  size: 255, 174
+  orig: 256, 256
+  offset: 1, 2
+  index: 3
+bull_walk_right
+  rotate: false
+  xy: 802, 1955
+  size: 252, 176
+  orig: 256, 256
+  offset: 4, 6
+  index: 2
 bomb
   rotate: false
-  xy: 3356, 221
+  xy: 965, 242
   size: 212, 184
   orig: 256, 256
   offset: 30, 36
   index: -1
+bull_charge_right
+  rotate: false
+  xy: 965, 78
+  size: 254, 162
+  orig: 256, 256
+  offset: 2, 23
+  index: -1
+bull_stuck_right
+  rotate: false
+  xy: 2394, 2856
+  size: 243, 162
+  orig: 256, 256
+  offset: 13, 1
+  index: 2
+bull_stuck_right
+  rotate: false
+  xy: 2639, 2856
+  size: 222, 162
+  orig: 256, 256
+  offset: 34, 1
+  index: 1
 
 destructionFury2.png
 format: RGBA8888

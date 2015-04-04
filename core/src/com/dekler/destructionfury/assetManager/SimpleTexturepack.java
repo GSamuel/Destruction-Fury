@@ -21,7 +21,6 @@ public class SimpleTexturepack implements TexturePack
 		sprites.put("warp2", new Sprite(assetLoader.getRegion("warp2")));
 		sprites.put("knife", new Sprite(assetLoader.getRegion("knife")));
 		sprites.put("crate", new Sprite(assetLoader.getRegion("wooden_crate_front")));
-		sprites.put("skateboard", new Sprite(assetLoader.getRegion("skateboard")));
 		sprites.put("grenade", new Sprite(assetLoader.getRegion("grenade")));
 	}
 	
