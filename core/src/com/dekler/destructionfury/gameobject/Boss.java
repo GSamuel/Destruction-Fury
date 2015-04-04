@@ -1,6 +1,9 @@
 package com.dekler.destructionfury.gameobject;
 
+import javafx.geometry.Rectangle2D;
+
 import com.badlogic.gdx.math.Vector2;
+import com.dekler.destructionfury.collision.Collision;
 import com.dekler.destructionfury.level.Level;
 import com.dekler.destructionfury.map.TileEnum;
 
@@ -8,13 +11,24 @@ public class Boss extends Entity
 {
 	private int nextAttackTimer;
 	private int mouthOpenTimer;
+	private Rectangle2D hitLeft, hitRight, hitUp, hitDown;
 
 	public Boss(Level level)
 	{
 		super(level);
 		this.setSize(1.9f, 1.9f);
 		this.moveDown();
-		health = 2;
+		health = 3;
+		}
+	
+	private void updateHitBox()
+	{
+		hitLeft = new Rectangle2D(getX(), getY()+getHeight()*0.25f, getWidth() * 0.25f,
+				getHeight()*0.5f);
+		hitRight = new Rectangle2D(getX()+getWidth()*0.75f, getY()+getHeight()*0.25f, getWidth()*0.25f, getHeight()*0.5f);
+	
+		hitUp = new Rectangle2D(getX()+getWidth()*0.25f, getY()+getHeight()*0.75f, getWidth()*0.5f, getHeight()*0.25f);
+		hitDown = new Rectangle2D(getX()+getWidth()*0.25f, getY(), getWidth()*0.5f, getHeight()*0.25f);
 	}
 
 	public boolean mouthIsOpen()
@@ -30,10 +44,9 @@ public class Boss extends Entity
 
 		Vector2 dir = direction.getDirectionVector();
 		Spit spit = new Spit(level);
-		spit.setPosition(getX() + getWidth() * 0.5f - spit.getWidth()
-				* 0.5f + dir.x,
-				getY() + getHeight() * 0.5f - spit.getHeight() * 0.5f
-						+ dir.y);
+		spit.setPosition(getX() + getWidth() * 0.5f - spit.getWidth() * 0.5f
+				+ dir.x, getY() + getHeight() * 0.5f - spit.getHeight() * 0.5f
+				+ dir.y);
 		spit.setVelX(dir.x * 5);
 		spit.setVelY(dir.y * 5);
 		level.addObject(spit);
@@ -49,6 +62,8 @@ public class Boss extends Entity
 
 		if (nextAttackTimer < 0)
 			attack();
+
+		updateHitBox();
 	}
 
 	@Override
@@ -82,10 +97,31 @@ public class Boss extends Entity
 		if (o instanceof Grenade)
 		{
 			Grenade g = (Grenade) o;
-			if (g.isFlying())
+			if (g.isFlying() && mouthIsOpen())
 			{
-				o.remove();
-				super.damage(1);
+				boolean mouthHit = false;
+				switch(direction)
+				{
+				case LEFT: 
+					mouthHit = Collision.collision(g, hitLeft);
+					break;
+				case RIGHT: 
+					mouthHit = Collision.collision(g, hitRight);
+					break;
+				case UP: 
+					mouthHit = Collision.collision(g, hitUp);
+					break;
+				case DOWN: 
+					mouthHit = Collision.collision(g, hitDown);
+					break;
+				}
+				
+				if (mouthHit)
+				{
+					o.remove();
+					super.damage(1);
+				}
+
 			}
 		}
 	}

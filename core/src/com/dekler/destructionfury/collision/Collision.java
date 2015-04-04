@@ -112,6 +112,14 @@ public class Collision
 				a.onGameObjectCollision(b);
 		}
 	}
+	
+	public static boolean collision(GameObject a, Rectangle2D recB)
+	{
+		Rectangle2D recA = new Rectangle2D(a.getX(), a.getY(), a.getWidth(),
+				a.getHeight());
+
+		return recA.intersects(recB);
+	}
 
 	public static void collision(GameObject a, GameObject b)
 	{
