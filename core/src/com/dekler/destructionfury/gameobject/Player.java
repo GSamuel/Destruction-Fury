@@ -60,6 +60,7 @@ public class Player extends Entity
 			grenade.setVelX(dir.x*5);
 			grenade.setVelY(dir.y*5);
 			level.addObject(grenade);
+			altAttackTime = 200;
 		}
 	}
 
