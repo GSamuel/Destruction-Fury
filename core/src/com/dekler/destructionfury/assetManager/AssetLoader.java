@@ -42,6 +42,9 @@ public class AssetLoader implements Disposable
 		//walk down
 		textureAtlas = new TextureAtlas(Gdx.files.internal("destructionFury.pack"));
 		atlasses.add(textureAtlas);
+
+		tiles.put("health", textureAtlas.findRegion("health"));
+		tiles.put("bomb_ui", textureAtlas.findRegion("bomb_UI"));
 		
 
 		tiles.put("floor", textureAtlas.findRegion("tile_floor", 1));

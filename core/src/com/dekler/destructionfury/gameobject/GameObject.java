@@ -23,6 +23,11 @@ public abstract class GameObject
 		health = 1;
 	}
 	
+	public int getHealth()
+	{
+		return health;
+	}
+	
 	public boolean getRemove()
 	{
 		return remove;
