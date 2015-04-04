@@ -81,6 +81,9 @@ public class DestructionFury extends Game
 		properties.put("cratefloor-color", "" + 200 + "," + 140 + "," + 0);
 		properties.put("cratetarget-color", "" + 255 + "," + 0 + "," + 255);
 		properties.put("warppad-color", "" + 0 + "," + 0 + "," + 255);
+		properties.put("boss1-color", "" + 127 + "," + 0 + "," + 0);
+		properties.put("boss2-color", "" + 0 + "," + 127 + "," + 0);
+		properties.put("boss3-color", "" + 0 + "," + 0 + "," + 127);
 
 		propManager = new PropertyManager("settings.properties", properties);
 		propManager.readPropertyFile();

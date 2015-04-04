@@ -45,6 +45,7 @@ public class AssetLoader implements Disposable
 		
 
 		tiles.put("floor", textureAtlas.findRegion("tile_floor", 1));
+		tiles.put("crate_floor", textureAtlas.findRegion("tile_floor",2));
 		tiles.put("warp1", textureAtlas.findRegion("warp_pad", 1));
 		tiles.put("warp2", textureAtlas.findRegion("warp_pad", 2));
 		tiles.put("knife", textureAtlas.findRegion("knife"));
@@ -154,6 +155,17 @@ public class AssetLoader implements Disposable
 
 		animations.put("boss_right", new Animation(frameTime, walkRightFrames));
 		animations.put("boss_left", new Animation(frameTime, walkLeftFrames));
+
+		TextureRegion[] mouthOpenRight = {textureAtlas.findRegion("boss_open_right")};
+		TextureRegion[] mouthOpenLeft = {new TextureRegion(mouthOpenRight[0])};
+		mouthOpenLeft[0].flip(true, false);
+		TextureRegion[] mouthOpenUp = {textureAtlas.findRegion("boss_open_up")};
+		TextureRegion[] mouthOpenDown = {textureAtlas.findRegion("boss_open_down")};
+
+		animations.put("boss_right_mouth",new Animation(frameTime, mouthOpenRight));
+		animations.put("boss_left_mouth",new Animation(frameTime, mouthOpenLeft));
+		animations.put("boss_up_mouth",new Animation(frameTime, mouthOpenUp));
+		animations.put("boss_down_mouth",new Animation(frameTime, mouthOpenDown));
 	}
 	
 	private void loadExplosionAnimation(TextureAtlas textureAtlas)

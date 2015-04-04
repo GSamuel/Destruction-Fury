@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Pixmap.Format;
 import com.badlogic.gdx.graphics.PixmapIO;
+import com.dekler.destructionfury.gameobject.Boss;
 import com.dekler.destructionfury.gameobject.Crate;
 import com.dekler.destructionfury.gameobject.GameObject;
 import com.dekler.destructionfury.gameobject.Player;
@@ -67,6 +68,10 @@ public class LevelLoaderExporter
 			{
 				pic.setColor(propManager.getColorProperty("warppad-color"));
 				pic.drawPixel(o.getIntX(), map.getHeight()- o.getIntY()-1);
+			} else if (o instanceof Boss)
+			{
+				pic.setColor(propManager.getColorProperty("boss1-color"));
+				pic.drawPixel(o.getIntX(), map.getHeight()- o.getIntY()-1);
 			}
 		}
 
@@ -106,6 +111,11 @@ public class LevelLoaderExporter
 					Robot robot = new Robot(level);
 					robot.setPosition(i, j);
 					level.addEntity(robot);
+				}else if(pixel == Color.rgba8888(propManager.getColorProperty("boss1-color")))
+				{
+					Boss b = new Boss(level);
+					b.setPosition(i, j);
+					level.addEntity(b);
 				}else if(pixel == Color.rgba8888(propManager.getColorProperty("crate-color")))
 				{
 					Crate crate = new Crate(level);

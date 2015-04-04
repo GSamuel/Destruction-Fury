@@ -14,8 +14,8 @@ public class Collision
 {
 	public static void collision(GameObject o, TiledMap map, TileEnum tile)
 	{
-		for (int i = -1; i < 2; i++)
-			for (int j = -1; j < 2; j++)
+		for (int i = -1; i < 3; i++)
+			for (int j = -1; j < 3; j++)
 			{
 				int newX = o.getIntX() + i;
 				int newY = o.getIntY() + j;

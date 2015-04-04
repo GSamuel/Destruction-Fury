@@ -6,7 +6,6 @@ import com.dekler.destructionfury.map.TileEnum;
 
 public class Player extends Entity
 {
-
 	private int attackTime;
 	private int altAttackTime;
 
@@ -20,7 +19,7 @@ public class Player extends Entity
 	@Override
 	public void onGameObjectCollision(GameObject o)
 	{
-		if (o instanceof Robot && damageTimer <= 0)
+		if ((o instanceof Robot || o instanceof Boss )&& damageTimer <= 0)
 		{
 			Vector2 diff = new Vector2(getX() - o.getX(), getY() - o.getY());
 			diff.setLength(2.6f);

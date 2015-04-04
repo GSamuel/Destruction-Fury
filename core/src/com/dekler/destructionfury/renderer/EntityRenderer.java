@@ -34,12 +34,36 @@ public class EntityRenderer
 				aniPack = assetManager.getAnimationPack("player");
 			if(e instanceof Robot)
 				aniPack = assetManager.getAnimationPack("robot");
-			if(e instanceof Boss)
-				aniPack = assetManager.getAnimationPack("boss");
 			if(aniPack == null)
 				aniPack = assetManager.getAnimationPack("player");
+
+			Animation ani = null;
 			
-			Animation ani;
+			if(e instanceof Boss)
+			{
+				Boss b = (Boss) e;
+				aniPack = assetManager.getAnimationPack("boss");
+				if(b.mouthIsOpen())switch (e.getDirection())
+				{
+				case DOWN:
+					ani = aniPack.getAnimation(AnimationEnum.ATTACK_DOWN);
+					break;
+				case LEFT:
+					ani = aniPack.getAnimation(AnimationEnum.ATTACK_LEFT);
+					break;
+				case RIGHT:
+					ani = aniPack.getAnimation(AnimationEnum.ATTACK_RIGHT);
+					break;
+				case UP:
+					ani = aniPack.getAnimation(AnimationEnum.ATTACK_UP);
+					break;
+				default:
+					ani = aniPack.getAnimation(AnimationEnum.ATTACK_DOWN);
+					break;
+				}
+					
+			}
+			if(ani == null)
 			switch (e.getDirection())
 			{
 			case DOWN:
@@ -64,12 +88,19 @@ public class EntityRenderer
 			int hurtTime = e.getDamageTimer();
 			if(hurtTime>0)
 				sprite.setColor(Color.RED);
-			sprite.setScale(1.0f * tileSize / 512);
+			if(e instanceof Boss)
+				sprite.setScale(1.0f * tileSize / 256);
+			else
+				sprite.setScale(1.0f * tileSize / 512);
 			sprite.setPosition(e.getX() * tileSize + tileSize * 0.5f, e.getY()
 					* tileSize);
 			sprite.translate(-sprite.getWidth() * 0.5f,
 					(-sprite.getHeight() + (sprite.getHeight() * sprite
 							.getScaleY())) * 0.5f);
+			
+			if(e instanceof Boss)
+				sprite.translate(0.5f * tileSize, 0);
+			
 			sprite.draw(batch);
 
 		}

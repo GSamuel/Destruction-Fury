@@ -14,7 +14,7 @@ public class SimpleTexturepack implements TexturePack
 		sprites = new HashMap<String, Sprite>();
 		sprites.put("floor", new Sprite(assetLoader.getRegion("floor")));
 		sprites.put("wall", new Sprite(assetLoader.getRegion("stone")));
-		sprites.put("crate_floor", new Sprite(assetLoader.getRegion("grass")));
+		sprites.put("crate_floor", new Sprite(assetLoader.getRegion("crate_floor")));
 		sprites.put("crate_target", new Sprite(assetLoader.getRegion("wood")));
 		
 		sprites.put("warp1", new Sprite(assetLoader.getRegion("warp1")));
