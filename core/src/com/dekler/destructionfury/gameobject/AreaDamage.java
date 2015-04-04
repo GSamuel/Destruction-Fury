@@ -4,50 +4,40 @@ import com.badlogic.gdx.Gdx;
 import com.dekler.destructionfury.level.Level;
 import com.dekler.destructionfury.map.TileEnum;
 
-public class Explosion extends GameObject
+public class AreaDamage extends GameObject
 {
-	private String aniName;
-	private float time;
-	
-	public Explosion(Level level)
+	private float duration;
+	public AreaDamage(Level level, float duration)
 	{
 		super(level);
-		this.aniName = "explosion";
-	}
-	
-	public String getAniName()
-	{
-		return aniName;
+		this.duration = duration;
 	}
 
+	@Override
 	public void update()
 	{
-		time += Gdx.graphics.getDeltaTime();
-	}
-	
-	public float getTime()
-	{
-		return time;
+		duration -= Gdx.graphics.getDeltaTime();
+		if(duration < 0)
+			remove();
+		
 	}
 
 	@Override
 	public void onTileCollision(TileEnum t, float x, float y)
 	{
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void onGameObjectCollision(GameObject o)
 	{
-		// TODO Auto-generated method stub
-		
+		o.damage(1);
 	}
 
 	@Override
 	public void damage(int damage)
 	{
-		// TODO Auto-generated method stub
 		
 	}
+
 }

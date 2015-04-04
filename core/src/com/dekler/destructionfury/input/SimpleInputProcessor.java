@@ -15,7 +15,7 @@ public class SimpleInputProcessor implements InputProcessor, GestureListener
 	private Level level;
 	private PropertyManager propManager;
 
-	private boolean w, a, s, d, space;
+	private boolean w, a, s, d, g, space;
 
 	public SimpleInputProcessor(Level level, PropertyManager propManager)
 	{
@@ -91,6 +91,7 @@ public class SimpleInputProcessor implements InputProcessor, GestureListener
 		a = Gdx.input.isKeyPressed(Input.Keys.A);
 		s = Gdx.input.isKeyPressed(Input.Keys.S);
 		d = Gdx.input.isKeyPressed(Input.Keys.D);
+		g = Gdx.input.isKeyPressed(Input.Keys.G);
 		space = Gdx.input.isKeyPressed(Input.Keys.SPACE);
 		
 		
@@ -124,6 +125,7 @@ public class SimpleInputProcessor implements InputProcessor, GestureListener
 		a = Gdx.input.isKeyPressed(Input.Keys.A);
 		s = Gdx.input.isKeyPressed(Input.Keys.S);
 		d = Gdx.input.isKeyPressed(Input.Keys.D);
+		g = Gdx.input.isKeyPressed(Input.Keys.G);
 		space = Gdx.input.isKeyPressed(Input.Keys.SPACE);
 
 		return true;
@@ -209,6 +211,9 @@ public class SimpleInputProcessor implements InputProcessor, GestureListener
 		{
 			level.getPlayer().attack();
 		}
+		
+		if(g)
+			level.getPlayer().altAttack();
 	}
 
 }

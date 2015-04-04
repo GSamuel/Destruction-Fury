@@ -93,9 +93,9 @@ public class Level
 		this.levelProperties = levelProperties;
 	}
 
-	public Entity getPlayer()
+	public Player getPlayer()
 	{
-		return player;
+		return (Player) player;
 	}
 
 	public void addPlayer(int x, int y)

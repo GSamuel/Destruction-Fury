@@ -8,6 +8,8 @@ public class Player extends Entity
 {
 
 	private int attackTime;
+	private int altAttackTime;
+	private int grenadeAmmo = 3;
 
 	public Player(Level level)
 	{
@@ -15,6 +17,11 @@ public class Player extends Entity
 		this.setSize(0.9f, 0.9f);
 		this.health = 4;
 		this.speed = 3f;
+	}
+	
+	public int getBombAmmo()
+	{
+		return grenadeAmmo;
 	}
 	
 	@Override
@@ -36,6 +43,7 @@ public class Player extends Entity
 	{
 		super.update();
 		attackTime--;
+		altAttackTime--;
 	}
 
 	@Override
@@ -46,6 +54,21 @@ public class Player extends Entity
 			Knife knife = new Knife(level);
 			level.addHurtable(knife);
 			attackTime = 30;
+		}
+	}
+	
+	public void altAttack()
+	{
+		if (grenadeAmmo>0 && altAttackTime <= 0)
+		{
+			Vector2 dir = direction.getDirectionVector();
+			Grenade grenade = new Grenade(level);
+			grenade.setPosition(getX()+getWidth()*0.5f- grenade.getWidth()*0.5f+dir.x, getY()+getHeight()*0.5f-grenade.getHeight()*0.5f+dir.y);
+			grenade.setVelX(dir.x*5);
+			grenade.setVelY(dir.y*5);
+			level.addObject(grenade);
+			altAttackTime = 30;
+			grenadeAmmo --;
 		}
 	}
 

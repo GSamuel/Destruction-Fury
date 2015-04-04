@@ -93,7 +93,9 @@ public abstract class Entity extends GameObject
 	{
 		if (health <= 0)
 		{
-			level.addEffect(new Explosion(getX(), getY()));
+			Explosion exp = new Explosion(level);
+			exp.setPosition(getX(), getY());
+			level.addEffect(exp);
 			remove();
 			return;
 		}

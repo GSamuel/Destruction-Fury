@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.dekler.destructionfury.assetManager.AssetManager;
 import com.dekler.destructionfury.gameobject.Crate;
 import com.dekler.destructionfury.gameobject.GameObject;
+import com.dekler.destructionfury.gameobject.Grenade;
 import com.dekler.destructionfury.gameobject.Knife;
 import com.dekler.destructionfury.gameobject.WarpPad;
 import com.dekler.destructionfury.level.Level;
@@ -53,6 +54,13 @@ public class GameObjectRenderer
 			{
 				sprite = assetManager.getTexturePack().getSprite("crate");
 				sprite.setSize(o.getHeight()*tileSize, o.getHeight()*tileSize);
+				sprite.setPosition(o.getX()*tileSize, o.getY()*tileSize);
+				sprite.draw(batch);
+			}
+			else if (o instanceof Grenade)
+			{
+				sprite = assetManager.getTexturePack().getSprite("grenade");
+				sprite.setSize(o.getWidth()*tileSize, o.getHeight()*tileSize);
 				sprite.setPosition(o.getX()*tileSize, o.getY()*tileSize);
 				sprite.draw(batch);
 			}
