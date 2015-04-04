@@ -218,6 +218,7 @@ public class Level
 				Crate crate = (Crate) o;
 				Collision.collisionV2(crate,player);
 				Collision.collision(o, map, TileEnum.FLOOR);
+				Collision.collision(o, map, TileEnum.WALL);
 				for (GameObject o2 : objects)
 					if (o2 instanceof Crate && o != o2)
 						Collision.collisionV2(o, o2);
