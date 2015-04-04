@@ -6,15 +6,21 @@ import com.dekler.destructionfury.map.TileEnum;
 
 public class Player extends Entity
 {
-	private int attackTime;
-	private int altAttackTime;
+	private Cooldown attackCD, altAttackCD;
 
 	public Player(Level level)
 	{
 		super(level);
 		this.setSize(0.9f, 0.9f);
+		attackCD = new Cooldown(0.5f);
+		altAttackCD = new Cooldown(5f);
 		this.health = 4;
 		this.speed = 3f;
+	}
+	
+	public float getAltAttackCooldown()
+	{
+		return altAttackCD.percentageDone();
 	}
 	@Override
 	public void onGameObjectCollision(GameObject o)
@@ -34,24 +40,24 @@ public class Player extends Entity
 	public void update()
 	{
 		super.update();
-		attackTime--;
-		altAttackTime--;
+		attackCD.update();
+		altAttackCD.update();
 	}
 
 	@Override
 	public void attack()
 	{
-		if (attackTime <= 0)
+		if (attackCD.cooldownOver())
 		{
 			Knife knife = new Knife(level);
 			level.addHurtable(knife);
-			attackTime = 30;
+			attackCD.start();
 		}
 	}
 	
 	public void altAttack()
 	{
-		if (altAttackTime <= 0)
+		if (altAttackCD.cooldownOver())
 		{
 			Vector2 dir = direction.getDirectionVector();
 			Grenade grenade = new Grenade(level);
@@ -59,7 +65,7 @@ public class Player extends Entity
 			grenade.setVelX(dir.x*5);
 			grenade.setVelY(dir.y*5);
 			level.addObject(grenade);
-			altAttackTime = 200;
+			altAttackCD.start();
 		}
 	}
 
