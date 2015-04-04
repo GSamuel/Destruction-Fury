@@ -1,5 +1,6 @@
 package com.dekler.destructionfury.gameobject;
 
+import com.badlogic.gdx.math.Vector2;
 import com.dekler.destructionfury.level.Level;
 import com.dekler.destructionfury.map.TileEnum;
 
@@ -26,16 +27,26 @@ public class Boss extends Entity
 	{
 		nextAttackTimer = 300;
 		mouthOpenTimer = 60;
+
+		Vector2 dir = direction.getDirectionVector();
+		Grenade grenade = new Grenade(level);
+		grenade.setPosition(getX() + getWidth() * 0.5f - grenade.getWidth()
+				* 0.5f + dir.x,
+				getY() + getHeight() * 0.5f - grenade.getHeight() * 0.5f
+						+ dir.y);
+		grenade.setVelX(dir.x * 5);
+		grenade.setVelY(dir.y * 5);
+		level.addObject(grenade);
 	}
 
 	public void update()
 	{
 		if (mouthOpenTimer < 0)
 			super.update();
-		
+
 		mouthOpenTimer--;
 		nextAttackTimer--;
-		
+
 		if (nextAttackTimer < 0)
 			attack();
 	}
@@ -58,10 +69,25 @@ public class Boss extends Entity
 	}
 
 	@Override
+	public void damage(int damage)
+	{
+
+	}
+
+	@Override
 	public void onGameObjectCollision(GameObject o)
 	{
 		if (o instanceof Crate)
 			onTileCollision(TileEnum.WALL, o.getX(), o.getY());
+		if (o instanceof Grenade)
+		{
+			Grenade g = (Grenade) o;
+			if (g.isFlying())
+			{
+				o.remove();
+				super.damage(1);
+			}
+		}
 	}
 
 }
