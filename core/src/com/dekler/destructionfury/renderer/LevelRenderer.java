@@ -1,8 +1,12 @@
 package com.dekler.destructionfury.renderer;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Disposable;
@@ -24,6 +28,8 @@ public class LevelRenderer implements Disposable
 	private Vector2 minCamPos;
 	private Vector2 maxCamPos;
 	private AssetManager assetManager;
+
+	private static ShapeRenderer shapeRenderer = new ShapeRenderer();
 
 	public LevelRenderer(Stage stage, Level level, AssetManager assetManager)
 	{
@@ -54,7 +60,7 @@ public class LevelRenderer implements Disposable
 			camera.position.x = minCamPos.x;
 		else if (camera.position.x > maxCamPos.x)
 			camera.position.x = maxCamPos.x;
-		
+
 		if (camera.position.y < minCamPos.y)
 			camera.position.y = minCamPos.y;
 		else if (camera.position.y > maxCamPos.y)
@@ -64,14 +70,29 @@ public class LevelRenderer implements Disposable
 
 		MapRenderer.render(level, batch, camera, assetManager.getTexturePack(),
 				TILE_SIZE);
-		GameObjectRenderer.render(level, batch, camera, assetManager, TILE_SIZE);
+		GameObjectRenderer
+				.render(level, batch, camera, assetManager, TILE_SIZE);
 		EntityRenderer.render(level, batch, camera, assetManager, TILE_SIZE);
-		
+
 		EffectRenderer.render(level, batch, camera, assetManager, TILE_SIZE);
-		
+
 		HitBoxRenderer.render(level, batch, camera, assetManager, TILE_SIZE);
-		
+
 		UIRenderer.render(level, batch, camera, assetManager, TILE_SIZE);
+
+		// when paused
+		if (level.paused())
+		{
+			shapeRenderer.setProjectionMatrix(camera.combined);
+			Gdx.gl.glEnable(GL20.GL_BLEND);
+			batch.begin();
+			shapeRenderer.setColor(new Color(0, 0, 0, 0.7f));
+			shapeRenderer.begin(ShapeType.Filled);
+			shapeRenderer.rect(camera.position.x-Gdx.graphics.getWidth()*0.5f, camera.position.y - Gdx.graphics.getHeight()*0.5f, Gdx.graphics.getWidth(),
+					Gdx.graphics.getHeight());
+			shapeRenderer.end();
+			batch.end();
+		}
 	}
 
 	@Override
