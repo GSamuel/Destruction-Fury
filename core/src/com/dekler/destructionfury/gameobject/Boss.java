@@ -9,8 +9,10 @@ import com.dekler.destructionfury.map.TileEnum;
 
 public class Boss extends Entity
 {
-	private int nextAttackTimer;
-	private int mouthOpenTimer;
+	private Cooldown nextAttackCD;
+	private Cooldown nextSpitCD;
+	private Cooldown mouthOpenCD;
+	
 	private Rectangle2D hitLeft, hitRight, hitUp, hitDown;
 
 	public Boss(Level level)
@@ -19,7 +21,12 @@ public class Boss extends Entity
 		this.setSize(1.9f, 1.9f);
 		this.moveDown();
 		health = 3;
-		}
+		
+		nextAttackCD = new Cooldown(6f);
+		nextSpitCD = new Cooldown(1f);
+		mouthOpenCD = new Cooldown(2f);
+		
+	}
 	
 	private void updateHitBox()
 	{
@@ -33,15 +40,19 @@ public class Boss extends Entity
 
 	public boolean mouthIsOpen()
 	{
-		return mouthOpenTimer > 0;
+		return !mouthOpenCD.cooldownOver();
 	}
 
 	@Override
 	public void attack()
 	{
-		nextAttackTimer = 300;
-		mouthOpenTimer = 60;
-
+		nextAttackCD.start();
+		mouthOpenCD.start();
+		nextSpitCD.start();
+	}
+	
+	private void spit()
+	{
 		Vector2 dir = direction.getDirectionVector();
 		Spit spit = new Spit(level);
 		spit.setPosition(getX() + getWidth() * 0.5f - spit.getWidth() * 0.5f
@@ -50,17 +61,22 @@ public class Boss extends Entity
 		spit.setVelX(dir.x * 5);
 		spit.setVelY(dir.y * 5);
 		level.addObject(spit);
+		
+		nextSpitCD.start();
 	}
 
 	public void update()
 	{
-		if (mouthOpenTimer < 0)
+		if (mouthOpenCD.cooldownOver())
 			super.update();
+		
+		mouthOpenCD.update();
+		nextAttackCD.update();
+		nextSpitCD.update();
+		if(mouthIsOpen() && nextSpitCD.cooldownOver())
+			spit();
 
-		mouthOpenTimer--;
-		nextAttackTimer--;
-
-		if (nextAttackTimer < 0)
+		if (nextAttackCD.cooldownOver())
 			attack();
 
 		updateHitBox();
