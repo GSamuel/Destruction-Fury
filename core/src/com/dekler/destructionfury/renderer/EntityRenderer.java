@@ -11,7 +11,10 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.dekler.destructionfury.assetManager.AnimationPack;
 import com.dekler.destructionfury.assetManager.AssetManager;
 import com.dekler.destructionfury.gameobject.Boss;
+import com.dekler.destructionfury.gameobject.Direction;
 import com.dekler.destructionfury.gameobject.Entity;
+import com.dekler.destructionfury.gameobject.GameObject;
+import com.dekler.destructionfury.gameobject.Knife;
 import com.dekler.destructionfury.gameobject.Player;
 import com.dekler.destructionfury.gameobject.Robot;
 import com.dekler.destructionfury.level.Level;
@@ -101,9 +104,30 @@ public class EntityRenderer
 			if(e instanceof Boss)
 				sprite.translate(0.5f * tileSize, 0);
 			
+			if(e instanceof Player && e.getDirection() != Direction.DOWN)
+				drawKnife(level, batch, camera, assetManager, tileSize);
+			
 			sprite.draw(batch);
+			
+			if(e instanceof Player && e.getDirection() == Direction.DOWN)
+				drawKnife(level, batch, camera, assetManager, tileSize);
 
 		}
 		batch.end();
+	}
+	
+	private static void drawKnife(Level level, SpriteBatch batch,
+			OrthographicCamera camera, AssetManager assetManager, int tileSize)
+	{
+		for(GameObject o :level.getHurtables())
+			if(o instanceof Knife)
+			{
+				Knife k  =(Knife) o;
+				Sprite sprite = assetManager.getTexturePack().getSprite("knife");
+				sprite.setPosition(o.getX()*tileSize, o.getY()*tileSize-tileSize);
+				sprite.setRotation(k.getRotation());
+				sprite.setScale(0.28f);
+				sprite.draw(batch);
+			}
 	}
 }

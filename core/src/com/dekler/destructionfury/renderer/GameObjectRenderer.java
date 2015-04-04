@@ -9,7 +9,6 @@ import com.dekler.destructionfury.assetManager.AssetManager;
 import com.dekler.destructionfury.gameobject.Crate;
 import com.dekler.destructionfury.gameobject.GameObject;
 import com.dekler.destructionfury.gameobject.Grenade;
-import com.dekler.destructionfury.gameobject.Knife;
 import com.dekler.destructionfury.gameobject.Spit;
 import com.dekler.destructionfury.gameobject.WarpPad;
 import com.dekler.destructionfury.level.Level;
@@ -40,15 +39,6 @@ public class GameObjectRenderer
 				
 				sprite.setPosition(pad.getX()*tileSize, pad.getY()*tileSize);
 
-				sprite.draw(batch);
-			}
-			else if(o instanceof Knife)
-			{
-				Knife k  =(Knife) o;
-				sprite = assetManager.getTexturePack().getSprite("knife");
-				sprite.setPosition(o.getX()*tileSize, o.getY()*tileSize-tileSize);
-				sprite.setRotation(k.getRotation());
-				sprite.setScale(0.28f);
 				sprite.draw(batch);
 			}
 			else if (o instanceof Crate)
