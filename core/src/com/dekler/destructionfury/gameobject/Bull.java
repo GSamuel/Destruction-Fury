@@ -51,6 +51,12 @@ public class Bull extends Entity
 		if (charging && !stuck)
 			pos.add(vel.x * Gdx.graphics.getDeltaTime()*2f,
 					vel.y * Gdx.graphics.getDeltaTime()*2f);
+		
+		if(direction == Direction.DOWN || direction == Direction.UP)
+			this.setSize(1.3f, 1.9f);
+		else
+			this.setSize(1.9f, 1.3f);
+			
 	}
 
 	@Override

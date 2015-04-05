@@ -13,7 +13,7 @@ public class BullAnimation implements AnimationPack
 	{
 		animations = new HashMap<AnimationEnum, Animation>();
 		animations.put(AnimationEnum.WALK_DOWN,
-				assetLoader.getAnimation("bull_right"));
+				assetLoader.getAnimation("bull_down"));
 		animations.put(AnimationEnum.WALK_UP,
 				assetLoader.getAnimation("bull_left"));
 		animations.put(AnimationEnum.WALK_LEFT,

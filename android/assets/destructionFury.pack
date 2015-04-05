@@ -276,16 +276,16 @@ warp_pad
   orig: 367, 174
   offset: 0, 0
   index: 2
-bull_walk_downt
+bull_walk_down
   rotate: false
-  xy: 965, 332
-  size: 165, 196
+  xy: 965, 331
+  size: 165, 197
   orig: 256, 256
-  offset: 46, 9
-  index: 1
+  offset: 45, 9
+  index: 2
 bomb
   rotate: false
-  xy: 965, 146
+  xy: 965, 145
   size: 212, 184
   orig: 256, 256
   offset: 30, 36
@@ -332,13 +332,13 @@ bull_stuck_right
   orig: 256, 256
   offset: 13, 1
   index: 2
-bull_walk_downt
+bull_walk_down
   rotate: false
   xy: 1493, 2420
   size: 165, 196
   orig: 256, 256
   offset: 45, 9
-  index: 3
+  index: 1
 boss_projectile
   rotate: false
   xy: 1, 39
@@ -353,6 +353,13 @@ bomb_UI
   orig: 126, 40
   offset: 4, 2
   index: -1
+bull_walk_down
+  rotate: false
+  xy: 1069, 835
+  size: 165, 196
+  orig: 256, 256
+  offset: 45, 9
+  index: 3
 health
   rotate: false
   xy: 4043, 3049
