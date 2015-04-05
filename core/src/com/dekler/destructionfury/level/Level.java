@@ -8,6 +8,7 @@ import javafx.geometry.Rectangle2D;
 
 import com.dekler.destructionfury.collision.Collision;
 import com.dekler.destructionfury.gameobject.Boss;
+import com.dekler.destructionfury.gameobject.Bull;
 import com.dekler.destructionfury.gameobject.Crate;
 import com.dekler.destructionfury.gameobject.Entity;
 import com.dekler.destructionfury.gameobject.Explosion;
@@ -276,7 +277,7 @@ public class Level
 	public boolean noBossesLeft()
 	{
 		for(Entity e : entities)
-			if(e instanceof Boss)
+			if(e instanceof Boss || e instanceof Bull)
 				return false;
 		
 		return true;

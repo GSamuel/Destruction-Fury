@@ -25,7 +25,7 @@ public class Player extends Entity
 	@Override
 	public void onGameObjectCollision(GameObject o)
 	{
-		if ((o instanceof Robot || o instanceof Boss )&& damageTimer <= 0)
+		if ((o instanceof Robot || o instanceof Boss || o instanceof Bull)&& damageTimer <= 0)
 		{
 			Vector2 diff = new Vector2(getX() - o.getX(), getY() - o.getY());
 			diff.setLength(2.6f);

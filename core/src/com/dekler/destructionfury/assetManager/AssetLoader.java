@@ -114,6 +114,7 @@ public class AssetLoader implements Disposable
 		animations.put("ride_right", new Animation(frameTime,rideRight));
 		
 		loadBossAnimations(textureAtlas);
+		loadBullAnimations(textureAtlas);
 		loadExplosionAnimation(textureAtlas);
 	}
 	
@@ -170,6 +171,85 @@ public class AssetLoader implements Disposable
 		animations.put("boss_left_mouth",new Animation(frameTime, mouthOpenLeft));
 		animations.put("boss_up_mouth",new Animation(frameTime, mouthOpenUp));
 		animations.put("boss_down_mouth",new Animation(frameTime, mouthOpenDown));
+	}
+	
+	private void loadBullAnimations(TextureAtlas textureAtlas)
+	{
+		TextureRegion[] walkDownFrames = new TextureRegion[4];
+
+		walkDownFrames[0] = textureAtlas.findRegion("bull_walk_down", 2);
+		walkDownFrames[1] = textureAtlas.findRegion("bull_walk_down", 1);
+		walkDownFrames[2] = textureAtlas.findRegion("bull_walk_down", 2);
+		walkDownFrames[3] = textureAtlas.findRegion("bull_walk_down", 3);
+
+		animations.put("bull_down", new Animation(frameTime, walkDownFrames));
+		
+		TextureRegion[] walkUpFrames = new TextureRegion[4];
+
+		walkUpFrames[0] = textureAtlas.findRegion("bull_walk_up", 2);
+		walkUpFrames[1] = textureAtlas.findRegion("bull_walk_up", 1);
+		walkUpFrames[2] = textureAtlas.findRegion("bull_walk_up", 2);
+		walkUpFrames[3] = textureAtlas.findRegion("bull_walk_up", 3);
+
+		animations.put("bull_up", new Animation(frameTime, walkUpFrames));
+		
+		
+		TextureRegion[] walkLeftFrames = new TextureRegion[4];
+		TextureRegion[] walkRightFrames = new TextureRegion[4];
+		
+		walkRightFrames[0] = textureAtlas.findRegion("bull_walk_right", 2);
+		walkRightFrames[1] = textureAtlas.findRegion("bull_walk_right", 1);
+		walkRightFrames[2] = textureAtlas.findRegion("bull_walk_right", 2);
+		walkRightFrames[3] = textureAtlas.findRegion("bull_walk_right", 3);
+		
+		walkLeftFrames[0] = textureAtlas.findRegion("bull_walk_left", 2);
+		walkLeftFrames[1] = textureAtlas.findRegion("bull_walk_left", 1);
+		walkLeftFrames[2] = textureAtlas.findRegion("bull_walk_left", 2);
+		walkLeftFrames[3] = textureAtlas.findRegion("bull_walk_left", 3);
+		
+		for(int i =0; i < walkLeftFrames.length; i++)
+		{
+			walkLeftFrames[i] = new TextureRegion(walkRightFrames[i]);
+			walkLeftFrames[i].flip(true, false);
+		}
+
+		animations.put("bull_right", new Animation(frameTime, walkRightFrames));
+		animations.put("bull_left", new Animation(frameTime, walkLeftFrames));
+
+		TextureRegion[] chargeRight = {textureAtlas.findRegion("bull_charge_right")};
+		TextureRegion[] chargeLeft = {new TextureRegion(chargeRight[0])};
+		chargeLeft[0].flip(true, false);
+		TextureRegion[] chargeUp = {textureAtlas.findRegion("bull_charge_up")};
+		TextureRegion[] chargeDown = {textureAtlas.findRegion("bull_charge_down")};
+
+		animations.put("bull_charge_right", new Animation(frameTime, chargeRight));
+		animations.put("bull_charge_left", new Animation(frameTime, chargeLeft));
+		animations.put("bull_charge_up", new Animation(frameTime, chargeUp));
+		animations.put("bull_charge_down", new Animation(frameTime, chargeDown));
+		
+		TextureRegion[] stuckRight = new TextureRegion[2];
+		stuckRight[0] = textureAtlas.findRegion("bull_stuck_right",1);
+		stuckRight[1] = textureAtlas.findRegion("bull_stuck_right",2);
+				
+		TextureRegion[] stuckLeft = new TextureRegion[2];
+		for(int i =0; i < stuckLeft.length; i++)
+		{
+			stuckLeft[i] = new TextureRegion(stuckRight[i]);
+			stuckLeft[i].flip(true, false);
+		}
+		
+		TextureRegion[] stuckUp = new TextureRegion[2];
+		stuckUp[0] = textureAtlas.findRegion("bull_stuck_up",1);
+		stuckUp[1] = textureAtlas.findRegion("bull_stuck_up",2);
+		
+		TextureRegion[] stuckDown = new TextureRegion[2];
+		stuckDown[0] = textureAtlas.findRegion("bull_stuck_down",1);
+		stuckDown[1] = textureAtlas.findRegion("bull_stuck_down",2);
+
+		animations.put("bull_stuck_right", new Animation(frameTime, stuckRight));
+		animations.put("bull_stuck_left", new Animation(frameTime, stuckLeft));
+		animations.put("bull_stuck_up", new Animation(frameTime, stuckUp));
+		animations.put("bull_stuck_down", new Animation(frameTime, stuckDown));
 	}
 	
 	private void loadExplosionAnimation(TextureAtlas textureAtlas)
