@@ -13,6 +13,7 @@ import com.dekler.destructionfury.gameobject.Crate;
 import com.dekler.destructionfury.gameobject.GameObject;
 import com.dekler.destructionfury.gameobject.Player;
 import com.dekler.destructionfury.gameobject.Robot;
+import com.dekler.destructionfury.gameobject.Scientist;
 import com.dekler.destructionfury.gameobject.WarpPad;
 import com.dekler.destructionfury.map.TileEnum;
 import com.dekler.destructionfury.map.TiledMap;
@@ -77,6 +78,10 @@ public class LevelLoaderExporter
 			{
 				pic.setColor(propManager.getColorProperty("boss2-color"));
 				pic.drawPixel(o.getIntX(), map.getHeight()- o.getIntY()-1);
+			}else if (o instanceof Scientist)
+			{
+				pic.setColor(propManager.getColorProperty("boss3-color"));
+				pic.drawPixel(o.getIntX(), map.getHeight()- o.getIntY()-1);
 			}
 		}
 
@@ -126,6 +131,11 @@ public class LevelLoaderExporter
 					Bull b = new Bull(level);
 					b.setPosition(i, j);
 					level.addEntity(b);
+				}else if(pixel == Color.rgba8888(propManager.getColorProperty("boss3-color")))
+				{
+					Scientist sc = new Scientist(level);
+					sc.setPosition(i, j);
+					level.addEntity(sc);
 				}else if(pixel == Color.rgba8888(propManager.getColorProperty("crate-color")))
 				{
 					Crate crate = new Crate(level);
