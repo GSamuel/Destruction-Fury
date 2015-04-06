@@ -15,7 +15,7 @@ public class BullAnimation implements AnimationPack
 		animations.put(AnimationEnum.WALK_DOWN,
 				assetLoader.getAnimation("bull_down"));
 		animations.put(AnimationEnum.WALK_UP,
-				assetLoader.getAnimation("bull_left"));
+				assetLoader.getAnimation("bull_up"));
 		animations.put(AnimationEnum.WALK_LEFT,
 				assetLoader.getAnimation("bull_left"));
 		animations.put(AnimationEnum.WALK_RIGHT,
@@ -26,18 +26,18 @@ public class BullAnimation implements AnimationPack
 		animations.put(AnimationEnum.ATTACK_LEFT,
 				assetLoader.getAnimation("bull_charge_left"));
 		animations.put(AnimationEnum.ATTACK_UP,
-				assetLoader.getAnimation("bull_charge_left"));
+				assetLoader.getAnimation("bull_charge_up"));
 		animations.put(AnimationEnum.ATTACK_DOWN,
-				assetLoader.getAnimation("bull_charge_right"));
+				assetLoader.getAnimation("bull_charge_down"));
 
 		animations.put(AnimationEnum.STUCK_RIGHT,
 				assetLoader.getAnimation("bull_stuck_right"));
 		animations.put(AnimationEnum.STUCK_LEFT,
 				assetLoader.getAnimation("bull_stuck_left"));
 		animations.put(AnimationEnum.STUCK_UP,
-				assetLoader.getAnimation("bull_stuck_left"));
+				assetLoader.getAnimation("bull_stuck_up"));
 		animations.put(AnimationEnum.STUCK_DOWN,
-				assetLoader.getAnimation("bull_stuck_right"));
+				assetLoader.getAnimation("bull_stuck_down"));
 	}
 
 	@Override
