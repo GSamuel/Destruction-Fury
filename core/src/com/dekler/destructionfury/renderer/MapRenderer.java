@@ -23,15 +23,15 @@ public class MapRenderer
 		batch.setProjectionMatrix(camera.combined);
 
 		Sprite wall = texturePack.getSprite(TileEnum.WALL);
-		wall.setSize(tileSize, tileSize);
-		
-		
+		wall.setSize(tileSize, tileSize);		
 		Sprite floor = texturePack.getSprite(TileEnum.FLOOR);
 		floor.setSize(tileSize, tileSize);
 		Sprite crateFloor = texturePack.getSprite(TileEnum.CRATE_FLOOR);
 		crateFloor.setSize(tileSize, tileSize);
 		Sprite crateTarget = texturePack.getSprite(TileEnum.CRATE_TARGET);
 		crateTarget.setSize(tileSize, tileSize);
+		Sprite breakWall = texturePack.getSprite(TileEnum.BREAKABLE_WALL);
+		breakWall.setSize(tileSize, tileSize);
 
 		TileEnum t;
 		batch.begin();
@@ -51,6 +51,10 @@ public class MapRenderer
 				{
 					crateTarget.setPosition(i * tileSize, j * tileSize);
 					crateTarget.draw(batch);
+				}else if (t == TileEnum.BREAKABLE_WALL)
+				{
+					breakWall.setPosition(i * tileSize, j * tileSize);
+					breakWall.draw(batch);
 				} else
 				{
 					floor.setPosition(i * tileSize, j * tileSize);

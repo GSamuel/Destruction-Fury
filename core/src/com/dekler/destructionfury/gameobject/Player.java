@@ -13,8 +13,8 @@ public class Player extends Entity
 		super(level);
 		this.setSize(0.9f, 0.9f);
 		attackCD = new Cooldown(0.5f);
-		altAttackCD = new Cooldown(5f);
-		this.health = 4;
+		altAttackCD = new Cooldown(2.8f);
+		this.health = 8;
 		this.speed = 3f;
 	}
 	

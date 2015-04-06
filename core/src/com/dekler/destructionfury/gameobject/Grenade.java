@@ -48,8 +48,8 @@ public class Grenade extends Entity
 		level.addEffect(boom);
 		
 		AreaDamage area = new AreaDamage(level, 0.7f);
-		area.setSize(1f, 1f);
-		area.setPosition(getX(), getY());
+		area.setSize(1.2f, 1.2f);
+		area.setPosition(getX()-0.1f, getY()-0.1f);
 		level.addHurtable(area);
 		
 		remove();

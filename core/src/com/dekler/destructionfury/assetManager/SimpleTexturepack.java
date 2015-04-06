@@ -16,6 +16,7 @@ public class SimpleTexturepack implements TexturePack
 		sprites.put("wall", new Sprite(assetLoader.getRegion("wall_solid")));
 		sprites.put("crate_floor", new Sprite(assetLoader.getRegion("crate_floor")));
 		sprites.put("crate_target", new Sprite(assetLoader.getRegion("wood")));
+		sprites.put("breakable_wall", new Sprite(assetLoader.getRegion("wall_break")));
 		
 		sprites.put("warp1", new Sprite(assetLoader.getRegion("warp1")));
 		sprites.put("warp2", new Sprite(assetLoader.getRegion("warp2")));

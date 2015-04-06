@@ -11,7 +11,7 @@ public class Robot extends Entity
 		super(level);
 		this.setSize(0.9f, 0.9f);
 		this.moveDown();
-		health = 2;
+		health = 1;
 	}
 
 	@Override

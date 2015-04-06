@@ -40,6 +40,10 @@ public class LevelLoaderExporter
 				{
 					pic.setColor(propManager.getColorProperty("cratetarget-color"));
 					pic.drawPixel(i, map.getHeight()-j-1);
+				}else if(map.getTile(i, j) == TileEnum.BREAKABLE_WALL)
+				{
+					pic.setColor(propManager.getColorProperty("breakwall-color"));
+					pic.drawPixel(i, map.getHeight()-j-1);
 				}
 				else
 				{
@@ -153,7 +157,9 @@ public class LevelLoaderExporter
 				else if(pixel == Color.rgba8888(propManager.getColorProperty("cratefloor-color")))
 					map.setTile(i,j	, TileEnum.CRATE_FLOOR);
 				else if(pixel == Color.rgba8888(propManager.getColorProperty("cratetarget-color")))
-						map.setTile(i,j	, TileEnum.CRATE_TARGET);
+					map.setTile(i,j	, TileEnum.CRATE_TARGET);
+				else if(pixel == Color.rgba8888(propManager.getColorProperty("breakwall-color")))
+						map.setTile(i,j	, TileEnum.BREAKABLE_WALL);
 			}
 
 		

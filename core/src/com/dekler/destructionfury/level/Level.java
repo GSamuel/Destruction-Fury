@@ -216,6 +216,11 @@ public class Level
 
 		for (GameObject h : hurtables)
 			h.update();
+		
+		for(GameObject h : hurtables)
+		{
+			Collision.collision(h, map, TileEnum.BREAKABLE_WALL);
+		}
 
 		for (Entity e : entities)
 		{
@@ -233,17 +238,20 @@ public class Level
 		for (Entity e : entities)
 		{
 			Collision.collision(e, map, TileEnum.WALL);
+			Collision.collision(e, map, TileEnum.BREAKABLE_WALL);
 			Collision.collision(player, e);
 		}
 		for (GameObject o : objects)
 		{
 			Collision.collision(o, map, TileEnum.WALL);
+			Collision.collision(o, map, TileEnum.BREAKABLE_WALL);
 			if (o instanceof Crate)
 			{
 				Crate crate = (Crate) o;
 				Collision.collisionV2(crate,player);
 				Collision.collision(o, map, TileEnum.FLOOR);
 				Collision.collision(o, map, TileEnum.WALL);
+				Collision.collision(o, map, TileEnum.BREAKABLE_WALL);
 				for (GameObject o2 : objects)
 					if (o2 instanceof Crate && o != o2)
 						Collision.collisionV2(o, o2);

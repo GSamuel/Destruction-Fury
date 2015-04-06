@@ -84,6 +84,7 @@ public class DestructionFury extends Game
 		properties.put("boss1-color", "" + 127 + "," + 0 + "," + 0);
 		properties.put("boss2-color", "" + 0 + "," + 127 + "," + 0);
 		properties.put("boss3-color", "" + 0 + "," + 0 + "," + 127);
+		properties.put("breakwall-color", "" + 0 + "," + 0 + "," + 0);
 
 		propManager = new PropertyManager("settings.properties", properties);
 		propManager.readPropertyFile();

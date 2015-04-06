@@ -23,25 +23,25 @@ public class Scientist extends Entity
 		this.moveDown();
 		nextAttack = new Cooldown(3f);
 		spawnBotCD = new Cooldown(0.4f);
-		despawnCD = new Cooldown(1f);
+		despawnCD = new Cooldown(0.4f);
 		bots = new ArrayList<GameObjectCooldown>();
 	}
 
 	public float getSpawnPercentage()
 	{
-		if(despawn)
+		if (despawn)
 			return 1f - despawnCD.percentageDone();
 		return spawnCD.percentageDone();
 	}
 
 	public void update()
 	{
-		if(!despawn)
+		if (!despawn)
 			super.update();
 		else
 		{
 			despawnCD.update();
-			if(despawnCD.cooldownOver())
+			if (despawnCD.cooldownOver())
 			{
 				despawn = false;
 				spawned = false;
@@ -122,7 +122,7 @@ public class Scientist extends Entity
 				this.moveDown();
 		}
 	}
-	
+
 	public int getDamageTimer()
 	{
 		return 0;
@@ -135,18 +135,21 @@ public class Scientist extends Entity
 			onTileCollision(TileEnum.WALL, o.getX(), o.getY());
 		if (o instanceof Knife)
 		{
-			super.damage(1);
-
-			if (health > 0)
+			if (spawned && !despawn)
 			{
-				do
-				{
-					newX = (int) (Math.random() * level.getMap().getWidth());
-					newY = (int) (Math.random() * level.getMap().getWidth());
-				} while (level.getMap().getTile(newX, newY) != TileEnum.FLOOR);
+				super.damage(1);
 
-				despawn = true;
-				despawnCD.start();
+				if (health > 0)
+				{
+					do
+					{
+						newX = (int) (Math.random() * level.getMap().getWidth());
+						newY = (int) (Math.random() * level.getMap().getWidth());
+					} while (level.getMap().getTile(newX, newY) != TileEnum.FLOOR);
+
+					despawn = true;
+					despawnCD.start();
+				}
 			}
 		}
 	}

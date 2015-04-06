@@ -16,7 +16,7 @@ public class Bull extends Entity
 		super(level);
 		this.setSize(1.9f, 1.3f);
 		this.moveUp();
-		health = 3;
+		health = 6;
 		nextAttackCD = new Cooldown(6f);
 		stuckCD = new Cooldown(2f);
 	}
@@ -63,7 +63,7 @@ public class Bull extends Entity
 
 			if (charging && !stuck)
 				pos.add(vel.x * Gdx.graphics.getDeltaTime() * 2f, vel.y
-						* Gdx.graphics.getDeltaTime() * 2f);
+						* Gdx.graphics.getDeltaTime() * 3f);
 
 			if (direction == Direction.DOWN || direction == Direction.UP)
 				this.setSize(1.2f, 1.5f);

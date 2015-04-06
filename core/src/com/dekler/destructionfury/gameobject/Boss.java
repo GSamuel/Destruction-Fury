@@ -22,10 +22,9 @@ public class Boss extends Entity
 		this.moveDown();
 		health = 3;
 
-		nextAttackCD = new Cooldown(6f);
-		nextSpitCD = new Cooldown(1f);
-		mouthOpenCD = new Cooldown(2f);
-
+		nextAttackCD = new Cooldown(4.5f);
+		nextSpitCD = new Cooldown(1.3f);
+		mouthOpenCD = new Cooldown(2.3f);
 	}
 
 	private void updateHitBox()

@@ -20,7 +20,7 @@ public abstract class Entity extends GameObject
 		super(level);
 		this.vel = new Vector2();
 		direction = Direction.DOWN;
-		spawnCD = new Cooldown(1f);
+		spawnCD = new Cooldown(0.4f);
 	}
 	
 	public float getSpawnPercentage()
