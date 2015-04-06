@@ -54,6 +54,8 @@ public class AssetLoader implements Disposable
 		tiles.put("knife", textureAtlas.findRegion("knife"));
 		tiles.put("grenade", textureAtlas.findRegion("bomb"));
 		tiles.put("spit", textureAtlas.findRegion("boss_projectile"));
+		tiles.put("wall_solid", textureAtlas.findRegion("wall_solid"));
+		tiles.put("wall_break", textureAtlas.findRegion("wall_breakable"));
 		
 		
 		tiles.put("wooden_crate_front", textureAtlas.findRegion("crates/wooden_crate", 1));
