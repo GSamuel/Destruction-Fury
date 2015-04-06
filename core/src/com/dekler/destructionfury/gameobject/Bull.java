@@ -15,10 +15,19 @@ public class Bull extends Entity
 	{
 		super(level);
 		this.setSize(1.9f, 1.3f);
-		this.moveDown();
+		this.moveUp();
 		health = 3;
 		nextAttackCD = new Cooldown(6f);
 		stuckCD = new Cooldown(2f);
+	}
+
+	@Override
+	public float getX()
+	{
+		if(direction == Direction.DOWN || direction == Direction.UP)
+			return pos.x + 0.45f;
+		else
+			return pos.x;
 	}
 
 	public boolean isCharging()
@@ -33,11 +42,11 @@ public class Bull extends Entity
 
 	public void update()
 	{
-		if(!stuck)
+		if (!stuck)
 			super.update();
 		else
 			time += Gdx.graphics.getDeltaTime();
-		
+
 		if (!charging && !stuck)
 			nextAttackCD.update();
 		if (nextAttackCD.cooldownOver())
@@ -49,14 +58,15 @@ public class Bull extends Entity
 			stuck = false;
 
 		if (charging && !stuck)
-			pos.add(vel.x * Gdx.graphics.getDeltaTime()*2f,
-					vel.y * Gdx.graphics.getDeltaTime()*2f);
-		
-		if(direction == Direction.DOWN || direction == Direction.UP)
-			this.setSize(1.3f, 1.9f);
+			pos.add(vel.x * Gdx.graphics.getDeltaTime() * 2f, vel.y
+					* Gdx.graphics.getDeltaTime() * 2f);
+
+		if (direction == Direction.DOWN || direction == Direction.UP)
+			this.setSize(1.2f, 1.5f);
 		else
 			this.setSize(1.9f, 1.3f);
-			
+		
+
 	}
 
 	@Override
@@ -77,8 +87,7 @@ public class Bull extends Entity
 				charging = false;
 				stuck = true;
 				stuckCD.start();
-			}
-			else if (! stuck)
+			} else if (!stuck)
 			{
 				int num = (int) (Math.random() * 4);
 				if (num == 0)

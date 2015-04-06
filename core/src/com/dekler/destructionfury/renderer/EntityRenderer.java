@@ -149,6 +149,16 @@ public class EntityRenderer
 
 			if (e instanceof Boss|| e instanceof Bull)
 				sprite.translate(0.5f * tileSize, 0);
+			
+			if(e instanceof Bull)
+			{
+				Bull b = (Bull) e;
+				if(b.isStuck() && b.getDirection() == Direction.UP)
+					sprite.translate(0, 0.3f*tileSize);
+				
+				if(b.getDirection() == Direction.UP || b.getDirection() == Direction.DOWN)
+					sprite.translate(-0.45f*tileSize, 0f);
+			}
 
 			if (e instanceof Player && e.getDirection() != Direction.DOWN)
 				drawKnife(level, batch, camera, assetManager, tileSize);

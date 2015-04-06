@@ -297,13 +297,6 @@ bull_stuck_down
   orig: 256, 256
   offset: 18, 0
   index: 1
-bull_stuck_up
-  rotate: false
-  xy: 802, 2041
-  size: 187, 155
-  orig: 256, 256
-  offset: 33, 45
-  index: 2
 bomb
   rotate: false
   xy: 965, 117
@@ -395,6 +388,13 @@ bull_walk_up
   orig: 256, 256
   offset: 59, 0
   index: 3
+bull_stuck_up
+  rotate: false
+  xy: 2393, 2772
+  size: 187, 172
+  orig: 256, 256
+  offset: 33, 28
+  index: 2
 bull_walk_down
   rotate: false
   xy: 1024, 2212
