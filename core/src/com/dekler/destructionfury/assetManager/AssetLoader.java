@@ -116,6 +116,7 @@ public class AssetLoader implements Disposable
 		loadBossAnimations(textureAtlas);
 		loadBullAnimations(textureAtlas);
 		loadExplosionAnimation(textureAtlas);
+		loadScientistAnimation(textureAtlas);
 	}
 	
 	private void loadBossAnimations(TextureAtlas textureAtlas)
@@ -250,6 +251,50 @@ public class AssetLoader implements Disposable
 		animations.put("bull_stuck_left", new Animation(frameTime, stuckLeft));
 		animations.put("bull_stuck_up", new Animation(frameTime, stuckUp));
 		animations.put("bull_stuck_down", new Animation(frameTime, stuckDown));
+	}
+	
+	private void loadScientistAnimation(TextureAtlas textureAtlas)
+	{
+		TextureRegion[] walkDownFrames = new TextureRegion[4];
+
+		walkDownFrames[0] = textureAtlas.findRegion("scienstein_walk_down", 2);
+		walkDownFrames[1] = textureAtlas.findRegion("scienstein_walk_down", 1);
+		walkDownFrames[2] = textureAtlas.findRegion("scienstein_walk_down", 2);
+		walkDownFrames[3] = textureAtlas.findRegion("scienstein_walk_down", 3);
+
+		animations.put("scientist_down", new Animation(frameTime, walkDownFrames));
+		
+		TextureRegion[] walkUpFrames = new TextureRegion[4];
+
+		walkUpFrames[0] = textureAtlas.findRegion("scienstein_walk_up", 2);
+		walkUpFrames[1] = textureAtlas.findRegion("scienstein_walk_up", 1);
+		walkUpFrames[2] = textureAtlas.findRegion("scienstein_walk_up", 2);
+		walkUpFrames[3] = textureAtlas.findRegion("scienstein_walk_up", 3);
+
+		animations.put("scientist_up", new Animation(frameTime, walkUpFrames));
+		
+		
+		TextureRegion[] walkLeftFrames = new TextureRegion[4];
+		TextureRegion[] walkRightFrames = new TextureRegion[4];
+		
+		walkRightFrames[0] = textureAtlas.findRegion("scienstein_walk_right", 2);
+		walkRightFrames[1] = textureAtlas.findRegion("scienstein_walk_right", 1);
+		walkRightFrames[2] = textureAtlas.findRegion("scienstein_walk_right", 2);
+		walkRightFrames[3] = textureAtlas.findRegion("scienstein_walk_right", 3);
+		
+		walkLeftFrames[0] = textureAtlas.findRegion("scienstein_walk_left", 2);
+		walkLeftFrames[1] = textureAtlas.findRegion("scienstein_walk_left", 1);
+		walkLeftFrames[2] = textureAtlas.findRegion("scienstein_walk_left", 2);
+		walkLeftFrames[3] = textureAtlas.findRegion("scienstein_walk_left", 3);
+		
+		for(int i =0; i < walkLeftFrames.length; i++)
+		{
+			walkLeftFrames[i] = new TextureRegion(walkRightFrames[i]);
+			walkLeftFrames[i].flip(true, false);
+		}
+
+		animations.put("scientist_right", new Animation(frameTime, walkRightFrames));
+		animations.put("scientist_left", new Animation(frameTime, walkLeftFrames));
 	}
 	
 	private void loadExplosionAnimation(TextureAtlas textureAtlas)

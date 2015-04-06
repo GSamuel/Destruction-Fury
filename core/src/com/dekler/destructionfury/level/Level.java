@@ -14,6 +14,7 @@ import com.dekler.destructionfury.gameobject.Entity;
 import com.dekler.destructionfury.gameobject.Explosion;
 import com.dekler.destructionfury.gameobject.GameObject;
 import com.dekler.destructionfury.gameobject.Player;
+import com.dekler.destructionfury.gameobject.Scientist;
 import com.dekler.destructionfury.gameobject.WarpPad;
 import com.dekler.destructionfury.map.SimpleTiledMap;
 import com.dekler.destructionfury.map.TileEnum;
@@ -26,6 +27,7 @@ public class Level
 	protected TiledMap map;
 	protected ArrayList<WarpPad> warpPads;
 	protected ArrayList<Entity> entities;
+	protected ArrayList<Entity> newEntities;
 	protected ArrayList<GameObject> objects;
 	protected ArrayList<GameObject> hurtables;
 	protected ArrayList<Explosion> effects;
@@ -37,6 +39,7 @@ public class Level
 	{
 		objects = new ArrayList<GameObject>();
 		entities = new ArrayList<Entity>();
+		newEntities = new ArrayList<Entity>();
 		effects = new ArrayList<Explosion>();
 		hurtables = new ArrayList<GameObject>();
 		warpPads = new ArrayList<WarpPad>();
@@ -143,10 +146,16 @@ public class Level
 	{
 		hurtables.add(o);
 	}
+	
+	private void addEntities()
+	{
+		while(newEntities.size()>0)
+			entities.add(newEntities.remove(newEntities.size()-1));
+	}
 
 	public void addEntity(Entity e)
 	{
-		entities.add(e);
+		newEntities.add(e);
 	}
 
 	public TiledMap getMap()
@@ -182,6 +191,7 @@ public class Level
 	public void update()
 	{
 		resetTargets();
+		addEntities();
 
 		for (int i = 0; i < entities.size(); i++)
 			if (entities.get(i).getRemove())
@@ -277,7 +287,7 @@ public class Level
 	public boolean noBossesLeft()
 	{
 		for(Entity e : entities)
-			if(e instanceof Boss || e instanceof Bull)
+			if(e instanceof Boss || e instanceof Bull || e instanceof Scientist)
 				return false;
 		
 		return true;

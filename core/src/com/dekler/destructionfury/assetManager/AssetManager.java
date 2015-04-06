@@ -24,6 +24,7 @@ public class AssetManager
 		animationPacks.put("robot", new RobotAnimation(assetLoader));
 		animationPacks.put("boss", new BossAnimation(assetLoader));
 		animationPacks.put("bull", new BullAnimation(assetLoader));
+		animationPacks.put("scientist", new ScientistAnimation(assetLoader));
 		
 		animations.put("explosion", assetLoader.getAnimation("explosion"));
 	}

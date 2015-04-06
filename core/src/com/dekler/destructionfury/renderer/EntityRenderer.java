@@ -18,6 +18,7 @@ import com.dekler.destructionfury.gameobject.GameObject;
 import com.dekler.destructionfury.gameobject.Knife;
 import com.dekler.destructionfury.gameobject.Player;
 import com.dekler.destructionfury.gameobject.Robot;
+import com.dekler.destructionfury.gameobject.Scientist;
 import com.dekler.destructionfury.level.Level;
 import com.dekler.destructionfury.map.AnimationEnum;
 
@@ -36,9 +37,11 @@ public class EntityRenderer
 			AnimationPack aniPack = null;
 			if (e instanceof Player)
 				aniPack = assetManager.getAnimationPack("player");
-			if (e instanceof Robot)
+			else if (e instanceof Robot)
 				aniPack = assetManager.getAnimationPack("robot");
-			if (aniPack == null)
+			else if (e instanceof Scientist)
+				aniPack = assetManager.getAnimationPack("scientist");
+			else if (aniPack == null)
 				aniPack = assetManager.getAnimationPack("player");
 
 			Animation ani = null;

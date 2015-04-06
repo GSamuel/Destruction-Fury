@@ -15,7 +15,7 @@ public class Player extends Entity
 		attackCD = new Cooldown(0.5f);
 		altAttackCD = new Cooldown(5f);
 		this.health = 4;
-		this.speed = 6f;
+		this.speed = 3f;
 	}
 	
 	public float getAltAttackCooldown()
