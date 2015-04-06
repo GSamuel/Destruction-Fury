@@ -27,6 +27,11 @@ public class Cooldown
 		curTime = cooldownTime;
 	}
 	
+	public void stop()
+	{
+		curTime =0;
+	}
+	
 	public float percentageDone()
 	{
 		if(curTime <= 0 || cooldownTime <=0)

@@ -8,37 +8,46 @@ public abstract class Entity extends GameObject
 {
 	protected Vector2 vel;
 	protected float speed = 1.3f;
-	protected float time = 0f;	
+	protected float time = 0f;
 	protected Direction direction;
 	protected int damageTimer;
-	
+	protected Cooldown spawnCD;
+	protected boolean spawned = false;
+	private boolean spawning = false;
+
 	public Entity(Level level)
 	{
 		super(level);
 		this.vel = new Vector2();
 		direction = Direction.DOWN;
+		spawnCD = new Cooldown(1f);
 	}
 	
+	public float getSpawnPercentage()
+	{
+		return spawnCD.percentageDone();
+	}
+
 	public float getVelX()
 	{
 		return vel.x;
 	}
-	
+
 	public float getVelY()
 	{
 		return vel.y;
 	}
-	
+
 	public void setVelX(float velX)
 	{
 		this.vel.x = velX;
 	}
-	
+
 	public void setVelY(float velY)
 	{
 		this.vel.y = velY;
 	}
-	
+
 	public void moveLeft()
 	{
 		vel.x = -speed;
@@ -76,59 +85,76 @@ public abstract class Entity extends GameObject
 	{
 		vel.y = 0;
 	}
-	
+
 	public float getTime()
 	{
-		if(vel.x == 0f && vel.y == 0f)
+		if (vel.x == 0f && vel.y == 0f)
 			return 0f;
 		return time;
 	}
-	
+
 	public Direction getDirection()
 	{
 		return direction;
 	}
-	
+
 	public void update()
 	{
-		if (health <= 0)
+		if (!spawned && !spawning)
 		{
-			Explosion exp = new Explosion(level);
-			exp.setPosition(getX(), getY());
-			level.addEffect(exp);
-			remove();
-			return;
+			spawnCD.start();
+			spawning = true;
+		} else if (spawning && !spawnCD.cooldownOver())
+			spawnCD.update();
+		else if (spawning && spawnCD.cooldownOver())
+		{
+			spawning = false;
+			spawned = true;
 		}
-		
-		damageTimer--;
-		
-		float forceX = force.x * Gdx.graphics.getDeltaTime()*3;
-		float forceY = force.y * Gdx.graphics.getDeltaTime()*3;
-		pos.add(forceX, forceY);
-		force.x -= forceX;
-		force.y -= forceY;
-		if(force.x < 0.5f && force.x >-2.5f)
-			force.x =0;
-		if(force.y < 0.5f && force.y >-2.5f)
-			force.y =0;
-		pos.add(vel.x*Gdx.graphics.getDeltaTime(), vel.y*Gdx.graphics.getDeltaTime());
-		time += Gdx.graphics.getDeltaTime();
+
+		if (spawned)
+		{
+
+			if (health <= 0)
+			{
+				Explosion exp = new Explosion(level);
+				exp.setPosition(getX(), getY());
+				level.addEffect(exp);
+				remove();
+				return;
+			}
+
+			damageTimer--;
+
+			float forceX = force.x * Gdx.graphics.getDeltaTime() * 3;
+			float forceY = force.y * Gdx.graphics.getDeltaTime() * 3;
+			pos.add(forceX, forceY);
+			force.x -= forceX;
+			force.y -= forceY;
+			if (force.x < 0.5f && force.x > -2.5f)
+				force.x = 0;
+			if (force.y < 0.5f && force.y > -2.5f)
+				force.y = 0;
+			pos.add(vel.x * Gdx.graphics.getDeltaTime(),
+					vel.y * Gdx.graphics.getDeltaTime());
+			time += Gdx.graphics.getDeltaTime();
+		}
 	}
-	
+
 	public int getDamageTimer()
 	{
 		return damageTimer;
 	}
-	
+
 	@Override
 	public void damage(int damage)
 	{
-		if(damageTimer <= 0)
+		if (damageTimer <= 0)
 		{
 			health -= damage;
 			damageTimer = 50;
 		}
-		
+
 	}
 
 	public abstract void attack();

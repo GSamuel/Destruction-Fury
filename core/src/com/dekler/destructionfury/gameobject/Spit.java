@@ -14,13 +14,13 @@ public class Spit extends Entity
 	@Override
 	public void update()
 	{
+		spawnCD.stop();
 		super.update();
 	}
 	
 	@Override
 	public void attack()
 	{
-		// TODO Auto-generated method stub
 		
 	}
 

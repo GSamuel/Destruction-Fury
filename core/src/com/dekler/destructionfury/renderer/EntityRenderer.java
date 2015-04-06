@@ -136,6 +136,8 @@ public class EntityRenderer
 			TextureRegion region = ani.getKeyFrame(e.getTime(), true);
 			Sprite sprite = new Sprite(region);
 			int hurtTime = e.getDamageTimer();
+			
+			sprite.setAlpha(e.getSpawnPercentage());
 			if (hurtTime > 0)
 				sprite.setColor(Color.RED);
 			if (e instanceof Boss)

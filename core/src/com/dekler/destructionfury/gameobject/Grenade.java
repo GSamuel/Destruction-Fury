@@ -25,6 +25,7 @@ public class Grenade extends Entity
 	@Override
 	public void update()
 	{
+		spawnCD.stop();
 		super.update();
 		if (flyingTime > 0)
 			flyingTime -= Gdx.graphics.getDeltaTime();

@@ -24,7 +24,7 @@ public class Bull extends Entity
 	@Override
 	public float getX()
 	{
-		if(direction == Direction.DOWN || direction == Direction.UP)
+		if (direction == Direction.DOWN || direction == Direction.UP)
 			return pos.x + 0.45f;
 		else
 			return pos.x;
@@ -42,30 +42,34 @@ public class Bull extends Entity
 
 	public void update()
 	{
-		if (!stuck)
+		if (!spawned)
 			super.update();
 		else
-			time += Gdx.graphics.getDeltaTime();
+		{
+			if (!stuck)
+				super.update();
+			else
+				time += Gdx.graphics.getDeltaTime();
 
-		if (!charging && !stuck)
-			nextAttackCD.update();
-		if (nextAttackCD.cooldownOver())
-			attack();
+			if (!charging && !stuck)
+				nextAttackCD.update();
+			if (nextAttackCD.cooldownOver())
+				attack();
 
-		if (stuck)
-			stuckCD.update();
-		if (stuckCD.cooldownOver())
-			stuck = false;
+			if (stuck)
+				stuckCD.update();
+			if (stuckCD.cooldownOver())
+				stuck = false;
 
-		if (charging && !stuck)
-			pos.add(vel.x * Gdx.graphics.getDeltaTime() * 2f, vel.y
-					* Gdx.graphics.getDeltaTime() * 2f);
+			if (charging && !stuck)
+				pos.add(vel.x * Gdx.graphics.getDeltaTime() * 2f, vel.y
+						* Gdx.graphics.getDeltaTime() * 2f);
 
-		if (direction == Direction.DOWN || direction == Direction.UP)
-			this.setSize(1.2f, 1.5f);
-		else
-			this.setSize(1.9f, 1.3f);
-		
+			if (direction == Direction.DOWN || direction == Direction.UP)
+				this.setSize(1.2f, 1.5f);
+			else
+				this.setSize(1.9f, 1.3f);
+		}
 
 	}
 

@@ -12,7 +12,7 @@ public class Boss extends Entity
 	private Cooldown nextAttackCD;
 	private Cooldown nextSpitCD;
 	private Cooldown mouthOpenCD;
-	
+
 	private Rectangle2D hitLeft, hitRight, hitUp, hitDown;
 
 	public Boss(Level level)
@@ -21,21 +21,24 @@ public class Boss extends Entity
 		this.setSize(1.9f, 1.9f);
 		this.moveDown();
 		health = 3;
-		
+
 		nextAttackCD = new Cooldown(6f);
 		nextSpitCD = new Cooldown(1f);
 		mouthOpenCD = new Cooldown(2f);
-		
+
 	}
-	
+
 	private void updateHitBox()
 	{
-		hitLeft = new Rectangle2D(getX(), getY()+getHeight()*0.25f, getWidth() * 0.25f,
-				getHeight()*0.5f);
-		hitRight = new Rectangle2D(getX()+getWidth()*0.75f, getY()+getHeight()*0.25f, getWidth()*0.25f, getHeight()*0.5f);
-	
-		hitUp = new Rectangle2D(getX()+getWidth()*0.25f, getY()+getHeight()*0.75f, getWidth()*0.5f, getHeight()*0.25f);
-		hitDown = new Rectangle2D(getX()+getWidth()*0.25f, getY(), getWidth()*0.5f, getHeight()*0.25f);
+		hitLeft = new Rectangle2D(getX(), getY() + getHeight() * 0.25f,
+				getWidth() * 0.25f, getHeight() * 0.5f);
+		hitRight = new Rectangle2D(getX() + getWidth() * 0.75f, getY()
+				+ getHeight() * 0.25f, getWidth() * 0.25f, getHeight() * 0.5f);
+
+		hitUp = new Rectangle2D(getX() + getWidth() * 0.25f, getY()
+				+ getHeight() * 0.75f, getWidth() * 0.5f, getHeight() * 0.25f);
+		hitDown = new Rectangle2D(getX() + getWidth() * 0.25f, getY(),
+				getWidth() * 0.5f, getHeight() * 0.25f);
 	}
 
 	public boolean mouthIsOpen()
@@ -50,7 +53,7 @@ public class Boss extends Entity
 		mouthOpenCD.start();
 		nextSpitCD.start();
 	}
-	
+
 	private void spit()
 	{
 		Vector2 dir = direction.getDirectionVector();
@@ -61,25 +64,31 @@ public class Boss extends Entity
 		spit.setVelX(dir.x * 5);
 		spit.setVelY(dir.y * 5);
 		level.addObject(spit);
-		
+
 		nextSpitCD.start();
 	}
 
 	public void update()
 	{
-		if (mouthOpenCD.cooldownOver())
+		if (!spawned)
 			super.update();
-		
-		mouthOpenCD.update();
-		nextAttackCD.update();
-		nextSpitCD.update();
-		if(mouthIsOpen() && nextSpitCD.cooldownOver())
-			spit();
+		else
+		{
+			if (mouthOpenCD.cooldownOver())
+				super.update();
 
-		if (nextAttackCD.cooldownOver())
-			attack();
+			mouthOpenCD.update();
+			nextAttackCD.update();
+			nextSpitCD.update();
+			if (mouthIsOpen() && nextSpitCD.cooldownOver())
+				spit();
 
-		updateHitBox();
+			if (nextAttackCD.cooldownOver())
+				attack();
+
+			updateHitBox();
+		}
+
 	}
 
 	@Override
@@ -116,22 +125,22 @@ public class Boss extends Entity
 			if (g.isFlying() && mouthIsOpen())
 			{
 				boolean mouthHit = false;
-				switch(direction)
+				switch (direction)
 				{
-				case LEFT: 
+				case LEFT:
 					mouthHit = Collision.collision(g, hitLeft);
 					break;
-				case RIGHT: 
+				case RIGHT:
 					mouthHit = Collision.collision(g, hitRight);
 					break;
-				case UP: 
+				case UP:
 					mouthHit = Collision.collision(g, hitUp);
 					break;
-				case DOWN: 
+				case DOWN:
 					mouthHit = Collision.collision(g, hitDown);
 					break;
 				}
-				
+
 				if (mouthHit)
 				{
 					o.remove();

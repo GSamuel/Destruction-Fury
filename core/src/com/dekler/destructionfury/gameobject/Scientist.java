@@ -7,9 +7,11 @@ import com.dekler.destructionfury.map.TileEnum;
 
 public class Scientist extends Entity
 {
-	private Cooldown nextAttack, spawnCD;
+	private Cooldown nextAttack, spawnBotCD, despawnCD;
 	private float spawnX, spawnY;
-	private boolean spawn = false;
+	private int newX, newY;
+	private boolean spawnBot = false;
+	private boolean despawn = false;
 	private ArrayList<GameObjectCooldown> bots;
 
 	public Scientist(Level level)
@@ -20,40 +22,62 @@ public class Scientist extends Entity
 		speed = 2f;
 		this.moveDown();
 		nextAttack = new Cooldown(3f);
-		spawnCD = new Cooldown(0.4f);
+		spawnBotCD = new Cooldown(0.4f);
+		despawnCD = new Cooldown(1f);
 		bots = new ArrayList<GameObjectCooldown>();
+	}
+
+	public float getSpawnPercentage()
+	{
+		if(despawn)
+			return 1f - despawnCD.percentageDone();
+		return spawnCD.percentageDone();
 	}
 
 	public void update()
 	{
-		super.update();
-		nextAttack.update();
-		spawnCD.update();
-		if (nextAttack.cooldownOver() && !spawn)
+		if(!despawn)
+			super.update();
+		else
 		{
-			spawnX = getX();
-			spawnY = getY();
-			spawn = true;
-			spawnCD.start();
-		}
-
-		if (spawnCD.cooldownOver() && spawn)
-		{
-			spawn = false;
-			attack();
-		}
-
-		for (int i = 0; i < bots.size(); i++)
-		{
-			GameObjectCooldown g = bots.get(i);
-			if (g.getObject().getRemove())
-				bots.remove(i--);
-			else
+			despawnCD.update();
+			if(despawnCD.cooldownOver())
 			{
-				g.update();
-				if (g.cooldownOver())
+				despawn = false;
+				spawned = false;
+				setPosition(newX, newY);
+			}
+		}
+		if (spawned)
+		{
+			nextAttack.update();
+			spawnBotCD.update();
+			if (nextAttack.cooldownOver() && !spawnBot)
+			{
+				spawnX = getX();
+				spawnY = getY();
+				spawnBot = true;
+				spawnBotCD.start();
+			}
+
+			if (spawnBotCD.cooldownOver() && spawnBot)
+			{
+				spawnBot = false;
+				attack();
+			}
+
+			for (int i = 0; i < bots.size(); i++)
+			{
+				GameObjectCooldown g = bots.get(i);
+				if (g.getObject().getRemove())
+					bots.remove(i--);
+				else
 				{
-					g.getObject().damage(100);
+					g.update();
+					if (g.cooldownOver())
+					{
+						g.getObject().damage(100);
+					}
 				}
 			}
 		}
@@ -98,6 +122,11 @@ public class Scientist extends Entity
 				this.moveDown();
 		}
 	}
+	
+	public int getDamageTimer()
+	{
+		return 0;
+	}
 
 	@Override
 	public void onGameObjectCollision(GameObject o)
@@ -110,14 +139,14 @@ public class Scientist extends Entity
 
 			if (health > 0)
 			{
-				int x, y;
 				do
 				{
-					x = (int) (Math.random() * level.getMap().getWidth());
-					y = (int) (Math.random() * level.getMap().getWidth());
-				} while (level.getMap().getTile(x, y) != TileEnum.FLOOR);
+					newX = (int) (Math.random() * level.getMap().getWidth());
+					newY = (int) (Math.random() * level.getMap().getWidth());
+				} while (level.getMap().getTile(newX, newY) != TileEnum.FLOOR);
 
-				setPosition(x, y);
+				despawn = true;
+				despawnCD.start();
 			}
 		}
 	}
