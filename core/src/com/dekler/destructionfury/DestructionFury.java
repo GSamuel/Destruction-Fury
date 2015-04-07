@@ -58,7 +58,7 @@ public class DestructionFury extends Game
 
 		// view
 		stage = new Stage();
-		levelRenderer = new LevelRenderer(stage, level, assetManager);
+		levelRenderer = new LevelRenderer(stage, level, assetManager, propManager);
 
 		// input
 		iProcessor = new SimpleInputProcessor(level, propManager);
@@ -73,6 +73,7 @@ public class DestructionFury extends Game
 	{
 		Properties properties = new Properties();
 		properties.put("load-level", "0");
+		properties.put("render-hitbox", "0");
 		properties.put("level-name", "level.png");
 		properties.put("player-color", "" + 0 + "," + 255 + "," + 0);
 		properties.put("wall-color", "" + 100 + "," + 100 + "," + 100);

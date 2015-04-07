@@ -13,6 +13,7 @@ import com.badlogic.gdx.utils.Disposable;
 import com.dekler.destructionfury.assetManager.AssetManager;
 import com.dekler.destructionfury.gameobject.GameObject;
 import com.dekler.destructionfury.level.Level;
+import com.dekler.destructionfury.level.PropertyManager;
 
 public class LevelRenderer implements Disposable
 {
@@ -30,12 +31,14 @@ public class LevelRenderer implements Disposable
 	private AssetManager assetManager;
 
 	private static ShapeRenderer shapeRenderer = new ShapeRenderer();
+	private PropertyManager propManager;
 
-	public LevelRenderer(Stage stage, Level level, AssetManager assetManager)
+	public LevelRenderer(Stage stage, Level level, AssetManager assetManager, PropertyManager propManager)
 	{
 		this.stage = stage;
 		this.level = level;
 		this.assetManager = assetManager;
+		this.propManager = propManager;
 
 		minCamPos = new Vector2(Gdx.graphics.getWidth() * 0.5f,
 				Gdx.graphics.getHeight() * 0.5f);
@@ -76,6 +79,7 @@ public class LevelRenderer implements Disposable
 
 		EffectRenderer.render(level, batch, camera, assetManager, TILE_SIZE);
 
+		if(propManager.getIntegerProperty("render-hitbox") != 0)
 		HitBoxRenderer.render(level, batch, camera, assetManager, TILE_SIZE);
 
 		UIRenderer.render(level, batch, camera, assetManager, TILE_SIZE);

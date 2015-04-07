@@ -165,6 +165,9 @@ public class EntityRenderer
 
 			if (e instanceof Boss || e instanceof Bull)
 				sprite.translate(0.5f * tileSize, 0);
+			
+			if(e instanceof Player)
+				sprite.translate(-0.15f*tileSize, 0);
 
 			if (e instanceof Bull)
 			{

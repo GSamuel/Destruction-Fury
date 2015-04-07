@@ -11,11 +11,16 @@ public class Player extends Entity
 	public Player(Level level)
 	{
 		super(level);
-		this.setSize(0.9f, 0.9f);
+		this.setSize(0.7f, 0.9f);
 		attackCD = new Cooldown(0.5f);
 		altAttackCD = new Cooldown(2.8f);
 		this.health = 8;
 		this.speed = 3f;
+	}
+	
+	public float getX()
+	{
+		return pos.x +0.15f;
 	}
 	
 	public float getAltAttackCooldown()
