@@ -20,6 +20,10 @@ public class ScientistAnimation implements AnimationPack
 				assetLoader.getAnimation("scientist_left"));
 		animations.put(AnimationEnum.WALK_RIGHT,
 				assetLoader.getAnimation("scientist_right"));
+
+		animations.put(AnimationEnum.TELEPORT, assetLoader.getAnimation("scientist_teleport"));
+		animations.put(AnimationEnum.SPAWN, assetLoader.getAnimation("scientist_spawn"));
+		animations.put(AnimationEnum.SUMMON, assetLoader.getAnimation("scientist_summon"));
 	}
 
 	@Override

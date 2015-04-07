@@ -2,6 +2,7 @@ package com.dekler.destructionfury.gameobject;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.Gdx;
 import com.dekler.destructionfury.level.Level;
 import com.dekler.destructionfury.map.TileEnum;
 
@@ -21,10 +22,25 @@ public class Scientist extends Entity
 		health = 3;
 		speed = 2f;
 		this.moveDown();
-		nextAttack = new Cooldown(3f);
+		nextAttack = new Cooldown(2.2f);
 		spawnBotCD = new Cooldown(0.4f);
 		despawnCD = new Cooldown(0.4f);
 		bots = new ArrayList<GameObjectCooldown>();
+	}
+	
+	public boolean spawning()
+	{
+		return !spawned;
+	}
+	
+	public boolean spawnBot()
+	{
+		return !spawnBotCD.cooldownOver();
+	}
+	
+	public boolean teleporting()
+	{
+		return despawn;
 	}
 
 	public float getSpawnPercentage()
@@ -45,8 +61,10 @@ public class Scientist extends Entity
 			{
 				despawn = false;
 				spawned = false;
+				time =0;
 				setPosition(newX, newY);
 			}
+			time += Gdx.graphics.getDeltaTime();
 		}
 		if (spawned)
 		{
@@ -100,7 +118,7 @@ public class Scientist extends Entity
 		else if (num == 3)
 			robot.moveDown();
 
-		GameObjectCooldown g = new GameObjectCooldown(robot, 20f);
+		GameObjectCooldown g = new GameObjectCooldown(robot, 35f);
 		g.start();
 		bots.add(g);
 		level.addEntity(robot);
@@ -144,11 +162,12 @@ public class Scientist extends Entity
 					do
 					{
 						newX = (int) (Math.random() * level.getMap().getWidth());
-						newY = (int) (Math.random() * level.getMap().getWidth());
+						newY = (int) (Math.random() * level.getMap().getHeight());
 					} while (level.getMap().getTile(newX, newY) != TileEnum.FLOOR);
 
 					despawn = true;
 					despawnCD.start();
+					time=0f;
 				}
 			}
 		}

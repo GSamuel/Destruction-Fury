@@ -133,10 +133,21 @@ public class EntityRenderer
 					break;
 				}
 
+			if (e instanceof Scientist)
+			{
+				Scientist sc = (Scientist) e;
+				if(sc.spawnBot())
+					ani = aniPack.getAnimation(AnimationEnum.SUMMON);
+				if(sc.teleporting())
+					ani = aniPack.getAnimation(AnimationEnum.TELEPORT);
+				if(sc.spawning())
+					ani = aniPack.getAnimation(AnimationEnum.SPAWN);
+			}
+
 			TextureRegion region = ani.getKeyFrame(e.getTime(), true);
 			Sprite sprite = new Sprite(region);
 			int hurtTime = e.getDamageTimer();
-			
+
 			sprite.setAlpha(e.getSpawnPercentage());
 			if (hurtTime > 0)
 				sprite.setColor(Color.RED);
@@ -152,17 +163,18 @@ public class EntityRenderer
 					(-sprite.getHeight() + (sprite.getHeight() * sprite
 							.getScaleY())) * 0.5f);
 
-			if (e instanceof Boss|| e instanceof Bull)
+			if (e instanceof Boss || e instanceof Bull)
 				sprite.translate(0.5f * tileSize, 0);
-			
-			if(e instanceof Bull)
+
+			if (e instanceof Bull)
 			{
 				Bull b = (Bull) e;
-				if(b.isStuck() && b.getDirection() == Direction.UP)
-					sprite.translate(0, 0.3f*tileSize);
-				
-				if(b.getDirection() == Direction.UP || b.getDirection() == Direction.DOWN)
-					sprite.translate(-0.45f*tileSize, 0f);
+				if (b.isStuck() && b.getDirection() == Direction.UP)
+					sprite.translate(0, 0.3f * tileSize);
+
+				if (b.getDirection() == Direction.UP
+						|| b.getDirection() == Direction.DOWN)
+					sprite.translate(-0.45f * tileSize, 0f);
 			}
 
 			if (e instanceof Player && e.getDirection() != Direction.DOWN)

@@ -297,6 +297,23 @@ public class AssetLoader implements Disposable
 
 		animations.put("scientist_right", new Animation(frameTime, walkRightFrames));
 		animations.put("scientist_left", new Animation(frameTime, walkLeftFrames));
+		
+		
+		TextureRegion[] summonRobot = {textureAtlas.findRegion("scienstein_summon_robot")};
+		animations.put("scientist_summon" , new Animation(frameTime, summonRobot));
+		
+		TextureRegion[] teleport = new TextureRegion[3];
+		teleport[0] = summonRobot[0];
+		teleport[1] = textureAtlas.findRegion("scienstein_teleport",1);
+		teleport[2] = textureAtlas.findRegion("scienstein_teleport",2);
+		
+		
+		TextureRegion[] spawn = new TextureRegion[3];
+		for(int i=0; i <teleport.length;i++)
+			spawn[i] = teleport[teleport.length-1-i];
+
+		animations.put("scientist_teleport", new Animation(frameTime*0.6f, teleport));
+		animations.put("scientist_spawn", new Animation(frameTime*0.6f, spawn));
 	}
 	
 	private void loadExplosionAnimation(TextureAtlas textureAtlas)
