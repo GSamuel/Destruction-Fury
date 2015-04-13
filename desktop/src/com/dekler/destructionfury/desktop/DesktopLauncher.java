@@ -3,7 +3,6 @@ package com.dekler.destructionfury.desktop;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.dekler.destructionfury.DestructionFury;
-import com.dekler.destructionfury.level.LevelLoaderExporter;
 
 public class DesktopLauncher {
 	public static void main (String[] arg) {

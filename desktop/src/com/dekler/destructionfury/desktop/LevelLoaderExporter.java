@@ -1,4 +1,4 @@
-package com.dekler.destructionfury.level;
+package com.dekler.destructionfury.desktop;
 
 import java.util.ArrayList;
 
@@ -16,6 +16,9 @@ import com.dekler.destructionfury.gameobject.Player;
 import com.dekler.destructionfury.gameobject.Robot;
 import com.dekler.destructionfury.gameobject.Scientist;
 import com.dekler.destructionfury.gameobject.WarpPad;
+import com.dekler.destructionfury.level.Level;
+import com.dekler.destructionfury.level.LevelLoaderExporterInterface;
+import com.dekler.destructionfury.level.PropertyManager;
 import com.dekler.destructionfury.map.TileEnum;
 import com.dekler.destructionfury.map.TiledMap;
 

@@ -6,7 +6,6 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.input.GestureDetector.GestureListener;
 import com.badlogic.gdx.math.Vector2;
 import com.dekler.destructionfury.level.Level;
-import com.dekler.destructionfury.level.LevelLoaderExporter;
 import com.dekler.destructionfury.level.LevelLoaderExporterInterface;
 import com.dekler.destructionfury.level.PropertyManager;
 

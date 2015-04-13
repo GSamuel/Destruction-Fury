@@ -5,7 +5,6 @@ import android.os.Bundle;
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 import com.dekler.destructionfury.DestructionFury;
-import com.dekler.destructionfury.level.LevelLoaderExporter;
 
 public class AndroidLauncher extends AndroidApplication {
 	@Override
