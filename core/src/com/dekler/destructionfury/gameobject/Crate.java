@@ -1,7 +1,5 @@
 package com.dekler.destructionfury.gameobject;
 
-import javafx.geometry.Rectangle2D;
-
 import com.badlogic.gdx.math.Rectangle;
 import com.dekler.destructionfury.level.Level;
 import com.dekler.destructionfury.map.TileEnum;

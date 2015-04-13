@@ -2,9 +2,7 @@ package com.dekler.destructionfury.collision;
 
 import java.util.ArrayList;
 
-import javafx.geometry.Rectangle2D;
 import com.badlogic.gdx.math.Rectangle;
-
 import com.dekler.destructionfury.gameobject.Entity;
 import com.dekler.destructionfury.gameobject.GameObject;
 import com.dekler.destructionfury.gameobject.Robot;

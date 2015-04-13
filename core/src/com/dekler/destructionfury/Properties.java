@@ -13,10 +13,6 @@ import java.util.Date;
 import com.badlogic.gdx.utils.ObjectMap;
 
 public class Properties extends ObjectMap<Object,Object> {
-    /**
-     * use serialVersionUID from JDK 1.1.X for interoperability
-     */
-     private static final long serialVersionUID = 4112578634029874840L;
 
     /**
      * A property list that contains default values for any keys not
@@ -770,24 +766,6 @@ public class Properties extends ObjectMap<Object,Object> {
         for (Object o: keys()) {
             String key = (String)o;
             h.put(key, get(key));
-        }
-    }
-
-    /**
-     * Enumerates all key/value pairs in the specified hashtable
-     * and omits the property if the key or value is not a string.
-     * @param h the hashtable
-     */
-    private synchronized void enumerateStringProperties(ObjectMap<String, String> h) {
-        if (defaults != null) {
-            defaults.enumerateStringProperties(h);
-        }
-        for (Object o: keys() ) {
-            Object k = o;
-            Object v = get(k);
-            if (k instanceof String && v instanceof String) {
-                h.put((String) k, (String) v);
-            }
         }
     }
 
