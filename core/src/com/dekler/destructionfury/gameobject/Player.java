@@ -14,7 +14,7 @@ public class Player extends Entity
 		this.setSize(0.7f, 0.9f);
 		attackCD = new Cooldown(0.5f);
 		altAttackCD = new Cooldown(2.8f);
-		this.health = 8;
+		this.health = 12;
 		this.speed = 3f;
 	}
 	

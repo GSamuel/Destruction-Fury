@@ -16,7 +16,7 @@ public class Bull extends Entity
 		super(level);
 		this.setSize(1.9f, 1.3f);
 		this.moveUp();
-		health = 6;
+		health = 3;
 		nextAttackCD = new Cooldown(6f);
 		stuckCD = new Cooldown(2f);
 	}

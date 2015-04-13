@@ -20,7 +20,7 @@ public class Boss extends Entity
 		super(level);
 		this.setSize(1.9f, 1.9f);
 		this.moveDown();
-		health = 3;
+		health = 1;
 
 		nextAttackCD = new Cooldown(4.5f);
 		nextSpitCD = new Cooldown(1.3f);
