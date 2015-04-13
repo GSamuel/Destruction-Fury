@@ -2,6 +2,7 @@ package com.dekler.destructionfury.level;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
@@ -18,9 +19,9 @@ import com.dekler.destructionfury.gameobject.WarpPad;
 import com.dekler.destructionfury.map.TileEnum;
 import com.dekler.destructionfury.map.TiledMap;
 
-public class LevelLoaderExporter
+public class LevelLoaderExporter implements LevelLoaderExporterInterface
 {
-	public static void saveLevel(Level level, String fileName,
+	public void saveLevel(Level level, String fileName,
 			PropertyManager propManager)
 	{
 		TiledMap map = level.getMap();
@@ -89,12 +90,13 @@ public class LevelLoaderExporter
 			}
 		}
 
-		FileHandle file = new FileHandle(fileName);
+		FileHandle file = Gdx.files.local(fileName);
+		
 		
 		PixmapIO.writePNG(file, pic);
 	}
 
-	public static void loadLevel(Level level, PropertyManager propManager)
+	public void loadLevel(Level level, PropertyManager propManager)
 	{
 		level.reset();
 		String fileName;
@@ -108,7 +110,7 @@ public class LevelLoaderExporter
 		
 		level.setLevelProperties(levelProperties);
 		
-		FileHandle file = new FileHandle(fileName);
+		FileHandle file = Gdx.files.local(fileName);
 		
 		Pixmap pic = new Pixmap(file);
 		

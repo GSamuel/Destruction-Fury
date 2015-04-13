@@ -3,6 +3,7 @@ package com.dekler.destructionfury.collision;
 import java.util.ArrayList;
 
 import javafx.geometry.Rectangle2D;
+import com.badlogic.gdx.math.Rectangle;
 
 import com.dekler.destructionfury.gameobject.Entity;
 import com.dekler.destructionfury.gameobject.GameObject;
@@ -25,11 +26,12 @@ public class Collision
 				{
 					if (map.getTile(newX, newY) == tile)
 					{
-						Rectangle2D recA = new Rectangle2D(o.getX(), o.getY(),
+						
+						Rectangle recA = new Rectangle(o.getX(), o.getY(),
 								o.getWidth(), o.getHeight());
-						Rectangle2D recB = new Rectangle2D(newX, newY, 1f, 1f);
+						Rectangle recB = new Rectangle(newX, newY, 1f, 1f);
 
-						if (recA.intersects(recB))
+						if (recA.overlaps(recB))
 						{
 							float distX = o.getX() + o.getWidth() * 0.5f
 									- (newX + 0.5f);
@@ -79,12 +81,12 @@ public class Collision
 
 	public static void collisionV2(GameObject a, GameObject b)
 	{
-		Rectangle2D recA = new Rectangle2D(a.getX(), a.getY(), a.getWidth(),
+		Rectangle recA = new Rectangle(a.getX(), a.getY(), a.getWidth(),
 				a.getHeight());
-		Rectangle2D recB = new Rectangle2D(b.getX(), b.getY(), b.getWidth(),
+		Rectangle recB = new Rectangle(b.getX(), b.getY(), b.getWidth(),
 				b.getHeight());
 
-		if (recA.intersects(recB))
+		if (recA.overlaps(recB))
 		{
 
 			float distX = a.getX() + a.getWidth() * 0.5f
@@ -113,22 +115,22 @@ public class Collision
 		}
 	}
 	
-	public static boolean collision(GameObject a, Rectangle2D recB)
+	public static boolean collision(GameObject a, Rectangle recB)
 	{
-		Rectangle2D recA = new Rectangle2D(a.getX(), a.getY(), a.getWidth(),
+		Rectangle recA = new Rectangle(a.getX(), a.getY(), a.getWidth(),
 				a.getHeight());
 
-		return recA.intersects(recB);
+		return recA.overlaps(recB);
 	}
 
 	public static void collision(GameObject a, GameObject b)
 	{
-		Rectangle2D recA = new Rectangle2D(a.getX(), a.getY(), a.getWidth(),
+		Rectangle recA = new Rectangle(a.getX(), a.getY(), a.getWidth(),
 				a.getHeight());
-		Rectangle2D recB = new Rectangle2D(b.getX(), b.getY(), b.getWidth(),
+		Rectangle recB = new Rectangle(b.getX(), b.getY(), b.getWidth(),
 				b.getHeight());
 
-		if (recA.intersects(recB))
+		if (recA.overlaps(recB))
 		{
 			a.onGameObjectCollision(b);
 			b.onGameObjectCollision(a);

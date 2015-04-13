@@ -4,6 +4,7 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.gwt.GwtApplication;
 import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration;
 import com.dekler.destructionfury.DestructionFury;
+import com.dekler.destructionfury.level.HTMLLevelLoaderExporter;
 
 public class HtmlLauncher extends GwtApplication {
 
@@ -14,6 +15,6 @@ public class HtmlLauncher extends GwtApplication {
 
         @Override
         public ApplicationListener getApplicationListener () {
-                return new DestructionFury();
+                return new DestructionFury(new HTMLLevelLoaderExporter());
         }
 }

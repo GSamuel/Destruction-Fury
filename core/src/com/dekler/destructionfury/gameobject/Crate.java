@@ -2,6 +2,7 @@ package com.dekler.destructionfury.gameobject;
 
 import javafx.geometry.Rectangle2D;
 
+import com.badlogic.gdx.math.Rectangle;
 import com.dekler.destructionfury.level.Level;
 import com.dekler.destructionfury.map.TileEnum;
 
@@ -12,9 +13,9 @@ public class Crate extends GameObject
 		super(level);
 	}
 
-	public Rectangle2D getTargetHitBox()
+	public Rectangle getTargetHitBox()
 	{
-		return new Rectangle2D(getX()+getWidth()*0.25f, getY()+getHeight()*0.25f, getWidth()*0.5f, getHeight()*0.5f);
+		return new Rectangle(getX()+getWidth()*0.25f, getY()+getHeight()*0.25f, getWidth()*0.5f, getHeight()*0.5f);
 	}
 	
 	@Override

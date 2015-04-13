@@ -3,21 +3,21 @@ package com.dekler.destructionfury.level;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.Properties;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
+import com.dekler.destructionfury.Properties;
 
 public class PropertyManager
 {
 	private Properties properties;
 	private String fileName;
 	
-	public PropertyManager(String fileName, Properties properties)
+	public PropertyManager(String fileName, Properties properties2)
 	{
 		this.fileName = fileName;
-		this.properties = properties;
+		this.properties = properties2;
 	}
 	
 	public PropertyManager(String fileName)

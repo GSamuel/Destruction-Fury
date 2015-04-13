@@ -1,7 +1,6 @@
 package com.dekler.destructionfury.gameobject;
 
-import javafx.geometry.Rectangle2D;
-
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.dekler.destructionfury.collision.Collision;
 import com.dekler.destructionfury.level.Level;
@@ -13,7 +12,7 @@ public class Boss extends Entity
 	private Cooldown nextSpitCD;
 	private Cooldown mouthOpenCD;
 
-	private Rectangle2D hitLeft, hitRight, hitUp, hitDown;
+	private Rectangle hitLeft, hitRight, hitUp, hitDown;
 
 	public Boss(Level level)
 	{
@@ -29,14 +28,14 @@ public class Boss extends Entity
 
 	private void updateHitBox()
 	{
-		hitLeft = new Rectangle2D(getX(), getY() + getHeight() * 0.25f,
+		hitLeft = new Rectangle(getX(), getY() + getHeight() * 0.25f,
 				getWidth() * 0.25f, getHeight() * 0.5f);
-		hitRight = new Rectangle2D(getX() + getWidth() * 0.75f, getY()
+		hitRight = new Rectangle(getX() + getWidth() * 0.75f, getY()
 				+ getHeight() * 0.25f, getWidth() * 0.25f, getHeight() * 0.5f);
 
-		hitUp = new Rectangle2D(getX() + getWidth() * 0.25f, getY()
+		hitUp = new Rectangle(getX() + getWidth() * 0.25f, getY()
 				+ getHeight() * 0.75f, getWidth() * 0.5f, getHeight() * 0.25f);
-		hitDown = new Rectangle2D(getX() + getWidth() * 0.25f, getY(),
+		hitDown = new Rectangle(getX() + getWidth() * 0.25f, getY(),
 				getWidth() * 0.5f, getHeight() * 0.25f);
 	}
 

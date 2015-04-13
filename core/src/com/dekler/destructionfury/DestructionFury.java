@@ -1,6 +1,6 @@
 package com.dekler.destructionfury;
 
-import java.util.Properties;
+
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -10,7 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.dekler.destructionfury.assetManager.AssetManager;
 import com.dekler.destructionfury.input.SimpleInputProcessor;
 import com.dekler.destructionfury.level.Level;
-import com.dekler.destructionfury.level.LevelLoaderExporter;
+import com.dekler.destructionfury.level.LevelLoaderExporterInterface;
 import com.dekler.destructionfury.level.PropertyManager;
 import com.dekler.destructionfury.level.SimpleLevel;
 import com.dekler.destructionfury.renderer.LevelRenderer;
@@ -18,6 +18,7 @@ import com.dekler.destructionfury.renderer.LevelRenderer;
 public class DestructionFury extends Game
 {
 	private PropertyManager propManager;
+	private LevelLoaderExporterInterface levelLoaderExporter;
 
 	// assets
 	private AssetManager assetManager;
@@ -32,6 +33,11 @@ public class DestructionFury extends Game
 	// Input
 	private SimpleInputProcessor iProcessor;
 
+	public DestructionFury(LevelLoaderExporterInterface levelLoaderExporter)
+	{
+		this.levelLoaderExporter = levelLoaderExporter;
+	}
+	
 	@Override
 	public void create()
 	{
@@ -49,11 +55,11 @@ public class DestructionFury extends Game
 		if (propManager.getIntegerProperty("load-level") != 0)
 		{
 			level = new Level();
-			LevelLoaderExporter.loadLevel(level, propManager);
+			levelLoaderExporter.loadLevel(level, propManager);
 		} else
 		{
 			level = new SimpleLevel();
-			LevelLoaderExporter.saveLevel(level, "stdSave.png", propManager);
+			levelLoaderExporter.saveLevel(level, "stdSave.png", propManager);
 		}
 
 		// view
@@ -61,7 +67,7 @@ public class DestructionFury extends Game
 		levelRenderer = new LevelRenderer(stage, level, assetManager, propManager);
 
 		// input
-		iProcessor = new SimpleInputProcessor(level, propManager);
+		iProcessor = new SimpleInputProcessor(level, propManager, levelLoaderExporter);
 
 		InputMultiplexer im = new InputMultiplexer();
 		im.addProcessor(new GestureDetector(iProcessor));
@@ -103,7 +109,7 @@ public class DestructionFury extends Game
 	public void render()
 	{
 		if (level.reload())
-			LevelLoaderExporter.loadLevel(level, propManager);
+			levelLoaderExporter.loadLevel(level, propManager);
 		iProcessor.update();
 		if (!level.paused())
 			level.update();

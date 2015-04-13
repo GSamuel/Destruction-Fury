@@ -1,11 +1,10 @@
 package com.dekler.destructionfury.level;
 
-import java.awt.Point;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import javafx.geometry.Rectangle2D;
-
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 import com.dekler.destructionfury.collision.Collision;
 import com.dekler.destructionfury.gameobject.Boss;
 import com.dekler.destructionfury.gameobject.Bull;
@@ -32,8 +31,8 @@ public class Level
 	protected ArrayList<GameObject> hurtables;
 	protected ArrayList<Explosion> effects;
 	protected PropertyManager levelProperties;
-	protected ArrayList<Point> crateTargets;
-	protected HashMap<Point, Boolean> targets;
+	protected ArrayList<Vector2> crateTargets;
+	protected HashMap<Vector2, Boolean> targets;
 
 	public Level()
 	{
@@ -44,8 +43,8 @@ public class Level
 		hurtables = new ArrayList<GameObject>();
 		warpPads = new ArrayList<WarpPad>();
 		map = new SimpleTiledMap(22, 22);
-		crateTargets = new ArrayList<Point>();
-		targets = new HashMap<Point, Boolean>();
+		crateTargets = new ArrayList<Vector2>();
+		targets = new HashMap<Vector2, Boolean>();
 		reload = false;
 		paused = true;
 	}
@@ -257,8 +256,8 @@ public class Level
 						Collision.collisionV2(o, o2);
 				
 				Collision.collisionV2(player, o);
-				if(new Rectangle2D(o.getIntX(), o.getIntY(), 1f,1f).contains(crate.getTargetHitBox()))
-				{targets.put(new Point((int) (o.getX() + o.getWidth() * 0.5f),
+				if(new Rectangle(o.getIntX(), o.getIntY(), 1f,1f).contains(crate.getTargetHitBox()))
+				{targets.put(new Vector2((int) (o.getX() + o.getWidth() * 0.5f),
 						(int) (o.getY() + o.getHeight() * 0.5f)), true);
 				}
 			}
@@ -280,7 +279,7 @@ public class Level
 		for (int i = 0; i < map.getWidth(); i++)
 			for (int j = 0; j < map.getHeight(); j++)
 				if (map.getTile(i, j) == TileEnum.CRATE_TARGET)
-					crateTargets.add(new Point(i, j));
+					crateTargets.add(new Vector2(i, j));
 
 		resetTargets();
 	}
@@ -288,7 +287,7 @@ public class Level
 	private void resetTargets()
 	{
 		targets.clear();
-		for (Point p : crateTargets)
+		for (Vector2 p : crateTargets)
 			targets.put(p, false);
 	}
 	

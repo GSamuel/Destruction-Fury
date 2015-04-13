@@ -13,7 +13,9 @@
 	<inherits name='Level' />
 	<inherits name='Map' />
 	<inherits name='Renderer' />
+	<inherits name='Properties' />
+	<inherits name='Rectangle2D' />
 	<entry-point class='com.dekler.destructionfury.client.HtmlLauncher' />
 	
-	<set-configuration-property name="gdx.assetpath" value="../core/assets" />
+	<set-configuration-property name="gdx.assetpath" value="../android/assets" />
 </module>
