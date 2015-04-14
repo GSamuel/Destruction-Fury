@@ -1,4 +1,4 @@
-package com.dekler.destructionfury.level;
+package com.dekler.destructionfury.client;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
@@ -10,6 +10,9 @@ import com.dekler.destructionfury.gameobject.Crate;
 import com.dekler.destructionfury.gameobject.Robot;
 import com.dekler.destructionfury.gameobject.Scientist;
 import com.dekler.destructionfury.gameobject.WarpPad;
+import com.dekler.destructionfury.level.Level;
+import com.dekler.destructionfury.level.LevelLoaderExporterInterface;
+import com.dekler.destructionfury.level.PropertyManager;
 import com.dekler.destructionfury.map.TileEnum;
 import com.dekler.destructionfury.map.TiledMap;
 
@@ -25,12 +28,12 @@ public class HTMLLevelLoaderExporter implements LevelLoaderExporterInterface
 	else
 		fileName = level.getLevelProperties().getProperty("level-name");
 	
-	PropertyManager levelProperties = new PropertyManager(fileName.split("\\x2E")[0]+".properties");
+	PropertyManager levelProperties = new PropertyManager(fileName.split("\\x2E")[0]+".properties",true);
 	levelProperties.putProperty("next-level", "");
 	
 	level.setLevelProperties(levelProperties);
 	
-	FileHandle file = Gdx.files.local(fileName);
+	FileHandle file = Gdx.files.internal(fileName);
 	
 	Pixmap pic = new Pixmap(file);
 	
@@ -86,7 +89,7 @@ public class HTMLLevelLoaderExporter implements LevelLoaderExporterInterface
 
 	
 	levelProperties.readPropertyFile();
-	levelProperties.writePropertyFile();
+	//levelProperties.writePropertyFile();
 	
 	levelProperties.putProperty("level-name", fileName);
 	

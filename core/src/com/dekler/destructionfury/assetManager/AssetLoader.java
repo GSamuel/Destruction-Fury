@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
@@ -40,7 +41,8 @@ public class AssetLoader implements Disposable
 
 		
 		//walk down
-		textureAtlas = new TextureAtlas(Gdx.files.internal("destructionFury.pack"));
+		FileHandle pack = Gdx.files.internal("destFury.pack");
+		textureAtlas = new TextureAtlas(pack);
 		atlasses.add(textureAtlas);
 
 		tiles.put("health", textureAtlas.findRegion("health"));
@@ -149,11 +151,6 @@ public class AssetLoader implements Disposable
 		walkRightFrames[1] = textureAtlas.findRegion("boss_walk_right", 1);
 		walkRightFrames[2] = textureAtlas.findRegion("boss_walk_right", 2);
 		walkRightFrames[3] = textureAtlas.findRegion("boss_walk_right", 3);
-		
-		walkLeftFrames[0] = textureAtlas.findRegion("boss_walk_left", 2);
-		walkLeftFrames[1] = textureAtlas.findRegion("boss_walk_left", 1);
-		walkLeftFrames[2] = textureAtlas.findRegion("boss_walk_left", 2);
-		walkLeftFrames[3] = textureAtlas.findRegion("boss_walk_left", 3);
 		
 		for(int i =0; i < walkLeftFrames.length; i++)
 		{

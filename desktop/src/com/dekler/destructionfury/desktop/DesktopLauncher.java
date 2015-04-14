@@ -13,6 +13,6 @@ public class DesktopLauncher {
 		config.width = 1280;
 		config.height = 720;
 		
-		new LwjglApplication(new DestructionFury(new LevelLoaderExporter()), config);
+		new LwjglApplication(new DestructionFury(new LevelLoaderExporter(), false), config);
 	}
 }

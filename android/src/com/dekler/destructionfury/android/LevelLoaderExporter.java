@@ -108,7 +108,7 @@ public class LevelLoaderExporter implements LevelLoaderExporterInterface
 		else
 			fileName = level.getLevelProperties().getProperty("level-name");
 		
-		PropertyManager levelProperties = new PropertyManager(fileName.split("\\x2E")[0]+".properties");
+		PropertyManager levelProperties = new PropertyManager(fileName.split("\\x2E")[0]+".properties", false);
 		levelProperties.putProperty("next-level", "");
 		
 		level.setLevelProperties(levelProperties);

@@ -46,7 +46,7 @@ public class LevelRenderer implements Disposable
 				- Gdx.graphics.getWidth() * 0.5f, level.getMap().getHeight()
 				* TILE_SIZE - Gdx.graphics.getHeight() * 0.5f);
 
-		batch = new SpriteBatch();
+		batch = (SpriteBatch) stage.getBatch();
 
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, 960, 640);

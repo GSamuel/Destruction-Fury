@@ -15,6 +15,6 @@ public class AndroidLauncher extends AndroidApplication {
 		config.useAccelerometer = false;
 		config.useCompass = false;
 		
-		initialize(new DestructionFury(new LevelLoaderExporter()), config);
+		initialize(new DestructionFury(new LevelLoaderExporter(), false), config);
 	}
 }

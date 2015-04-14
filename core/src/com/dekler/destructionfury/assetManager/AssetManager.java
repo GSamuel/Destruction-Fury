@@ -17,6 +17,10 @@ public class AssetManager
 		animations = new HashMap<String, Animation>();
 		
 		assetLoader = new AssetLoader();
+	}
+	
+	public void loadAssets()
+	{
 		assetLoader.loadAssets();
 		
 		texturePack = new SimpleTexturepack(assetLoader);

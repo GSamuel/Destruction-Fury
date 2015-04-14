@@ -1,7 +1,5 @@
 package com.dekler.destructionfury;
 
-
-
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
@@ -19,6 +17,8 @@ public class DestructionFury extends Game
 {
 	private PropertyManager propManager;
 	private LevelLoaderExporterInterface levelLoaderExporter;
+	private boolean html;
+	private boolean assetsLoaded = false;
 
 	// assets
 	private AssetManager assetManager;
@@ -33,19 +33,24 @@ public class DestructionFury extends Game
 	// Input
 	private SimpleInputProcessor iProcessor;
 
-	public DestructionFury(LevelLoaderExporterInterface levelLoaderExporter)
+	public DestructionFury(LevelLoaderExporterInterface levelLoaderExporter,
+			boolean html)
 	{
 		this.levelLoaderExporter = levelLoaderExporter;
+		this.html = html;
 	}
-	
+
 	@Override
 	public void create()
 	{
 		// set resolution to default and set full-screen to true
-		Gdx.graphics.setDisplayMode(Gdx.graphics.getDesktopDisplayMode().width,
-				Gdx.graphics.getDesktopDisplayMode().height, true);
-		Gdx.graphics.setVSync(true);
-
+		if (!html)
+		{
+			Gdx.graphics.setDisplayMode(
+					Gdx.graphics.getDesktopDisplayMode().width,
+					Gdx.graphics.getDesktopDisplayMode().height, true);
+			Gdx.graphics.setVSync(true);
+		}
 		initProperties();
 
 		// assets
@@ -64,13 +69,16 @@ public class DestructionFury extends Game
 
 		// view
 		stage = new Stage();
-		levelRenderer = new LevelRenderer(stage, level, assetManager, propManager);
+		levelRenderer = new LevelRenderer(stage, level, assetManager,
+				propManager);
 
 		// input
-		iProcessor = new SimpleInputProcessor(level, propManager, levelLoaderExporter);
+		iProcessor = new SimpleInputProcessor(level, propManager,
+				levelLoaderExporter);
 
 		InputMultiplexer im = new InputMultiplexer();
-		im.addProcessor(new GestureDetector(iProcessor));
+		if(!html)
+			im.addProcessor(new GestureDetector(iProcessor));
 		im.addProcessor(iProcessor);
 		Gdx.input.setInputProcessor(im);
 	}
@@ -93,9 +101,11 @@ public class DestructionFury extends Game
 		properties.put("boss3-color", "" + 0 + "," + 0 + "," + 127);
 		properties.put("breakwall-color", "" + 0 + "," + 0 + "," + 0);
 
-		propManager = new PropertyManager("settings.properties", properties);
+		propManager = new PropertyManager("settings.properties", properties,
+				html);
 		propManager.readPropertyFile();
-		propManager.writePropertyFile();
+		if (!html)
+			propManager.writePropertyFile();
 	}
 
 	@Override
@@ -108,6 +118,11 @@ public class DestructionFury extends Game
 	@Override
 	public void render()
 	{
+		if(!assetsLoaded)
+		{
+			assetManager.loadAssets();
+			assetsLoaded = true;
+		}
 		if (level.reload())
 			levelLoaderExporter.loadLevel(level, propManager);
 		iProcessor.update();
